@@ -1,0 +1,110 @@
+
+
+
+.clients {
+    .container {
+        @media(max-width: $bp-small){
+            max-width: unset; 
+            margin: unset; 
+            width: unset;
+        }
+    }
+    &__top {
+        display: flex;
+        margin-bottom: 6.25rem;
+        gap: 100px;
+        @media(max-width: $bp-small){
+            display: block;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .top-left {
+            flex: 1;
+            p{
+                @media(max-width: $bp-small){
+                    margin-bottom: 1.625rem;
+                    padding: 0 10%;
+                }
+            }
+            h1 {
+                @media(max-width: $bp-small){
+                    margin-bottom: 1.625rem;
+                }
+            }
+        }
+        .top-right {
+            display: flex;
+            flex-direction: column;
+            .bold {
+                font-weight: 600;
+                @media(max-width: $bp-small){
+                    margin-top: 1.875rem;
+                    margin-bottom: 0.625rem
+                }
+            }
+            .address-wrapper {
+                margin-bottom: 18px;
+                @media(max-width: $bp-small){
+                    margin-bottom: 0.625rem
+                }
+                p {
+                    margin-bottom: 0;
+                }
+
+            }
+            .phone {
+                font-size: 1.25rem;
+                font-weight: 300;
+                line-height: 150%;
+                font-family: "Inter";
+                @media(max-width: $bp-small){
+                    font-size: 1rem;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+    &__body {
+        background: white;
+        padding: 53px 80px;
+        border-radius: 10px;
+        position: relative;
+        @media(max-width: $bp-small){
+            padding: 53px 20px 152px 20px;
+            border-radius: 0;
+        }
+        .tell-us {
+            font-weight: 600;
+            margin-bottom: 32px;
+            display: none;
+            @media(max-width: $bp-small){
+                display: block;
+            }
+            @media only screen and (max-width: 1150px) and (min-width: 800px)  {
+                font-size: 1.4rem!important;
+              }
+        }
+        // .we-will-be-in-touch {
+        //     margin-left: 50%;
+        //     font-style: italic!important;
+        //     color: rgb(29, 8, 0, .5);
+        //     font-family: Inter;
+        //     font-size: 1.2rem;
+        //     font-style: normal;
+        //     font-weight: 400!important;
+        //     line-height: 135.023%; 
+        //     color: rgb(29, 8, 0, .5);
+        //     margin-bottom: 8px;
+        //     @media only screen and (max-width: 1150px) and (min-width: 800px)  {
+        //       font-size: 1.4rem!important;
+        //     }
+        //     @media (max-width: $bp-small) {
+        //       font-size: 0.875rem;
+        //     }
+        //     @media(max-width: $bp-small){
+        //         margin-left: 0;
+        //         transform: translate(-2px, 56px);
+        //     }
+        // }
+    }
+}

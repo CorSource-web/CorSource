@@ -1,0 +1,43 @@
+
+
+
+.content-quote-with-image {
+    display: grid;
+    @media(max-width: $bp-small){
+        grid-template-columns: 1fr!important;
+    }
+    &__left {
+        @media(max-width: $bp-small){
+            margin-bottom: $spacing-medium;
+        }
+        img {
+            width: 80%;
+            border-radius: 10px;
+            @media(max-width: $bp-small){
+                width: 100%;
+            }
+        }
+        .image-has-background {
+            padding: 26px;
+        }
+    }
+    &__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .bottom {
+            background-color: $color-linen;
+            border-radius: 10px;
+            padding: 1.5rem;
+            .quote {
+                font-weight: 600;
+                margin-bottom: 0.75rem;
+            }
+            .quoter {
+                font-style: italic;
+                margin-bottom: 0;
+                opacity: .6;
+            }
+        }
+    }
+}

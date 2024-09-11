@@ -1,0 +1,42 @@
+
+
+.quote-cards {
+    .cards-wrapper {
+        display: grid;
+        grid-gap: 1.25rem;
+        display: flex;
+        @media(max-width: 800px){
+            display: block;
+            padding-bottom: 20px;
+        }
+    }
+    .quotecard {
+        flex-grow: 1;
+        flex-basis: 0;
+        @media(max-width: 800px){
+            padding-bottom: 1.25rem;
+        }
+        img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 28.125rem;
+            object-fit: cover;
+            width: 100%;
+        }
+        &__top {
+            background-color: $color-white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        &__bottom {
+            background-color: $color-white;
+            padding: 1.5rem;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        p {
+            font-style: italic;
+            opacity: .6;
+        }
+    }
+}

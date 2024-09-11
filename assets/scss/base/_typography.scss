@@ -1,0 +1,265 @@
+html,
+button {
+  font-family: $body;
+  font-size: clamp(10px, 0.9vw, 20px);
+  color: $color-licorice;
+  @media (max-width: $bp-small) {
+    font-size: clamp(14px, 1vw, 1000vw);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  clear: both;
+  float: none;
+  margin: 0;
+  font-family: $header;
+}
+
+h1,
+.editor-styles-wrapper h1:not(.wp-block-post-title),
+.h1 {
+  font-style: normal;
+  font-size: 4.8rem;
+
+  line-height: 111%;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  margin-top: 0;
+
+
+
+  @media (max-width: $bp-small) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5625rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: clamp(4.2rem, 4.2rem + 0vw, 4.2rem);
+
+  }
+
+  &.hero {
+    font-size: 8.75rem;
+    line-height: 9.625rem;
+
+    @media (max-width: $bp-small) {
+      font-size: 2.625rem;
+      line-height: 3rem;
+    }
+  }
+}
+h2,
+.editor-styles-wrapper h2,
+.h2 {
+  font-size: 3.8rem;
+  line-height: 120%;
+  font-weight: $semi;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+
+  @media (max-width: $bp-small) {
+    line-height: 2.375rem;
+    font-size: 1.75rem;
+  }
+}
+h3,
+.editor-styles-wrapper h3,
+.h3 {
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1.25rem;
+  font-size: 2.5rem;
+  font-family: "Inter";
+  line-height: 128%;
+  margin-top: 0;
+
+  @media (max-width: $bp-small) {
+    font-size: 1.5rem;
+    line-height: normal;
+  }
+}
+h4,
+.editor-styles-wrapper h4,
+.h4 {
+  font-weight: 400;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-family: "Inter";
+  line-height: 125.5%;
+  margin-top: 0;
+
+  @media (max-width: $bp-small) {
+    font-size: 1.25rem;
+  }
+  @media (min-width: 1400px) {
+    font-size: 1.6rem;
+  }
+}
+h5,
+.editor-styles-wrapper h5,
+.h5 {
+  margin-bottom: 1.25rem;
+  font-size: 1.3125rem;
+  font-family: "Inter";
+  font-weight: $bold;
+  line-height: 143.023%;
+  margin-top: 0;
+  @media(min-width: 800px) and (max-width: 1200px){
+    font-size: 1.55rem;
+  }
+
+  @media (max-width: $bp-small) {
+    font-size: 1.4rem;
+  }
+}
+
+h6,
+.editor-styles-wrapper h6 .h6 {
+  font-size: 1.1rem;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 135.023%;
+  letter-spacing: 0.045rem;
+  text-transform: uppercase;
+  color: $color-red;
+  margin-top: 0;
+  margin-bottom: 1rem;
+
+  @media (max-width: $bp-small) {
+    font-size: 0.875rem;
+  }
+}
+
+p,
+i {
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 150%;
+
+  @media (max-width: $bp-small) {
+    font-size: 1.2rem;
+  }
+}
+
+p {
+  margin: 0;
+  margin-bottom: 18px;
+  font-weight: 400;
+
+  &.major {
+    font-size: 1.813rem;
+    line-height: 150%;
+
+    @media (max-width: $bp-small) {
+      font-size: 1.188rem;
+    }
+  }
+
+  &.minor {
+    font-size: 1.1rem;
+    font-family: "Inter";
+    line-height: 135.023%;
+    letter-spacing: 0.045rem;
+    font-weight: 400;
+    @media(min-width: 800px) and (max-width: 1200px){
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: $bp-small) {
+      font-size: 1rem!important;
+      font-weight: 400;
+    }
+  }
+
+  &.italic, i {
+    font-style: italic;
+    opacity: 0.6;
+  }
+}
+
+strong,
+b {
+  font-weight: $bold;
+}
+
+button,
+a {
+  font-weight: $semi;
+  text-decoration: none;
+  transition: all 100ms;
+}
+
+a {
+  color: $color-licorice;
+}
+a:not(.button):visited {
+  color: $color-licorice;
+}
+
+li {
+  font-weight: $regular;
+}
+
+li, .wp-block li, .wp-block-list.wp-block-list li {
+  font-size: 1.25rem;
+  font-weight: $regular;
+  line-height: 220%; //extra line height instead of margin to fix 2 column offset bug on safari
+
+  @media (max-width: $bp-small) {
+    font-size: 1rem;
+  }
+}
+
+.navigation-menu-wrapper li,
+.menu-navigation-container li, .wp-admin li:not(.wp-block-list-item) {
+  list-style-type: none;
+}
+
+ul  {
+  padding-left: 20px;
+  margin: 0;
+
+  li {
+    list-style-type: disc;
+  }
+}
+
+ol li {
+  list-style-type: numeric;
+}
+
+
+hr {
+  border: 0;
+  border-top: 1px solid #182b3e;
+  opacity: 0.25;
+}
+
+.marker-underline {
+  display: inline;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -1rem;
+    right: -1rem;
+    z-index: -1;
+    width: calc(100% + 2rem);
+    height: 3rem;
+    // background-image: url('/images/marker-highlight.png');
+    background-size: 100% 75%;
+    background-repeat: no-repeat;
+
+    @media (max-width: $bp-small) {
+      bottom: -1.2rem;
+    }
+  }
+}

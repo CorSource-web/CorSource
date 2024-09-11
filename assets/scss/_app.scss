@@ -1,0 +1,77 @@
+/*!
+Theme Name: WP TEMPLATE DEFAULT
+Theme URI: N/A
+Author: Tanner Eustice
+Author URI: https://github.com/teustice
+Description: Everything great starts somewhere, and this theme will surely give you a leg up.
+Version: 1.0
+License: GNU General Public License
+License URI: license.txt
+Text Domain: cb_neat
+Domain Path: /library/languages/
+Tags: white, light, one-column, two-columns, right-sidebar, responsive-layout, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, translation-ready, accessibility-ready
+
+This theme, like WordPress, is licensed under the GPL.
+
+
+
+/*--------------------------------------------------------------
+Library
+--------------------------------------------------------------*/
+@import 'lib/slick';
+@import 'lib/slick-theme';
+
+/*--------------------------------------------------------------
+Base
+--------------------------------------------------------------*/
+@import 'base/variables';
+@import 'base/typography';
+@import 'base/btn';
+@import 'base/forms';
+@import 'base/media';
+@import 'base/layout';
+@import 'base/global-style';
+@import 'base/wp-styles';
+
+
+/*--------------------------------------------------------------
+Component
+--------------------------------------------------------------*/
+@import 'components/header';
+@import 'components/footer';
+@import 'components/modal';
+@import 'components/banner';
+@import 'components/hero';
+@import 'components/three-card-row';
+@import 'components/quote-cards';
+@import 'components/hc-icon-row';
+@import 'components/card-grid';
+@import 'components/two-column-content';
+@import 'components/content-quote-with-image';
+@import 'components/info-cards';
+@import 'components/capability-dropdowns';
+@import 'components/page-hero';
+@import 'components/career-cta';
+@import 'components/footer';
+@import 'components/testimonial';
+@import 'components/our-services';
+@import 'components/source-aq-cta';
+@import 'components/text-animation';
+@import 'components/error-404';
+@import 'components/meet-cta-block';
+@import 'components/image-content';
+@import 'components/inline-hero';
+@import 'components/echojobs';
+@import 'components/clients';
+@import 'components/thank-you';
+@import 'components/graphic-cards';
+@import 'components/consultants';
+@import 'components/general';
+@import 'components/manifesto';
+@import 'components/source-aqi';
+
+
+/*--------------------------------------------------------------
+Views
+--------------------------------------------------------------*/
+@import 'views/home';

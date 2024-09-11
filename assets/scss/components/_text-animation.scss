@@ -1,0 +1,22 @@
+.reveal-text {
+  visibility: hidden;
+  // margin-bottom: $spacing-small;
+}
+
+.reveal-line {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.animated-text {
+  text-align: center;
+
+  .container * {
+    max-width: 56.25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

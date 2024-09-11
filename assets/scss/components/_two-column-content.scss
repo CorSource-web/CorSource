@@ -1,0 +1,21 @@
+
+
+.two-column-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5.3125rem;
+    @media(max-width: $bp-small){
+        grid-template-columns: 1fr;
+        grid-gap: 3rem;
+    }
+    &__right {
+        // background-color: $color-white;
+        padding: 1.875rem;
+        border-radius: 10px;
+    }
+    &__left {
+        @media(max-width: $bp-small){
+            text-align: center;
+        }
+    }
+}

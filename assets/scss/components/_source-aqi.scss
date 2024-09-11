@@ -1,0 +1,240 @@
+.resources {
+  background-color: $color-linen;
+
+  &__inner {
+    padding-top: 4.375rem;
+
+    @media (max-width: $bp-small) {
+      padding-top: $spacing-medium;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1.25rem;
+    row-gap: 4.375rem;
+
+    @media (max-width: $bp-small) {
+      display: block;
+    }
+  }
+
+  &__card {
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    overflow: hidden;
+    border-radius: 0.625rem;
+
+    @media (max-width: $bp-small) {
+      margin-bottom: 2.5rem;
+    }
+
+    &-content {
+      position: relative;
+      z-index: 1;
+      background-color: $color-white;
+      padding: 1.5rem 1.5rem 2.25rem 1.5rem;
+      gap: 1.375rem;
+    }
+
+    img {
+      height: 22.625rem;
+      max-height: 430px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: all 400ms;
+      //prevent blurry image while transitioning
+      -webkit-backface-visibility: hidden;
+      -ms-transform: translateZ(0); /* IE 9 */
+      -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+      transform: translateZ(0);
+
+      @media (max-width: $bp-small) {
+        height: auto;
+        aspect-ratio: 350 / 240;
+      }
+    }
+    .desc {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+      p {
+        @extend .minor;
+        @extend .italic;
+      }
+    }
+    .btn_red {
+      margin-top: $spacing-small;
+      background-color: transparent;
+      border-color: $color-licorice;
+      color: $color-licorice !important;
+      opacity: 0.5;
+      transition: all 300ms;
+      @media (max-width: $bp-small) {
+        opacity: 1;
+        border-color: $color-red;
+        color: $color-red !important;
+      }
+    }
+
+    &:hover {
+      .btn_red {
+        opacity: 1;
+        border-color: $color-red;
+        color: $color-red !important;
+      }
+
+      img {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    @extend .h4;
+    padding-top: 3.5rem;
+    padding-bottom: 10rem;
+    margin: 0;
+
+    .page-numbers {
+      display: block;
+      padding: 2px;
+      padding-bottom: 0;
+      color: $color-red !important;
+      margin-left: 8px;
+      margin-right: 8px;
+      border-bottom: 1px solid transparent;
+      transition: all 300ms;
+
+      &.current,
+      &:hover {
+        border-color: $color-red;
+      }
+    }
+  }
+
+  &__filters {
+    background-color: $color-linen;
+    margin-top: -$spacing-small;
+
+    @media (max-width: $bp-small) {
+      margin-top: 0;
+      padding-top: $spacing-medium;
+    }
+
+    .container {
+      display: flex;
+      column-gap: $spacing-small;
+
+      @media (max-width: $bp-small) {
+        display: block;
+        text-align: center;
+      }
+    }
+    .select-wrapper {
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 2.5rem;
+        height: 100%;
+        background-color: $color-red;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        pointer-events: none;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0.7625rem;
+        bottom: 6px;
+        margin: auto;
+        border-style: solid;
+        border-width: 2px 2px 0 0;
+        display: inline-block;
+        border-color: $color-linen;
+        transform: rotate(135deg);
+        vertical-align: top;
+        height: 0.8rem;
+        width: 0.8rem;
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+
+    select {
+      @extend .btn_red;
+      width: auto;
+      margin: 0;
+      -webkit-appearance: none;
+      padding-right: 3.4rem;
+
+      &:hover {
+        background-color: #fff;
+        color: $color-red !important;
+      }
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+
+      @media (max-width: $bp-small) {
+        justify-content: center;
+        margin-top: 1rem;
+      }
+
+      input {
+        @extend .btn;
+        border: 1px solid rgba(29, 8, 0, 0.5);
+        background: #fff;
+        color: $color-licorice;
+        text-align: left;
+        text-transform: none;
+
+        &:hover {
+          background-color: #fff;
+          color: $color-licorice !important;
+          cursor: text;
+        }
+      }
+
+      form {
+        position: relative;
+
+        &:after {
+          content: "";
+          position: absolute;
+          width: 1.3rem;
+          height: 1.3rem;
+          top: 20%;
+          right: 6%;
+          display: inline-block;
+          background-image: url("../images/magnifying-glass.svg");
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+
+  &__result-prompt {
+    padding-bottom: $spacing-small;
+  }
+}

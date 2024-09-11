@@ -1,0 +1,54 @@
+.btn, .search-jobs-button, .login-button, .echojobs-job button {
+  text-transform: uppercase;
+  padding: 0.5rem 1.3125rem;
+  letter-spacing: 0.63px;
+  transition: all 300ms;
+  font-size: 1rem;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid $color-licorice;
+  border-radius: 50px;
+  @media(max-width: $bp-small){
+    font-size: 0.875rem;
+  }
+  &:hover {
+    background-color: $color-licorice;
+    color: $color-linen!important;
+    cursor: pointer;
+  }
+  &_white {
+    @extend .btn;
+    color: $color-linen!important;
+    border: 1px solid $color-linen;
+    &:hover {
+      background-color: $color-linen;
+      color: $color-red!important;
+      border: 1px solid $color-white;
+      cursor: pointer;
+    }
+  }
+  &_red {
+    @extend .btn;
+    color: $color-red!important;
+    border: 1px solid $color-red;
+    &:hover {
+      background-color: $color-red;
+      color: $color-white!important;
+      border: 1px solid $color-red;
+      cursor: pointer;
+    }
+  }
+  &_background-red {
+    @extend .btn;
+    color: $color-white!important;
+    border: 1px solid $color-white;
+    background-color: $color-red;
+    &:hover {
+      background-color: $color-white;
+      color: $color-red!important;
+      border: 1px solid $color-red;
+      cursor: pointer;
+    }
+  }
+}

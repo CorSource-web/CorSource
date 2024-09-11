@@ -1,0 +1,47 @@
+.wp-caption img {
+  margin-bottom: 0;
+
+  @media(max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.wp-caption {
+  @media(max-width: 600px) {
+    max-width: 100%;
+  }
+}
+
+.aligncenter {
+  margin: auto;
+  display: block;
+}
+
+.alignleft {
+  float: left;
+  padding-right: 20px;
+  @media(max-width: 600px) {
+    float: none;
+    display: block;
+    padding: 0;
+    margin: auto;
+  }
+}
+
+.alignright {
+  float: right;
+  padding-left: 20px;
+  @media(max-width: 600px) {
+    float: none;
+    display: block;
+    padding: 0;
+    margin: auto;
+  }
+}
+
+.wp-block-columns {
+  gap: 6.875rem;
+  @media(max-width:800px){
+    gap: 0;
+  }
+}

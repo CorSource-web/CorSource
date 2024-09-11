@@ -1,7 +1,7 @@
 
 # Hello Cheshire
 
-### CorSource default theme
+### CorSource Theme
 
 Requirements
 - Node v16.15.1

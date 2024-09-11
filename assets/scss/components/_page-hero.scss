@@ -17,7 +17,7 @@
   }
   .page-hero-wrapper {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.50005fr 1fr;
     grid-gap: 10.2rem;
     @media (max-width: $bp-small) {
       grid-template-columns: 1fr;

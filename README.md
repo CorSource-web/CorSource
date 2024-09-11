@@ -1,6 +1,4 @@
 
-# Hello Cheshire
-
 ### CorSource Theme
 
 Requirements

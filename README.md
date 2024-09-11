@@ -1,7 +1,7 @@
 
 # Hello Cheshire
 
-### CorSource default theme
+### CorSource Theme
 
 Requirements
 - Node v16.15.1
@@ -12,3 +12,5 @@ Required Plugins
 
 Recommended Plugins
 - Block Manager https://wordpress.org/plugins/block-manager/
+
+CorSource:

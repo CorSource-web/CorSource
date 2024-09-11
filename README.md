@@ -12,3 +12,5 @@ Required Plugins
 
 Recommended Plugins
 - Block Manager https://wordpress.org/plugins/block-manager/
+
+CorSource:

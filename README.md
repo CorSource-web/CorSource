@@ -1,7 +1,7 @@
 
 # Hello Cheshire
 
-### HC Wordpress default theme
+### CorSource default theme
 
 Requirements
 - Node v16.15.1

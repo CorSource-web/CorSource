@@ -32,7 +32,7 @@
 						</a>
 						<div class="social-wrapper">
 							<a target="_blank" href="https://www.linkedin.com/company/corsource-technology-group/"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/linkedin.svg" /></a>
-							<a target="_blank" href="https://twitter.com/CorSource"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/twitter.svg" /></a>
+							<a target="_blank" href="https://x.com/CorSource"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/twitter.svg" /></a>
 							<a target="_blank" href="https://www.facebook.com/CorSourceTech/"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/facebook.svg" /></a>
 						</div>
 

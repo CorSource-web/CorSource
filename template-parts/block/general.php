@@ -18,7 +18,7 @@ $id = 'general-' . $block['id'];
             </div>
             <div class="top-right">
                 <p class="bold">Headquarters</p>
-                <a class="address-wrapper" target="_blank" href="http://maps.google.com/?q=9115 SW Oleson Rd, Ste 105, Portland, OR 97223">
+                <a class="address-wrapper" target="_blank" href="http://maps.google.com/?q=9115 SW Oleson Rd, Ste 100, Portland, OR 97223">
                     <p>9115 SW Oleson Rd, Ste 100</p>
                     <p>Portland, OR 97223</p>
                 </a>

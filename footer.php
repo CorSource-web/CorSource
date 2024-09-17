@@ -14,7 +14,7 @@
 					<div class="headquarters">
 						<h5>Headquarters</h5>
 						<a target="_blank" href="http://maps.google.com/?q=9115 SW Oleson Rd, Ste 105, Portland, OR 97223">
-							<p class="minor address">9115 SW Oleson Rd, Ste 100</p>
+							<p class="minor address">9115 SW Oleson Rd, Ste 105</p>
 							<p class="minor">Portland, OR 97223</p>
 						</a>
 						<a class="phone" href="tel:5037264545">503.726.4545</a>
@@ -32,7 +32,7 @@
 						</a>
 						<div class="social-wrapper">
 							<a target="_blank" href="https://www.linkedin.com/company/corsource-technology-group/"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/linkedin.svg" /></a>
-							<a target="_blank" href="https://twitter.com/CorSource"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/twitter.svg" /></a>
+							<a target="_blank" href="https://x.com/CorSource"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/twitter.svg" /></a>
 							<a target="_blank" href="https://www.facebook.com/CorSourceTech/"><img class="social" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/facebook.svg" /></a>
 						</div>
 

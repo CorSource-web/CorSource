@@ -523,6 +523,7 @@
   font-size: 18px;
   color: #4f4f4f;
   margin-bottom: -10px;
+  margin-top: 10px;
 }
 
 .echojobs-details-apply-details input:not([type="file"]) {
@@ -544,6 +545,17 @@
   font-family: "Source Sans Pro", sans-serif;
   background-color: $color-red;
   color: #fff;
+  text-transform: uppercase;
+  padding: 0.5rem 1.3125rem;
+  letter-spacing: 0.63px;
+  transition: all 300ms;
+  font-size: 1rem;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1px solid #d64936;
+  width: 130px;
 }
 
 .echojobs-details-apply-details button:hover {

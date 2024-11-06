@@ -177,31 +177,53 @@ function init_acf_fields()
             'render_callback'   => 'block_renderer',
             'category'          => 'text',
             'icon'              => 'testimonial',
-            'align'           => 'full',
-            'supports'        => array(
+            'align'             => 'full',
+            'supports'          => array(
                 'align' => array('full'),
             ),
             'keywords'          => array('testimonial', 'slider'),
             'enqueue_assets' => function () {
+                // Enqueue jQuery
                 wp_enqueue_script(
                     'jquery',
                     get_template_directory_uri() . '/assets/jquery.min.js',
-                    null,
-                    22
+                    array(), // dependencies
+                    null, // version
+                    true // in footer
                 );
 
+                // Enqueue Slick CSS
+                wp_enqueue_style(
+                    'slick-css',
+                    'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css',
+                    array(), // dependencies
+                    null // version
+                );
+
+                // Enqueue Slick theme CSS (optional, based on your design)
+                wp_enqueue_style(
+                    'slick-theme-css',
+                    'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css',
+                    array(), // dependencies
+                    null // version
+                );
+
+                // Enqueue Slick JS
                 wp_enqueue_script(
-                    'slick',
+                    'slick-js',
                     'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js',
-                    null,
-                    22
+                    array('jquery'), // dependencies
+                    null, // version
+                    true // in footer
                 );
 
+                // Enqueue your testimonial script
                 wp_enqueue_script(
                     'testimonial',
                     get_template_directory_uri() . '/assets/js/testimonial.js',
-                    null,
-                    22
+                    array('jquery', 'slick-js'), // dependencies
+                    null, // version
+                    true // in footer
                 );
             },
             'example'  => array(

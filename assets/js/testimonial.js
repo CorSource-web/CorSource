@@ -10,7 +10,7 @@ class Testimonials {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoPlay: true,
+      autoplay: true,
       autoPlaySpeed: 5000,
       dots: true,
     });
@@ -39,13 +39,25 @@ if (window.acf) {
   window.acf.addAction('render_block_preview/type=testimonial', initializeBlock);
 }
 
+document.addEventListener('DOMContentLoaded', initializeBlock)
+
+if (window.acf) {
+    window.acf.addAction('render_block_preview/type=testimonial', initializeBlock);
+}
+
 function initializeBlock($block) {
-  if ($block[0]) {
-    const slides = jQuery($block[0]).find('.testimonial__slides');
-    new Testimonials(slides[0]);
-  } else {
-    [...document.querySelectorAll('.testimonial__slides')].forEach((el) => {
-      new Testimonials(el);
-    })
-  }
+    if ($block[0]) {
+        const slides = jQuery($block[0]).find('.testimonial__slides');
+        // Check if the slides exist and if we are not in the editor
+        if (slides.length && !document.body.classList.contains('block-editor-page')) {
+            new Testimonials(slides[0]);
+        }
+    } else {
+        [...document.querySelectorAll('.testimonial__slides')].forEach((el) => {
+            // Check if the slides exist and if we are not in the editor
+            if (el && !document.body.classList.contains('block-editor-page')) {
+                new Testimonials(el);
+            }
+        });
+    }
 }

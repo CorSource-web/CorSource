@@ -100,6 +100,33 @@ function init_acf_fields()
             )
         ));
 
+
+        // register leadership
+        acf_register_block(array(
+            'name'              => 'leadership',
+            'title'             => __('Leadership'),
+            'description'       => __('Leadership'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'columns',
+            'align'           => 'full',
+            'supports'        => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('leadership'),
+            'example'  => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+
+
         // register content quote with image
         acf_register_block(array(
             'name'              => 'content-quote-with-image',

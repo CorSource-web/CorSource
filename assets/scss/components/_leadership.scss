@@ -1,0 +1,78 @@
+.leadership {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+  
+    .leadership-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #333;
+    }
+  
+    .leaders {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Automatically create as many columns as possible */
+      gap: 20px;
+      justify-items: stretch; /* Ensure cards stretch to fill available space */
+    }
+  
+    .leader {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      .leader-picture {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        height: 350px; /* Fixed height for images */
+      }
+  
+      .leader-name {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 15px 0 5px;
+        color: #333;
+      }
+  
+      .leader-job {
+        text-align: center;
+        font-size: 1rem;
+        color: #777;
+        margin-bottom: 15px;
+      }
+    }
+  
+    // Grid layout adjustments for responsiveness
+    @media (max-width: 800px) {
+      .leaders {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+      }
+  
+      .leader:nth-child(3) {
+        grid-column: span 1; /* Ensure the bottom item doesn't take the entire row */
+      }
+    }
+  
+    @media (max-width: 600px) {
+      .leaders {
+        grid-template-columns: 1fr; /* One card per row on small screens */
+      }
+    }
+  }
+  

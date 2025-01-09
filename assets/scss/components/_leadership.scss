@@ -58,20 +58,19 @@
       }
     }
   
-    // Grid layout adjustments for responsiveness
     @media (max-width: 800px) {
       .leaders {
-        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+        grid-template-columns: repeat(2, 1fr); 
       }
   
       .leader:nth-child(3) {
-        grid-column: span 1; /* Ensure the bottom item doesn't take the entire row */
+        grid-column: span 1; 
       }
     }
   
     @media (max-width: 600px) {
       .leaders {
-        grid-template-columns: 1fr; /* One card per row on small screens */
+        grid-template-columns: 1fr; 
       }
     }
   }

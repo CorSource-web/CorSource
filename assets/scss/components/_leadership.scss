@@ -17,9 +17,9 @@
   
     .leaders {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Automatically create as many columns as possible */
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 20px;
-      justify-items: stretch; /* Ensure cards stretch to fill available space */
+      justify-items: stretch;
     }
   
     .leader {
@@ -34,12 +34,16 @@
         transform: translateY(-5px);
       }
   
-      .leader-picture {
+      .masked-image {
+        position: relative;
         width: 100%;
-        height: auto;
-        display: block;
+        height: 350px;
         object-fit: cover;
-        height: 350px; /* Fixed height for images */
+        
+        // mask-image: url("../images/hero/mask2.svg");
+        // mask-size: cover;
+        // mask-repeat: round;
+        // mask-position: unset;
       }
   
       .leader-name {
@@ -57,6 +61,9 @@
         margin-bottom: 15px;
       }
     }
+  }
+  
+
   
     @media (max-width: 800px) {
       .leaders {
@@ -73,5 +80,5 @@
         grid-template-columns: 1fr; 
       }
     }
-  }
+
   

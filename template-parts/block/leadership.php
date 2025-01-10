@@ -27,18 +27,19 @@ if (isset($block['data']['preview_image'])) : ?>
                         $picture = get_sub_field('picture');
 
                         // Check if the picture is an image and return a default if not
-                        $picture_url = isset($picture['url']) ? $picture['url'] : get_template_directory_uri() . '/assets/images/default-image.jpg';
+                        $picture_url = isset($picture['url']) ? $picture['url'] : 'path/to/default-image.jpg';
                         $picture_alt = isset($picture['alt']) ? $picture['alt'] : $name;
                     ?>
-                        <div class="leader">
-                            <?php if( !empty($picture_url) ): ?>
-                                <img src="<?php echo esc_url($picture_url); ?>" alt="<?php echo esc_attr($picture_alt); ?>" class="leader-picture">
-                            <?php else: ?>
-                                <p>No Picture Available</p>
-                            <?php endif; ?>
-                            <h2 class="leader-name"><?php echo esc_html($name); ?></h2>
-                            <p class="leader-job"><?php echo esc_html($job); ?></p>
-                        </div>
+                    <div class="leader">
+                        <?php if( !empty($picture_url) ): ?>
+                            <img src="<?php echo esc_url($picture_url); ?>" alt="<?php echo esc_attr($picture_alt); ?>" class="leader-picture masked-image">
+                        <?php else: ?>
+                            <p>No Picture Available</p>
+                        <?php endif; ?>
+                        <h2 class="leader-name"><?php echo esc_html($name); ?></h2>
+                        <p class="leader-job"><?php echo esc_html($job); ?></p>
+                    </div>
+
                     <?php endwhile; ?>
                 </div>
             <?php else: ?>

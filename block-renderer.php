@@ -165,6 +165,30 @@ function init_acf_fields()
             )
         ));
 
+            // register content Leadership Hero
+            acf_register_block(array(
+                'name'              => 'leadership-hero',
+                'title'             => __('Leadership Hero'),
+                'description'       => __('Leadership Hero'),
+                'render_callback'   => 'block_renderer',
+                'category'          => 'text',
+                'icon'              => 'format-quote',
+                'align'           => 'full',
+                'supports'        => array(
+                    'align' => array('full'),
+                ),
+                'keywords'          => array('Leadership Hero'),
+                'example'  => array(
+                    'attributes' => array(
+                        'mode' => 'preview',
+                        'data' => array(
+                            'preview_image' => [],
+                        )
+                    )
+                )
+            ));
+        
+
         // register two column block
         acf_register_block(array(
             'name'              => 'two-column-content',

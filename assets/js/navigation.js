@@ -40,7 +40,6 @@ export default class Navigation {
                 }
             } 
             if (screenWidth < 800) {
-                console.log("small")
                 let $ = jQuery;
                 let submenu = $(".sub-menu");
                 const backgroundColorBand = $('.background-color-band');

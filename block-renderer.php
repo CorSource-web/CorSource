@@ -121,7 +121,22 @@ function init_acf_fields()
                         'preview_image' => [],
                     )
                 )
-            )
+                    ),
+            'enqueue_assets' => function () {
+                wp_enqueue_script(
+                    'leadership',
+                    get_template_directory_uri() . '/assets/js/leadership.js',
+                    null,
+                    22
+                );
+                wp_enqueue_script(
+                    'jquery',
+                    get_template_directory_uri() . '/assets/jquery.min.js',
+                    null,
+                    22
+                );
+            },
+
         ));
 
 

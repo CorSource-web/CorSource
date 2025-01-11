@@ -12,4 +12,5 @@ import './modal';
 import './contact';
 import './info-cards';
 import './contact-navigation-modal';
+import './leadership';
 

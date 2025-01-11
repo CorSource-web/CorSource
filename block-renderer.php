@@ -100,6 +100,48 @@ function init_acf_fields()
             )
         ));
 
+
+        // register leadership
+        acf_register_block(array(
+            'name'              => 'leadership',
+            'title'             => __('Leadership'),
+            'description'       => __('Leadership'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'columns',
+            'align'           => 'full',
+            'supports'        => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('leadership'),
+            'example'  => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+                    ),
+            'enqueue_assets' => function () {
+                wp_enqueue_script(
+                    'leadership',
+                    get_template_directory_uri() . '/assets/js/leadership.js',
+                    null,
+                    22
+                );
+                wp_enqueue_script(
+                    'jquery',
+                    get_template_directory_uri() . '/assets/jquery.min.js',
+                    null,
+                    22
+                );
+            },
+
+        ));
+
+
+
+
         // register content quote with image
         acf_register_block(array(
             'name'              => 'content-quote-with-image',

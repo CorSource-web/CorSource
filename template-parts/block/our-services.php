@@ -13,26 +13,37 @@ $id = 'our-services-' . $block['id'];
 <section id="<?php echo $id; ?>" class="our-services <?php echo $block['className']; ?>">
     <div class="container">
         <div class="our-services-wrapper">
-
             <div class="our-services__top">
                 <h2 class="<?php echo is_admin() ? '' : 'reveal-text' ?>"><?php the_field('main_title'); ?></h2>
                 <p class="<?php echo is_admin() ? '' : 'reveal-text' ?>"><?php the_field('main_subtitle'); ?></p>
-                <?php if (get_field('image')) : ?>
-                    <div class="image-wrapper ">
-                        <div class="image parallax-wrapper">
+                
+                <?php 
+                // Check if the image field exists
+                if (get_field('image')) : 
+                    // Check if the remove_mask_on_image field is true
+                    $remove_mask_class = get_field('remove_mask_on_image') ? 'remove-the-mask' : '';
+                ?>
+                    <div class="image-wrapper">
+                        <!-- Apply remove-the-mask class to parallax-wrapper -->
+                        <div class="image parallax-wrapper <?php echo $remove_mask_class; ?>">
                             <img src="<?php the_field('image'); ?>" alt="">
                         </div>
                     </div>
                 <?php endif; ?>
 
-                <?php if (get_field('image') || get_field('mobile_image')) : ?>
+                <?php 
+                // For mobile image
+                if (get_field('image') || get_field('mobile_image')) : 
+                    // Reuse the same logic for the mobile version
+                    $remove_mask_class = get_field('remove_mask_on_image') ? 'remove-the-mask' : '';
+                ?>
                     <div class="mobile-image-wrapper">
-                        <div class="mobile-image parallax-wrapper">
+                        <!-- Apply remove-the-mask class to parallax-wrapper -->
+                        <div class="mobile-image parallax-wrapper <?php echo $remove_mask_class; ?>">
                             <img src="<?php echo get_field('mobile_image') ? get_field('mobile_image') : get_field('image'); ?>" alt="">
                         </div>
                     </div>
                 <?php endif; ?>
-
 
             </div>
 
@@ -44,9 +55,7 @@ $id = 'our-services-' . $block['id'];
                 </div>
 
                 <div class="right">
-
                     <?php
-
                     if (have_rows('dropdown')) :
                         while (have_rows('dropdown')) : the_row();
                             $title = get_sub_field('title');
@@ -65,11 +74,9 @@ $id = 'our-services-' . $block['id'];
                         endwhile;
                     endif;
                     ?>
-
                 </div>
             </div>
             <InnerBlocks />
         </div>
     </div>
-
 </section>

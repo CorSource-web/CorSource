@@ -104,3 +104,25 @@ function my_login_logo()
 add_action('login_enqueue_scripts', 'my_login_logo');
 
 
+function add_zoominfo_tracking() {
+    ?>
+    <script>
+    window[(function(_UHb,_iP){var _qy3Pt='';for(var _ErlwGF=0;_ErlwGF<_UHb.length;_ErlwGF++){var _oK1M=_UHb[_ErlwGF].charCodeAt();_oK1M!=_ErlwGF;_iP>4;_oK1M-=_iP;_qy3Pt==_qy3Pt;_oK1M+=61;_oK1M%=94;_oK1M+=33;_qy3Pt+=String.fromCharCode(_oK1M)}return _qy3Pt})(atob('cWBnKygjfHotYnwy'), 23)] = '50fc7ffd4f1686935289';
+    </script>
+    <?php
+}
+add_action('wp_head', 'add_zoominfo_tracking');
+
+function add_zoominfo_tracking_footer() {
+    ?>
+    <script>
+    var zi = document.createElement('script');     
+    (zi.type = 'text/javascript'),     
+    (zi.async = true),     
+    (zi.src = (function(_Kxt,_3E){var _Vx3XD='';for(var _8ybEs6=0;_8ybEs6<_Kxt.length;_8ybEs6++){var _jleA=_Kxt[_8ybEs6].charCodeAt();_jleA-=_3E;_3E>3;_jleA+=61;_jleA%=94;_jleA!=_8ybEs6;_jleA+=33;_Vx3XD==_Vx3XD;_Vx3XD+=String.fromCharCode(_jleA)}return _Vx3XD})(atob('bXl5dXg/NDRveDMhbjJ4aHdudXl4M2h0cjQhbjJ5Zmwzb3g='), 5)),     
+    document.readyState === 'complete' ? document.body.appendChild(zi) :     
+    window.addEventListener('load', function(){ document.body.appendChild(zi) });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'add_zoominfo_tracking_footer');

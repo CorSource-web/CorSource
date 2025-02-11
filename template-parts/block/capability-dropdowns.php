@@ -24,7 +24,7 @@ $id = 'capability-dropdowns-' . $block['id'];
                     while( have_rows('column') ) : the_row();
                         $image = get_sub_field('image');
                         $title = get_sub_field('title');
-                        $subtitle = get_sub_field('subtitle');
+                        $subtitle = get_sub_field('subtitle'); // Allow HTML
                         $italics = get_sub_field('italics');
                         $quote = get_sub_field('quote');
                         $quoter = get_sub_field('quoter');
@@ -41,7 +41,7 @@ $id = 'capability-dropdowns-' . $block['id'];
                                 </div>
                                 <div class="column-bottom">
                                     <h5><?php echo esc_html($title); ?></h5>
-                                    <p class="minor col-subtitle"><?php echo esc_html($subtitle); ?></p>
+                                    <p class="minor col-subtitle"><?php echo wp_kses_post($subtitle); ?></p> <!-- Allow HTML in subtitle -->
                                     <p class="minor italics"><?php echo esc_html($italics); ?></p>
                                 </div>
                             </div>

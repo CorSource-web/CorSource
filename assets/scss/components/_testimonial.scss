@@ -21,7 +21,9 @@
   &__slides {
     padding-bottom: $spacing-small;
   }
-
+  .quote-only {
+    font-size: 1.9rem!important;
+  }
   &__quote {
     height: 9rem;
     h3 {

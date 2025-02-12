@@ -23,7 +23,7 @@ endif;
                 <?php while (have_rows('testimonials')) : the_row();
                 ?>
                     <div class="testimonial__quote">
-                        <h3><?php the_sub_field('quote'); ?></h3>
+                        <h3 class="quote-only"><?php the_sub_field('quote'); ?></h3>
                         <p class="italic"><?php the_sub_field('name'); ?></p>
                     </div>
                 <?php endwhile; ?>

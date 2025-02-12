@@ -10,35 +10,30 @@
 $id = 'our-services-' . $block['id'];
 ?>
 
-<section id="<?php echo $id; ?>" class="our-services <?php echo $block['className']; ?>">
+<section id="<?php echo $id; ?>" class="our-services">
     <div class="container">
         <div class="our-services-wrapper">
             <div class="our-services__top">
-                <h2 class="<?php echo is_admin() ? '' : 'reveal-text' ?>"><?php the_field('main_title'); ?></h2>
-                <p class="<?php echo is_admin() ? '' : 'reveal-text' ?>"><?php the_field('main_subtitle'); ?></p>
+                <!-- Main Title and Subtitle -->
+                <h2 class="reveal-text"><?php the_field('main_title'); ?></h2>
+                <p class="reveal-text"><?php the_field('main_subtitle'); ?></p>
                 
-                <?php 
-                // Check if the image field exists
-                if (get_field('image')) : 
-                    // Check if the remove_mask_on_image field is true
+                <!-- Image (Desktop) -->
+                <?php if (get_field('image')) : 
                     $remove_mask_class = get_field('remove_mask_on_image') ? 'remove-the-mask' : '';
                 ?>
                     <div class="image-wrapper">
-                        <!-- Apply remove-the-mask class to parallax-wrapper -->
                         <div class="image parallax-wrapper <?php echo $remove_mask_class; ?>">
                             <img src="<?php the_field('image'); ?>" alt="">
                         </div>
                     </div>
                 <?php endif; ?>
 
-                <?php 
-                // For mobile image
-                if (get_field('image') || get_field('mobile_image')) : 
-                    // Reuse the same logic for the mobile version
+                <!-- Mobile Image -->
+                <?php if (get_field('image') || get_field('mobile_image')) : 
                     $remove_mask_class = get_field('remove_mask_on_image') ? 'remove-the-mask' : '';
                 ?>
                     <div class="mobile-image-wrapper">
-                        <!-- Apply remove-the-mask class to parallax-wrapper -->
                         <div class="mobile-image parallax-wrapper <?php echo $remove_mask_class; ?>">
                             <img src="<?php echo get_field('mobile_image') ? get_field('mobile_image') : get_field('image'); ?>" alt="">
                         </div>
@@ -48,19 +43,19 @@ $id = 'our-services-' . $block['id'];
             </div>
 
             <div class="our-services__bottom">
-
+                <!-- Left Column -->
                 <div class="left">
                     <h3><?php the_field('left_column_title'); ?></h3>
                     <p><?php the_field('left_column_content'); ?></p>
                 </div>
 
+                <!-- Right Column with Accordion -->
                 <div class="right">
-                    <?php
-                    if (have_rows('dropdown')) :
-                        while (have_rows('dropdown')) : the_row();
+                    <?php if (have_rows('dropdown')) : ?>
+                        <?php while (have_rows('dropdown')) : the_row();
                             $title = get_sub_field('title');
                             $content = get_sub_field('content');
-                    ?>
+                        ?>
                             <div class="accordion-item">
                                 <div class="accordion-item__title">
                                     <h4><?php echo $title; ?></h4>
@@ -70,13 +65,10 @@ $id = 'our-services-' . $block['id'];
                                     <p><?php echo $content; ?></p>
                                 </div>
                             </div>
-                    <?php
-                        endwhile;
-                    endif;
-                    ?>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
-            <InnerBlocks />
         </div>
     </div>
 </section>

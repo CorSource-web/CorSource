@@ -27,6 +27,33 @@
   }
 }
 
+// for clients-contact page form
+.legal-consent-container {
+  .inputs-list {
+    padding-left: 0;
+  }
+  .hs-dependent-field {
+    padding-top: 15px;
+  }
+  .hs-form-booleancheckbox {
+    list-style: none;
+  }
+  .hs-input {
+    width:auto!important;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
+    margin: 0!important;
+    margin-right: 10px!important;
+  }
+  label {
+    line-height: 2.1!important;
+  }
+  label span {
+    line-height: 18px;
+  }
+}
+// for clients-contact page form
 
 #hsForm_922f3319-a260-4da5-b3ca-2e9f4b807f3d,#hbspt-form-10bab2ad-0667-4e5d-b999-692caeec3cca,
 #hsForm_b2a7f025-a158-449b-977b-65ea2210765f,

@@ -126,3 +126,9 @@ function add_zoominfo_tracking_footer() {
     <?php
 }
 add_action('wp_footer', 'add_zoominfo_tracking_footer');
+
+function enqueue_custom_scripts() {
+    wp_enqueue_script('jquery'); // Ensure jQuery is loaded
+    wp_enqueue_script('custom-scripts', get_template_directory_uri() . '/js/app.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');

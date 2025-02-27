@@ -27,33 +27,7 @@
   }
 }
 
-// for clients-contact page form
-.legal-consent-container {
-  .inputs-list {
-    padding-left: 0;
-  }
-  .hs-dependent-field {
-    padding-top: 15px;
-  }
-  .hs-form-booleancheckbox {
-    list-style: none;
-  }
-  .hs-input {
-    width:auto!important;
-    pointer-events: auto;
-    position: relative;
-    z-index: 10;
-    margin: 0!important;
-    margin-right: 10px!important;
-  }
-  label {
-    line-height: 2.1!important;
-  }
-  label span {
-    line-height: 18px;
-  }
-}
-// for clients-contact page form
+
 
 #hsForm_922f3319-a260-4da5-b3ca-2e9f4b807f3d,#hbspt-form-10bab2ad-0667-4e5d-b999-692caeec3cca,
 #hsForm_b2a7f025-a158-449b-977b-65ea2210765f,
@@ -240,5 +214,62 @@ select {
 }
 
 
+// for clients-contact page form
+.legal-consent-container {
+  .inputs-list {
+    padding-left: 0;
+  }
+  .hs-dependent-field {
+    padding-top: 15px;
+  }
+  .hs-form-booleancheckbox {
+    list-style: none;
+  }
+  .hs-input {
+    width:auto!important;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
+    margin: 0!important;
+    margin-right: 10px!important;
+  }
+  label {
+    line-height: 2.1!important;
+  }
+  label span {
+    line-height: 18px;
+  }
+}
+// for clients-contact page form
 
+input[type="checkbox"] {
+  appearance: auto !important;
+  pointer-events: auto !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  transform: scale(1.2) translateY(2px);
+}
+.legal-consent-container a {
+  color: #d64936; 
+  text-decoration: none;
+}
 
+.legal-consent-container a:visited {
+  color: darken(#d64936, 10%); 
+}
+
+.legal-consent-container a:hover {
+  color: lighten(#d64936, 10%); 
+  text-decoration: underline;
+}
+
+.legal-consent-container a:focus {
+  outline: 2px solid #d64936;
+}
+
+.legal-consent-container a:active {
+  color: #b03629; 
+}

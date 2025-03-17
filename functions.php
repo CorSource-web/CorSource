@@ -155,7 +155,7 @@ function custom_inline_script() {
                     // Convert the link into an <a> tag with font size, Inter font, and color
                     var urlRegex = /(https?:\/\/[^\s]+)/g;
                     line = line.replace(urlRegex, function(url) {
-                        return \'<a href="\' + url + \'" target="_blank" style="font-size: 15px; font-family: \\\'Inter\\\', sans-serif; color: #d64936;">\' + url + \'</a>\';
+                        return \'<a href="\' + url + \'" target="_blank" style="font-size: 15px!important; font-family: \\\'Inter\\\', sans-serif; color: #d64936;">\' + url + \'</a>\';
                     });
 
                     // Add the line to the formatted text

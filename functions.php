@@ -159,7 +159,7 @@ function custom_inline_script() {
                     });
 
                     // Add the line to the formatted text
-                    formattedText += \'<p style="font-size: 18px; font-family: \\\'Inter\\\', sans-serif;">\' + line.trim() + \'</p>\';
+                    formattedText += \'<p style="font-size: 15px; font-family: \\\'Inter\\\', sans-serif;">\' + line.trim() + \'</p>\';
                 }
             });
 

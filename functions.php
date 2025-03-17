@@ -137,8 +137,11 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 // this if for the footer of the single job coming from echojobs
 function custom_inline_script() {
     echo '<script>
-        // Function to format the label text
-        function formatLabelText(label) {
+        // Find the label by its unique `for` attribute
+        var label = document.querySelector(\'label[for="By checking this box, I agree to receive text messages from CorSource regarding their services, appointments, etc. Message and data rates may apply. I agree to receive text communication from CorSource.   You can opt-out from receiving text messages at any time. Reply STOP to opt-out.   For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review https://corsource.com/privacy/.   By clicking apply below, you consent to allow CorSource to store and process the personal information submitted above to provide you the content requested."]\');
+
+        if (label) {
+            // Format the label text
             var originalText = label.textContent; // Get the original text
 
             // Split the text into lines
@@ -155,33 +158,15 @@ function custom_inline_script() {
                     });
 
                     // Add the line to the formatted text
-                    formattedText += \'<p style="font-size: 16px; font-family: \\\'Inter\\\', sans-serif;">\' + line.trim() + \'</p>\';
+                    formattedText += \'<p style="font-size: 18px; font-family: \\\'Inter\\\', sans-serif;">\' + line.trim() + \'</p>\';
                 }
             });
 
             // Update the label\'s HTML with the formatted text
             label.innerHTML = formattedText;
+        } else {
+            console.error(\'Label not found. Check the selector.\');
         }
-
-        // Set up a MutationObserver to detect when the label is added
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                var label = document.querySelector(\'label[for="By checking this box, I agree to receive text messages from CorSource regarding their services, appointments, etc. Message and data rates may apply. I agree to receive text communication from CorSource.   You can opt-out from receiving text messages at any time. Reply STOP to opt-out.   For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review https://corsource.com/privacy/.   By clicking apply below, you consent to allow CorSource to store and process the personal information submitted above to provide you the content requested."]\');
-                if (label) {
-                    // Format the label text
-                    formatLabelText(label);
-
-                    // Stop observing once the label is found and processed
-                    observer.disconnect();
-                }
-            });
-        });
-
-        // Start observing the document body for changes
-        observer.observe(document.body, {
-            childList: true, // Observe direct children
-            subtree: true, // Observe all descendants
-        });
     </script>';
 }
 add_action('wp_footer', 'custom_inline_script');

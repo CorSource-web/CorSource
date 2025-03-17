@@ -155,7 +155,7 @@ function custom_inline_script() {
                     // Convert the link into an <a> tag with font size, Inter font, and color
                     var urlRegex = /(https?:\/\/[^\s]+)/g;
                     line = line.replace(urlRegex, function(url) {
-                        return \'<a href="\' + url + \'" target="_blank" style="font-size: 18px; font-family: \\\'Inter\\\', sans-serif; color: #d64936;">\' + url + \'</a>\';
+                        return \'<a href="\' + url + \'" target="_blank" style="font-size: 15px; font-family: \\\'Inter\\\', sans-serif; color: #d64936;">\' + url + \'</a>\';
                     });
 
                     // Add the line to the formatted text
@@ -181,7 +181,7 @@ function custom_inline_script() {
             } else {
                 console.error(\'Label not found. Check the selector.\');
             }
-        }, 2000); // Wait 2 seconds before running the script
+        }, 1000); // Wait 2 seconds before running the script
     </script>';
 }
 add_action('wp_footer', 'custom_inline_script');

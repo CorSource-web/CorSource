@@ -135,3 +135,53 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 
 // this if for the footer of the single job coming from echojobs
+function custom_inline_script() {
+    echo '<script>
+        // Function to format the label text
+        function formatLabelText(label) {
+            console.log(\'Formatting label text...\');
+            var originalText = label.textContent; // Get the original text
+            console.log(\'Original text:\', originalText);
+
+            // Split the text into lines using a period followed by a space as the delimiter
+            var lines = originalText.split(/\.\s+/); // Split by period and space
+            console.log(\'Lines:\', lines);
+
+            var formattedText = \'\';
+
+            // Loop through each line and wrap it in a <p> tag with font size and Inter font
+            lines.forEach(function(line) {
+                if (line.trim() !== \'\') {
+                    // Convert the link into an <a> tag with font size, Inter font, and color
+                    var urlRegex = /(https?:\/\/[^\s]+)/g;
+                    line = line.replace(urlRegex, function(url) {
+                        return \'<a href="\' + url + \'" target="_blank" style="font-size: 18px; font-family: \\\'Inter\\\', sans-serif; color: #d64936;">\' + url + \'</a>\';
+                    });
+
+                    // Add the line to the formatted text
+                    formattedText += \'<p style="font-size: 18px; font-family: \\\'Inter\\\', sans-serif;">\' + line.trim() + \'</p>\';
+                }
+            });
+
+            console.log(\'Formatted text:\', formattedText);
+
+            // Update the label\'s HTML with the formatted text
+            label.innerHTML = formattedText;
+        }
+
+        // Wait for 2 seconds to ensure the label is rendered
+        setTimeout(function() {
+            // Find the label by its unique `for` attribute
+            var label = document.querySelector(\'label[for="By checking this box, I agree to receive text messages from CorSource regarding their services, appointments, etc. Message and data rates may apply. I agree to receive text communication from CorSource.   You can opt-out from receiving text messages at any time. Reply STOP to opt-out.   For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review https://corsource.com/privacy/.   By clicking apply below, you consent to allow CorSource to store and process the personal information submitted above to provide you the content requested."]\');
+            if (label) {
+                console.log(\'Label found:\', label);
+
+                // Format the label text
+                formatLabelText(label);
+            } else {
+                console.error(\'Label not found. Check the selector.\');
+            }
+        }, 2000); // Wait 2 seconds before running the script
+    </script>';
+}
+add_action('wp_footer', 'custom_inline_script');

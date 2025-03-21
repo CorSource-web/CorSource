@@ -262,7 +262,12 @@ function custom_checkbox_script() {
                     if (index === targetIndex) {
                         return '<p style="font-size: 15px; font-family: \'Inter\', sans-serif;">' + line.trim() + '</p>';
                     } else {
-                        return '<p style="font-size: 15px; font-family: \'Inter\', sans-serif;">' + line.trim() + '.</p>';
+                        // Add a period only if the line doesn't already end with one
+                        var trimmedLine = line.trim();
+                        if (!trimmedLine.endsWith('.')) {
+                            trimmedLine += '.';
+                        }
+                        return '<p style="font-size: 15px; font-family: \'Inter\', sans-serif;">' + trimmedLine + '</p>';
                     }
                 }
             }).join('');

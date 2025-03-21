@@ -185,3 +185,98 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 //     </script>';
 // }
 // add_action('wp_footer', 'custom_inline_script');
+
+
+
+
+// this if for the footer of the single job coming from echojobs
+function custom_checkbox_script() {
+    // Check if the body has the class 'echojobs-template-default'
+    if (in_array('echojobs-template-default', get_body_class())) {
+        ?>
+        <script>
+        function addCheckbox() {
+            // Find the existing checkbox (created by the plugin)
+            var existingCheckbox = document.querySelector('input[name="additional_field_2"]');
+            if (!existingCheckbox) {
+                console.error('Existing checkbox not found. Check the selector.');
+                return;
+            }
+
+            // Find the label for the existing checkbox
+            var label = document.querySelector('label[for="By checking this box, I agree to receive text messages from CorSource regarding their services, appointments, etc. Message and data rates may apply. I agree to receive text communication from CorSource.   You can opt-out from receiving text messages at any time. Reply STOP to opt-out.   For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review https://corsource.com/privacy/.   By clicking apply below, you consent to allow CorSource to store and process the personal information submitted above to provide you the content requested."]');
+            if (!label) {
+                console.error('Label not found. Check the selector.');
+                return;
+            }
+
+            // Extract the label's text
+            var labelText = label.textContent;
+
+            // Split the text into lines using a period followed by a space as the delimiter
+            var lines = labelText.split(/\.\s+/); // Split by period and space
+            console.log('Lines:', lines);
+
+            // Find the specific line we want to pair with the checkbox
+            var targetLine = 'I agree to receive text communication from CorSource';
+            var targetIndex = lines.findIndex(line => line.includes(targetLine));
+            if (targetIndex === -1) {
+                console.error('Target line not found in label text.');
+                return;
+            }
+
+            // Create a container div for the checkbox and target line
+            var container = document.createElement('div');
+            container.style.display = 'flex';
+            container.style.alignItems = 'center';
+            container.style.gap = '8px';
+            container.style.marginBottom = '15px';
+
+            // Add the existing checkbox to the container
+            container.appendChild(existingCheckbox);
+
+            // Create a paragraph for the target line
+            var paragraph = document.createElement('p');
+            paragraph.textContent = lines[targetIndex].trim(); // Remove the extra period
+            paragraph.style.fontSize = '18px';
+            paragraph.style.fontWeight = '400'; // Change font weight to 400
+            paragraph.style.margin = '0';
+
+            // Add the paragraph to the container
+            container.appendChild(paragraph);
+
+            // Replace the target line in the label text with the container
+            lines[targetIndex] = container.outerHTML;
+
+            // Join the lines back together with <p> tags and <a> tags for URLs
+            var updatedLabelText = lines.map((line, index) => {
+                if (line.trim() !== '') {
+                    // Convert the link into an <a> tag with font size, Inter font, and color
+                    var urlRegex = /(https?:\/\/[^\s]+)/g;
+                    line = line.replace(urlRegex, function(url) {
+                        return '<a href="' + url + '" target="_blank" style="font-size: 15px!important; font-family: \'Inter\', sans-serif; color: #d64936;">' + url + '</a>';
+                    });
+
+                    // Wrap the line in a <p> tag
+                    // Do not add a period to the line containing the checkbox
+                    if (index === targetIndex) {
+                        return '<p style="font-size: 15px; font-family: \'Inter\', sans-serif;">' + line.trim() + '</p>';
+                    } else {
+                        return '<p style="font-size: 15px; font-family: \'Inter\', sans-serif;">' + line.trim() + '.</p>';
+                    }
+                }
+            }).join('');
+
+            // Update the label's HTML
+            label.innerHTML = updatedLabelText;
+        }
+
+        // Wait for 2 seconds to ensure the label and checkbox are rendered
+        setTimeout(function() {
+            addCheckbox();
+        }, 2000); // Wait 2 seconds before running the script
+        </script>
+        <?php
+    }
+}
+add_action('wp_footer', 'custom_checkbox_script');

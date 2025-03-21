@@ -279,7 +279,7 @@ function custom_checkbox_script() {
         // Wait for 2 seconds to ensure the label and checkbox are rendered
         setTimeout(function() {
             addCheckbox();
-        }, 2000); // Wait 2 seconds before running the script
+        }, 1000); 
         </script>
         <?php
     }

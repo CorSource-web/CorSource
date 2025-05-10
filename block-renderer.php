@@ -677,6 +677,30 @@ function init_acf_fields()
             )
         ));
 
+    // register source Mountain Renderer
+    acf_register_block(array(
+        'name'              => 'mountain-hero',
+        'title'             => __('Mountain Hero'),
+        'description'       => __('Mountain Hero'),
+        'render_callback'   => 'block_renderer',
+        'category'          => 'formatting',
+        'icon'              => 'admin-comments',
+        'align'           => 'full',
+        'supports'        => array(
+            'align' => array('full'),
+            'jsx'             => true,
+        ),
+        'keywords'          => array('Mountain Hero'),
+        'example'  => array(
+            'attributes' => array(
+                'mode' => 'preview',
+                'data' => array(
+                    'preview_image' => [],
+                )
+            )
+        )
+    ));
+
         // register source AQ resource center
         acf_register_block(array(
             'name'              => 'source-aq',

@@ -235,3 +235,13 @@ function custom_checkbox_script() {
 add_action('wp_footer', 'custom_checkbox_script');
 
 
+// Autosyncs local acf-json to production
+// In theroy, any fields made locally will auto sync in prod, so no need to create the fields manually
+add_filter('acf/settings/save_json', function() {
+    return get_stylesheet_directory() . '/acf-json'; 
+  });
+  
+  add_filter('acf/settings/load_json', function($paths) {
+    unset($paths[0]); 
+    return [get_stylesheet_directory() . '/acf-json'];
+  });

@@ -1,6 +1,6 @@
 <?php
 /**
- * Mountain Hero Component
+ * Landing Hero Component
  *
  * Displays a hero section with background image and centered content
  */
@@ -12,15 +12,15 @@ $button = get_field('button');
 $background_image_url = get_field('background_image');
 ?>
 
-<section class="mountain-hero" style="background-image: url('<?php echo esc_url($background_image_url); ?>');">
-    <div class="mountain-hero__overlay"></div>
-    <div class="mountain-hero__content">
+<section class="landing-hero" style="background-image: url('<?php echo esc_url($background_image_url); ?>');">
+    <div class="landing-hero__overlay"></div>
+    <div class="landing-hero__content">
         <?php if ($title) : ?>
-            <h1 class="mountain-hero__title"><?php echo esc_html($title); ?></h1>
+            <h1 class="landing-hero__title"><?php echo esc_html($title); ?></h1>
         <?php endif; ?>
         
         <?php if ($subtitle) : ?>
-            <p class="mountain-hero__subtitle"><?php echo esc_html($subtitle); ?></p>
+            <p class="landing-hero__subtitle"><?php echo esc_html($subtitle); ?></p>
         <?php endif; ?>
         
         <?php if ($button && $button['url'] && $button['text']) : ?>

@@ -1,6 +1,6 @@
 {
     "key": "group_681e9b3f90b76",
-    "title": "Mountain Hero",
+    "title": "Landing Hero",
     "fields": [
         {
             "key": "field_681e9b3fab3ba",
@@ -136,7 +136,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/mountain-hero"
+                "value": "acf\/landing-hero"
             }
         ]
     ],
@@ -149,5 +149,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1746836973
+    "modified": 1747070403
 }

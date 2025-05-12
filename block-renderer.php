@@ -677,11 +677,11 @@ function init_acf_fields()
             )
         ));
 
-    // register source Mountain Renderer
+    // register source Landing Hero
     acf_register_block(array(
-        'name'              => 'mountain-hero',
-        'title'             => __('Mountain Hero'),
-        'description'       => __('Mountain Hero'),
+        'name'              => 'landing-hero',
+        'title'             => __('Landing Hero'),
+        'description'       => __('Landing Hero'),
         'render_callback'   => 'block_renderer',
         'category'          => 'formatting',
         'icon'              => 'admin-comments',
@@ -690,7 +690,7 @@ function init_acf_fields()
             'align' => array('full'),
             'jsx'             => true,
         ),
-        'keywords'          => array('Mountain Hero'),
+        'keywords'          => array('Landing Hero'),
         'example'  => array(
             'attributes' => array(
                 'mode' => 'preview',

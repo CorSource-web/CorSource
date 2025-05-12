@@ -233,3 +233,13 @@ function custom_checkbox_script() {
     }
 }
 add_action('wp_footer', 'custom_checkbox_script');
+
+
+// Hide the ACF background image field in Gutenberg editor
+add_action('admin_head', function() {
+    echo '<style>
+      .acf-field[data-key="field_6822305ae472b"] {
+        display: none !important;
+      }
+    </style>';
+  });

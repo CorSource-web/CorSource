@@ -677,29 +677,54 @@ function init_acf_fields()
             )
         ));
 
-    // register source Landing Hero
-    acf_register_block(array(
-        'name'              => 'landing-hero',
-        'title'             => __('Landing Hero'),
-        'description'       => __('Landing Hero'),
-        'render_callback'   => 'block_renderer',
-        'category'          => 'formatting',
-        'icon'              => 'admin-comments',
-        'align'           => 'full',
-        'supports'        => array(
-            'align' => array('full'),
-            'jsx'             => true,
-        ),
-        'keywords'          => array('Landing Hero'),
-        'example'  => array(
-            'attributes' => array(
-                'mode' => 'preview',
-                'data' => array(
-                    'preview_image' => [],
+        // register source Landing Hero
+        acf_register_block(array(
+            'name'              => 'landing-hero',
+            'title'             => __('Landing Hero'),
+            'description'       => __('Landing Hero'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'formatting',
+            'icon'              => 'admin-comments',
+            'align'           => 'full',
+            'supports'        => array(
+                'align' => array('full'),
+                'jsx'             => true,
+            ),
+            'keywords'          => array('Landing Hero'),
+            'example'  => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
                 )
             )
-        )
-    ));
+        ));
+
+
+            // register source Background Wrapper
+            acf_register_block(array(
+            'name'              => 'background-wrapper',
+            'title'             => __('Background Wrapper'),
+            'description'       => __('Background Wrapper'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'formatting',
+            'icon'              => 'admin-comments',
+            'align'           => 'full',
+            'supports'        => array(
+                'align' => array('full'),
+                'jsx'             => true,
+            ),
+            'keywords'          => array('Background Wrapper'),
+            'example'  => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
 
         // register source AQ resource center
         acf_register_block(array(

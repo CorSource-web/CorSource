@@ -126,6 +126,9 @@
         grid-template-columns: 1.5fr 3fr ;
         @media(max-width: $bp-small){
             display: block;
+            h4 {
+                margin-top: 20px;
+            }
         }
     }
 }

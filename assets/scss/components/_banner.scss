@@ -123,7 +123,7 @@
         }
     }
     .button-on-left {
-        grid-template-columns: 1fr 4fr ;
+        grid-template-columns: 1fr 4fr!important;
         .left {
             align-items: end;
             @media(max-width: $bp-small){

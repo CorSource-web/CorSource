@@ -26,11 +26,9 @@
       z-index: 1;
     }
 
-    .btn_red {
-        background-color: #F7F4F0;
-        &:hover {
-            background-color:#d64936 !important;
-        }
+    .red-border {
+         color: #F7F4F0;
+         border: 1px solid $color-red;
     }
   
     &__content {

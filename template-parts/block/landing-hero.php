@@ -24,7 +24,7 @@ $background_image_url = get_field('background_image');
         <?php endif; ?>
         
         <?php if ($button && $button['url'] && $button['text']) : ?>
-            <a href="<?php echo esc_url($button['url']); ?>" class="btn_red">
+            <a href="<?php echo esc_url($button['url']); ?>" class="btn_background-red red-border">
                 <?php echo esc_html($button['text']); ?>
             </a>
         <?php endif; ?>

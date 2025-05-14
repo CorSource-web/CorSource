@@ -123,7 +123,13 @@
         }
     }
     .button-on-left {
-        grid-template-columns: 1.5fr 3fr ;
+        grid-template-columns: 1fr 4fr ;
+        .left {
+            align-items: end;
+            @media(max-width: $bp-small){
+                align-items: center;
+            }
+        }
         @media(max-width: $bp-small){
             display: block;
             h4 {

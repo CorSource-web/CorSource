@@ -123,12 +123,15 @@
         }
     }
     .button-on-left {
-        grid-template-columns: 1fr 4fr!important;
+        grid-template-columns: 1.3fr 4fr !important;
         .left {
             align-items: end;
             @media(max-width: $bp-small){
                 align-items: center;
             }
+        }
+        .right {
+            align-items: baseline;
         }
         @media(max-width: $bp-small){
             display: block;

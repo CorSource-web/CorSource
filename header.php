@@ -213,7 +213,7 @@
 					<div class="contact-nav-button-wrapper">
 						<a href="/clients-contact" class="btn_red" >I am looking for help with a project </a>
 						<a href="/consultants-contact" class="btn_red">I am looking for a consulting opportunity</a>
-						<a href="/general-contact" class="btn_red">I have a general inquiry</a>
+						<a href="/contact" class="btn_red">I have a general inquiry</a>
 					</div>
 
 				</div>

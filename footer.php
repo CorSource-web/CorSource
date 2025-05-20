@@ -21,7 +21,7 @@
 
 					</div>
 					<div class="explore">
-						<a href="<?php echo home_url() . '/general-contact'; ?>">
+						<a href="<?php echo home_url() . '/contact'; ?>">
 							<p class="minor bold">Contact Us</p>
 						</a>
 						<a href="<?php echo home_url() . '/employee-login'; ?>">

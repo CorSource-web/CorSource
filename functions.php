@@ -245,3 +245,12 @@ add_filter('acf/settings/save_json', function() {
     unset($paths[0]); 
     return [get_stylesheet_directory() . '/acf-json'];
   });
+
+
+  // Redirect /general-contact/ to /contact/
+add_action('template_redirect', function() {
+    if ($_SERVER['REQUEST_URI'] === '/general-contact/') {
+        wp_redirect('https://www.corsource.com/contact/', 301);
+        exit;
+    }
+});

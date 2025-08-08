@@ -255,6 +255,7 @@ html :where(.is-reusable) :where(.wp-block) {
         color: rgb(29, 8, 0, .5);
         margin-left: 48%;
         transform: translate(21px, -18px);
+            padding-top: 20px;
         @media(max-width: $bp-small){
           margin-left: unset;
           margin-top: 92px;

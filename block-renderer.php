@@ -724,30 +724,30 @@ function init_acf_fields()
                 )
             )
         ));
+acf_register_block(array(
+  'name'              => 'background-wrapper',
+  'title'             => __('Background Wrapper'),
+  'description'       => __('Full-width wrapper with background color + InnerBlocks'),
+  'render_callback'   => 'block_renderer',
+  'category'          => 'formatting',
+  'icon'              => 'align-full-width',
+  'align'             => 'full',
+  'supports'          => array(
+    'align' => array('full'),
+    'jsx'   => true,
+  ),
+  'keywords'          => array('background', 'wrapper', 'section'),
+  'example'           => array(
+    'attributes' => array(
+      'mode' => 'preview',
+      'data' => array(
+        'preview_image' => [],
+      )
+    )
+  )
+));
 
-                            // register source PDX BOdy
-            acf_register_block(array(
-            'name'              => 'pdx-body',
-            'title'             => __('PDX Body'),
-            'description'       => __('PDX Body'),
-            'render_callback'   => 'block_renderer',
-            'category'          => 'formatting',
-            'icon'              => 'admin-comments',
-            'align'           => 'full',
-            'supports'        => array(
-                'align' => array('full'),
-                'jsx'             => true,
-            ),
-            'keywords'          => array('PDX Body'),
-            'example'  => array(
-                'attributes' => array(
-                    'mode' => 'preview',
-                    'data' => array(
-                        'preview_image' => [],
-                    )
-                )
-            )
-        ));
+
 
 
 acf_register_block(array(
@@ -760,10 +760,10 @@ acf_register_block(array(
   'align'           => 'full',
   'keywords'        => array('PDX Body'),
 
-  // ✅ default to edit mode (shows inline fields / more space)
+
   'mode'            => 'edit',
 
-  // ✅ allow switching edit/preview
+
   'supports'        => array(
     'align' => array('full'),
     'mode'  => true,

@@ -299,3 +299,32 @@ html :where(.is-reusable) :where(.wp-block) {
 }
 
 
+/* ----------------------------
+   Gutenberg editor canvas parity
+   ---------------------------- */
+.editor-styles-wrapper {
+  /* match your site defaults */
+  font-family: Inter, sans-serif; // or whatever your real $font-body is
+  font-size: 16px;
+  line-height: 1.5;
+  color: $color-licorice;
+
+  /* stop Gutenberg's block spacing from blowing things up */
+  p, li {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  /* headings: keep sane sizing inside editor */
+  h1 { font-size: 2.25rem; line-height: 1.15; }
+  h2 { font-size: 2rem; line-height: 1.15; }
+  h3 { font-size: 1.5rem; line-height: 1.2; }
+  h4 { font-size: 1.25rem; line-height: 1.25; }
+
+  /* your container width behavior in editor */
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    width: 90%;
+  }
+}

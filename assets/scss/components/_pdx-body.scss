@@ -1,0 +1,255 @@
+.pdx-body {
+  padding: clamp(48px, 6vw, 96px) 16px;
+
+  background-color: #f7f4f0;
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-position: 0 0, 6px 6px;
+  background-size: 12px 12px;
+
+  font-family: inherit;
+  color: #1d0800;
+
+  /* ✅ Single source of truth for vertical section rhythm inside the card */
+  --pdx-section-gap: clamp(32px, 4.2vw, 52px);
+
+  p,
+  li,
+  span,
+  em,
+  a,
+  .pdx-body__left-body {
+    font-size: 1.3rem;
+    line-height: 150%;
+    color: inherit;
+  }
+
+  a { color: inherit; }
+
+  p {
+    margin: 0 0 18px;
+    font-weight: 400;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 18px;
+    padding-left: 1.25rem;
+  }
+
+  li {
+    margin: 0 0 18px;
+    font-weight: 300;
+  }
+
+  li:last-child { margin-bottom: 0; }
+
+  strong,
+  b {
+    font-weight: 700;
+    color: inherit;
+  }
+
+  li strong { margin-right: 10px; }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    line-height: 1.12;
+    margin: 0;
+    color: #1d0800;
+  }
+
+  .pdx-body__left-body {
+    font-weight: 400;
+    margin: 0 0 18px;
+    text-align: left;
+  }
+
+  .pdx-body__left-body p {
+    margin: 0 0 18px;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .pdx-body__left-body p:last-child { margin-bottom: 0; }
+}
+
+/* Center the card */
+.pdx-body__outer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.pdx-body__card {
+  width: 100%;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: #fff;
+  border-radius: 12px;
+  padding: clamp(30px, 4.5vw, 64px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Header itself should not “center bleed” into content */
+.pdx-body__header {
+  width: 100%;
+}
+
+/* ✅ THIS is the bulletproof center + margin */
+.pdx-body__title-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 0 40px; /* <- your title spacing */
+  text-align: center;
+}
+
+.pdx-body__heading {
+  width: 100%;
+  max-width: 520px; /* keeps the 2-line break */
+  margin: 0;        /* margin handled by title-wrap */
+  text-align: center;
+
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.08;
+  font-weight: 400;
+  color: #1d0800;
+}
+
+.pdx-body__subheading {
+  max-width: 760px;
+  margin: 0 auto var(--pdx-section-gap);
+  text-align: center;
+  line-height: 155%;
+  color: #1d0800;
+  opacity: 0.85;
+
+  p { margin: 0 0 18px; font-weight: 400; }
+  p:last-child { margin-bottom: 0; }
+}
+
+/* Content: left aligned, top aligned */
+.pdx-body__content {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(22px, 3.2vw, 48px);
+  align-items: start;
+  text-align: left;
+
+  /* ✅ Make space to the next “section” consistent */
+  margin-bottom: var(--pdx-section-gap);
+}
+
+.pdx-body__left,
+.pdx-body__blurbs,
+.pdx-body__blurb {
+  text-align: left;
+}
+
+.pdx-body__left-title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+  line-height: 150%;
+  color: #1d0800;
+  text-align: left;
+}
+
+.pdx-body__left-title + .pdx-body__left-body { margin-top: 0; }
+.pdx-body__left-body + .pdx-body__left-title { margin-top: 18px; }
+
+/* Right: no box/shadow, top aligned */
+.pdx-body__right {
+  align-self: start;
+  display: block;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  text-align: left;
+}
+
+.pdx-body__image {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  border-radius: 0;
+  display: block;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ✅ Optional Row Text (between 2-col and logos) */
+.pdx-body__row-text {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto var(--pdx-section-gap);
+  text-align: center;
+}
+
+.pdx-body__row-heading {
+  font-family: inherit;
+  margin: 0 0 10px;
+
+  /* ✅ Bigger, closer to a “section title” */
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.12;
+  font-weight: 500;
+  color: #1d0800;
+}
+
+.pdx-body__row-subheading {
+  margin: 0;
+  opacity: 0.85;
+  color: #1d0800;
+
+  /* Match base paragraph styles exactly */
+  font-size: 1.3rem;
+  line-height: 150%;
+  font-weight: 400;
+
+  p {
+    margin: 0 0 18px;
+    font-size: 1.3rem;
+    line-height: 150%;
+    font-weight: 400;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Logos: full width */
+.pdx-body__logos {
+  margin-top: 0; /* ✅ spacing handled by content/row-text above */
+  width: 100%;
+}
+
+.pdx-body__logos-img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .pdx-body__content {
+    grid-template-columns: 1fr;
+  }
+
+  .pdx-body__right {
+    margin-top: 12px;
+  }
+
+  .pdx-body__heading {
+    max-width: 640px;
+  }
+}

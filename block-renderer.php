@@ -701,12 +701,11 @@ function init_acf_fields()
             )
         ));
 
-
-            // register source Background Wrapper
+                    // register source Background Wrapper
             acf_register_block(array(
-            'name'              => 'background-wrapper',
-            'title'             => __('Background Wrapper'),
-            'description'       => __('Background Wrapper'),
+            'name'              => 'pdx-two-column',
+            'title'             => __('PDX Two Column'),
+            'description'       => __('PDX Two Column'),
             'render_callback'   => 'block_renderer',
             'category'          => 'formatting',
             'icon'              => 'admin-comments',
@@ -715,7 +714,7 @@ function init_acf_fields()
                 'align' => array('full'),
                 'jsx'             => true,
             ),
-            'keywords'          => array('Background Wrapper'),
+            'keywords'          => array('PDX Two Column'),
             'example'  => array(
                 'attributes' => array(
                     'mode' => 'preview',
@@ -725,6 +724,63 @@ function init_acf_fields()
                 )
             )
         ));
+
+                            // register source PDX BOdy
+            acf_register_block(array(
+            'name'              => 'pdx-body',
+            'title'             => __('PDX Body'),
+            'description'       => __('PDX Body'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'formatting',
+            'icon'              => 'admin-comments',
+            'align'           => 'full',
+            'supports'        => array(
+                'align' => array('full'),
+                'jsx'             => true,
+            ),
+            'keywords'          => array('PDX Body'),
+            'example'  => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+acf_register_block(array(
+  'name'            => 'pdx-body',
+  'title'           => __('PDX Body'),
+  'description'     => __('PDX Body'),
+  'render_callback' => 'block_renderer',
+  'category'        => 'formatting',
+  'icon'            => 'admin-comments',
+  'align'           => 'full',
+  'keywords'        => array('PDX Body'),
+
+  // ✅ default to edit mode (shows inline fields / more space)
+  'mode'            => 'edit',
+
+  // ✅ allow switching edit/preview
+  'supports'        => array(
+    'align' => array('full'),
+    'mode'  => true,
+    'jsx'   => true,
+  ),
+
+  'example'         => array(
+    'attributes' => array(
+      'mode' => 'preview',
+      'data' => array(
+        'preview_image' => [],
+      )
+    )
+  )
+));
+
+
 
         // register source AQ resource center
         acf_register_block(array(

@@ -93,6 +93,8 @@
 /* Header itself should not “center bleed” into content */
 .pdx-body__header {
   width: 100%;
+  padding-bottom: 40px;
+  padding-top: 20px;
 }
 
 /* ✅ THIS is the bulletproof center + margin */

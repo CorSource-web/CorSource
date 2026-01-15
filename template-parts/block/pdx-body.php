@@ -14,37 +14,46 @@ if (!empty($block['data']['preview_image'])) : ?>
 <?php return; endif;
 
 /**
- * Normalize an ACF image field value into [id, url, alt]
- * Supports: array (return array), int (attachment id), string (url)
+ * Normalize an ACF image field that might be:
+ * - array (Image Array)
+ * - numeric (Image ID)
+ * - string (URL)
+ *
+ * Returns: [$id, $url, $alt]
  */
-function pdx_norm_image($val): array {
-  $id  = 0;
-  $url = '';
-  $alt = '';
+if (!function_exists('pdx_norm_image')) {
+  function pdx_norm_image($img): array {
+    $id  = 0;
+    $url = '';
+    $alt = '';
 
-  if (is_array($val)) {
-    // ACF typically uses 'ID', but sometimes you’ll see 'id'
-    $id  = !empty($val['ID']) ? (int) $val['ID'] : (!empty($val['id']) ? (int) $val['id'] : 0);
-    $url = !empty($val['url']) ? (string) $val['url'] : '';
-    $alt = !empty($val['alt']) ? (string) $val['alt'] : '';
+    if (is_array($img)) {
+      // ACF commonly uses 'ID', but some contexts can provide 'id'
+      $maybe_id = $img['ID'] ?? $img['id'] ?? 0;
+      $id  = !empty($maybe_id) ? (int) $maybe_id : 0;
 
-    if (!$url && $id) {
+      $url = !empty($img['url']) ? (string) $img['url'] : '';
+      $alt = !empty($img['alt']) ? (string) $img['alt'] : '';
+
+      // extra safety: sometimes 'sizes' contains the usable url
+      if ($url === '' && !empty($img['sizes']) && is_array($img['sizes'])) {
+        $url = (string)($img['sizes']['large'] ?? $img['sizes']['full'] ?? '');
+      }
+    } elseif (is_numeric($img)) {
+      $id  = (int) $img;
+      $url = wp_get_attachment_url($id) ?: '';
+      $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: '';
+    } elseif (is_string($img)) {
+      $url = trim($img);
+    }
+
+    // If we have an ID but no URL (rare), resolve it
+    if ($id && $url === '') {
       $url = wp_get_attachment_url($id) ?: '';
     }
-    if (!$alt && $id) {
-      $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: '';
-    }
 
-  } elseif (is_numeric($val)) {
-    $id  = (int) $val;
-    $url = wp_get_attachment_url($id) ?: '';
-    $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: '';
-
-  } elseif (is_string($val)) {
-    $url = trim($val);
+    return [$id, $url, $alt];
   }
-
-  return [$id, $url, $alt];
 }
 
 // --- Header (support both Header/header) ---
@@ -56,9 +65,8 @@ $heading    = trim((string)($header['heading'] ?? ''));
 $subheading = $header['subheading'] ?? '';
 $subheading_str = is_string($subheading) ? trim($subheading) : '';
 
-// --- Content group (support both Content/content) ---
+// --- Content group ---
 $content = get_field('content');
-if (!is_array($content)) $content = get_field('Content');
 if (!is_array($content)) $content = [];
 
 // Left / Right groups
@@ -69,31 +77,21 @@ $right_col = is_array($content['right_column'] ?? null) ? $content['right_column
 $left_blurbs = $left_col['left_blurbs'] ?? [];
 if (!is_array($left_blurbs)) $left_blurbs = [];
 
-// Right image normalize
+// Right image
 $right_image = $right_col['right_image'] ?? null;
 [$right_image_id, $right_image_url, $right_image_alt] = pdx_norm_image($right_image);
 
-// Logos image (desktop): try inside content, fallback top-level
-$logos_image =
-  ($content['logos'] ?? null)
-  ?? get_field('logos');
-
+// Logos (desktop)
+$logos_image = $content['logos'] ?? null;
 [$logos_id, $logos_url, $logos_alt] = pdx_norm_image($logos_image);
 
-// Logos image (mobile - OPTIONAL): try multiple likely keys + top-level fallbacks
-$logos_mobile_image =
-  ($content['logos_mobile'] ?? null)
-  ?? ($content['logosMobile'] ?? null)
-  ?? ($content['logos_mobile_image'] ?? null)
-  ?? get_field('logos_mobile')
-  ?? get_field('logosMobile')
-  ?? get_field('logos_mobile_image');
-
+// Logos (mobile)
+$logos_mobile_image = $content['logos_mobile'] ?? null;
 [$logos_mobile_id, $logos_mobile_url, $logos_mobile_alt] = pdx_norm_image($logos_mobile_image);
 
-$has_mobile_logos = (!empty($logos_mobile_url) || !empty($logos_mobile_id));
+$has_mobile_logos = ($logos_mobile_id > 0 || $logos_mobile_url !== '');
 
-// --- Row Text group (matches your ACF names) ---
+// --- Row Text group ---
 $row_text = get_field('row_text');
 if (!is_array($row_text)) $row_text = [];
 
@@ -193,34 +191,61 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
       <?php endif; ?>
 
       <?php if ($logos_id || $logos_url) : ?>
-        <!-- PDX_BODY_LOGOS_SWAP_V3 -->
+        <!-- PDX_BODY_LOGOS_SWAP_V4 -->
         <div class="pdx-body__logos" aria-label="Client logos">
 
           <?php if ($has_mobile_logos) : ?>
+
             <?php
-              // Resolve final URLs for picture sources
-              $desktop_src = $logos_url ?: ($logos_id ? (wp_get_attachment_url($logos_id) ?: '') : '');
-              $mobile_src  = $logos_mobile_url ?: ($logos_mobile_id ? (wp_get_attachment_url($logos_mobile_id) ?: '') : '');
-
-              // Pick a sane alt
-              $final_alt = $logos_alt ?: $logos_mobile_alt;
-            ?>
-
-            <picture>
-              <source media="(max-width: 768px)" srcset="<?php echo esc_url($mobile_src); ?>">
+            // Desktop
+            if ($logos_id) {
+              echo wp_get_attachment_image(
+                $logos_id,
+                'full',
+                false,
+                [
+                  'class' => 'pdx-body__logos-img pdx-body__logos-img--desktop',
+                  'loading' => 'lazy',
+                  'decoding' => 'async',
+                ]
+              );
+            } else { ?>
               <img
-                class="pdx-body__logos-img"
-                src="<?php echo esc_url($desktop_src); ?>"
-                alt="<?php echo esc_attr($final_alt); ?>"
+                class="pdx-body__logos-img pdx-body__logos-img--desktop"
+                src="<?php echo esc_url($logos_url); ?>"
+                alt="<?php echo esc_attr($logos_alt); ?>"
                 loading="lazy"
                 decoding="async"
               />
-            </picture>
+            <?php } ?>
+
+            <?php
+            // Mobile
+            if ($logos_mobile_id) {
+              echo wp_get_attachment_image(
+                $logos_mobile_id,
+                'full',
+                false,
+                [
+                  'class' => 'pdx-body__logos-img pdx-body__logos-img--mobile',
+                  'loading' => 'lazy',
+                  'decoding' => 'async',
+                ]
+              );
+            } else { ?>
+              <img
+                class="pdx-body__logos-img pdx-body__logos-img--mobile"
+                src="<?php echo esc_url($logos_mobile_url); ?>"
+                alt="<?php echo esc_attr($logos_mobile_alt); ?>"
+                loading="lazy"
+                decoding="async"
+              />
+            <?php } ?>
 
           <?php else : ?>
 
             <?php
-            // Single-image render fallback
+            // Single-image render
             if ($logos_id) {
               echo wp_get_attachment_image(
                 $logos_id,

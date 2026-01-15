@@ -50,11 +50,7 @@ if (!function_exists('pdx_norm_image')) {
   }
 }
 
-// =====================
-// FIELDS
-// =====================
 
-// Header (support both Header/header)
 $header = get_field('Header');
 if (!is_array($header)) $header = get_field('header');
 if (!is_array($header)) $header = [];

@@ -56,6 +56,11 @@
     color: #1d0800;
   }
 
+  h3 {
+  font-size: clamp(22px, 2.6vw, 32px) !important;
+  font-weight: 500 !important;
+}
+
   .pdx-body__left-body {
     font-weight: 400;
     margin: 0 0 18px;
@@ -154,6 +159,8 @@
   line-height: 150%;
   color: #1d0800;
   text-align: left;
+margin-bottom: 10px;
+
 }
 
 .pdx-body__left-title + .pdx-body__left-body { margin-top: 0; }
@@ -192,12 +199,11 @@
 .pdx-body__row-heading {
   font-family: inherit;
   margin: 0 0 10px;
-
-  /* ✅ Bigger, closer to a “section title” */
   font-size: clamp(22px, 2.6vw, 32px);
   line-height: 1.12;
   font-weight: 500;
   color: #1d0800;
+    margin-bottom: 10px!important;
 }
 
 .pdx-body__row-subheading {

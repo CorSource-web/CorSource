@@ -1,16 +1,10 @@
 <?php
 /**
  * Block Name: PDX Body
- *
- * Debug notes:
- * - This prints HTML comments you can see in View Source.
- * - Search for: PDX_BODY_DEBUG
  */
 
-// Unique ID for anchor / styling
 $id = 'pdx-body-' . (!empty($block['id']) ? $block['id'] : uniqid());
 
-// Preview image in inserter
 if (!empty($block['data']['preview_image'])) : ?>
   <img
     src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/block-previews/pdx-body.png'); ?>"
@@ -24,8 +18,6 @@ if (!empty($block['data']['preview_image'])) : ?>
  * - array (with keys ID/id, url, alt)
  * - numeric (attachment ID)
  * - string (URL)
- *
- * Returns: [id:int, url:string, alt:string]
  */
 function pdx_norm_image($img) : array {
   $id  = 0;
@@ -52,19 +44,11 @@ function pdx_norm_image($img) : array {
   return [$id, $url, $alt];
 }
 
-/**
- * Debug helper (prints a single-line HTML comment)
- */
-function pdx_dbg($label, $value) {
-  $out = is_string($value) ? $value : print_r($value, true);
-  $out = preg_replace('/\s+/', ' ', $out); // compress whitespace
-  $out = substr($out, 0, 800);             // keep it short-ish
-  echo "\n<!-- PDX_BODY_DEBUG {$label}: " . esc_html($out) . " -->\n";
-}
+// =====================
+// FIELDS
+// =====================
 
-// --------------------
 // Header (support both Header/header)
-// --------------------
 $header = get_field('Header');
 if (!is_array($header)) $header = get_field('header');
 if (!is_array($header)) $header = [];
@@ -73,91 +57,63 @@ $heading    = trim((string)($header['heading'] ?? ''));
 $subheading = $header['subheading'] ?? '';
 $subheading_str = is_string($subheading) ? trim($subheading) : '';
 
-// --------------------
-// Content group
-// --------------------
-$content = get_field('content');
-if (!is_array($content)) $content = [];
-
-// Left / Right groups
-$left_col  = is_array($content['left_column'] ?? null) ? $content['left_column'] : [];
-$right_col = is_array($content['right_column'] ?? null) ? $content['right_column'] : [];
-
-// Left blurbs repeater
-$left_blurbs = $left_col['left_blurbs'] ?? [];
-if (!is_array($left_blurbs)) $left_blurbs = [];
-
-// Right image normalize
-$right_image = $right_col['right_image'] ?? null;
-[$right_image_id, $right_image_url, $right_image_alt] = pdx_norm_image($right_image);
-
-// Desktop logos image (intended: inside content; fallback: top-level)
-$logos_image = $content['logos'] ?? get_field('logos');
-[$logos_id, $logos_url, $logos_alt] = pdx_norm_image($logos_image);
-
-// Mobile logos image — drift-safe lookups
-// IMPORTANT: if this is empty, PHP will NOT render a mobile tag unless we fallback.
-$logos_mobile_raw =
-  ($content['logos_mobile'] ?? null)
-  ?? get_field('logos_mobile')
-  ?? get_field('content_logos_mobile');
-
-// As a last resort, try get_sub_field (usually unnecessary in block context, but harmless)
-if (!$logos_mobile_raw && function_exists('get_sub_field')) {
-  $maybe = get_sub_field('logos_mobile');
-  if ($maybe) $logos_mobile_raw = $maybe;
-}
-
-[$logos_mobile_id, $logos_mobile_url, $logos_mobile_alt] = pdx_norm_image($logos_mobile_raw);
-
-$has_mobile_logos = ($logos_mobile_id > 0 || $logos_mobile_url !== '');
-
-// If mobile is missing, fallback to desktop so you never render "nothing" on mobile.
-$mobile_fallback_id  = $logos_mobile_id ?: $logos_id;
-$mobile_fallback_url = $logos_mobile_url ?: $logos_url;
-$mobile_fallback_alt = $logos_mobile_alt ?: $logos_alt;
-
-$mobile_will_render = ($mobile_fallback_id > 0 || $mobile_fallback_url !== '');
-
-// --------------------
-// Row Text group
-// --------------------
+// Row Text
 $row_text = get_field('row_text');
 if (!is_array($row_text)) $row_text = [];
 
 $row_heading = trim((string)($row_text['row_heading'] ?? ''));
-$row_sub     = $row_text['row_subheading'] ?? '';
-$row_sub_str = is_string($row_sub) ? trim($row_sub) : '';
+$row_sub     = trim((string)($row_text['row_subheading'] ?? ''));
 
-// True/False can come back as "1"/"0", 1/0, true/false depending on context.
-$raw_toggle  = $row_text['enable_row'] ?? ($row_text['enable_row_'] ?? null);
+$raw_toggle  = $row_text['enable_row'] ?? null;
 $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_toggle === 1);
 
-?>
+// Content group
+$content = get_field('content');
+if (!is_array($content)) $content = [];
 
+$left_col  = is_array($content['left_column'] ?? null) ? $content['left_column'] : [];
+$right_col = is_array($content['right_column'] ?? null) ? $content['right_column'] : [];
+
+$left_blurbs = $left_col['left_blurbs'] ?? [];
+if (!is_array($left_blurbs)) $left_blurbs = [];
+
+// Right image
+$right_image = $right_col['right_image'] ?? null;
+[$right_image_id, $right_image_url, $right_image_alt] = pdx_norm_image($right_image);
+
+// Logos desktop (inside content group)
+$logos_image = $content['logos'] ?? null;
+[$logos_id, $logos_url, $logos_alt] = pdx_norm_image($logos_image);
+
+// Logos mobile (TOP LEVEL field in your ACF — do NOT look inside content)
+$logos_mobile_image = get_field('logos_mobile');
+[$logos_mobile_id, $logos_mobile_url, $logos_mobile_alt] = pdx_norm_image($logos_mobile_image);
+
+$has_mobile_logos = ($logos_mobile_id > 0 || $logos_mobile_url !== '');
+
+// Fallback: if no mobile image, use desktop so *something* renders
+$mobile_fallback_id  = $logos_id;
+$mobile_fallback_url = $logos_url;
+
+// =====================
+// DEBUG (HTML comments)
+// =====================
+?>
 <section id="<?php echo esc_attr($id); ?>" class="pdx-body">
-  <?php
-    // ===== DEBUG START =====
-    pdx_dbg('id', $id);
-    pdx_dbg('content_keys', array_keys($content));
-    pdx_dbg('logos_desktop_id', $logos_id);
-    pdx_dbg('logos_desktop_url', $logos_url);
-    pdx_dbg('logos_mobile_raw', $logos_mobile_raw);
-    pdx_dbg('logos_mobile_id', $logos_mobile_id);
-    pdx_dbg('logos_mobile_url', $logos_mobile_url);
-    pdx_dbg('has_mobile_logos', $has_mobile_logos ? 'true' : 'false');
-    pdx_dbg('mobile_fallback_id', $mobile_fallback_id);
-    pdx_dbg('mobile_fallback_url', $mobile_fallback_url);
-    pdx_dbg('mobile_will_render', $mobile_will_render ? 'true' : 'false');
-    // ===== DEBUG END =====
-  ?>
+
+  <!-- PDX_BODY_DEBUG id: <?php echo esc_html($id); ?> -->
+  <!-- PDX_BODY_DEBUG block_name: <?php echo esc_html($block['name'] ?? ''); ?> -->
+  <!-- PDX_BODY_DEBUG has_mobile_logos: <?php echo $has_mobile_logos ? 'true' : 'false'; ?> -->
+  <!-- PDX_BODY_DEBUG logos_desktop_id: <?php echo (int)$logos_id; ?> -->
+  <!-- PDX_BODY_DEBUG logos_desktop_url: <?php echo esc_url($logos_url); ?> -->
+  <!-- PDX_BODY_DEBUG logos_mobile_id: <?php echo (int)$logos_mobile_id; ?> -->
+  <!-- PDX_BODY_DEBUG logos_mobile_url: <?php echo esc_url($logos_mobile_url); ?> -->
 
   <div class="pdx-body__outer">
     <div class="pdx-body__card">
 
       <?php if ($heading !== '' || $subheading_str !== '') : ?>
         <div class="pdx-body__header">
-
           <?php if ($heading !== '') : ?>
             <div class="pdx-body__title-wrap">
               <h2 class="pdx-body__heading"><?php echo esc_html($heading); ?></h2>
@@ -169,7 +125,6 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
               <?php echo wp_kses_post($subheading_str); ?>
             </div>
           <?php endif; ?>
-
         </div>
       <?php endif; ?>
 
@@ -187,7 +142,6 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
                   <?php if ($t !== '') : ?>
                     <h3 class="pdx-body__left-title"><?php echo esc_html($t); ?></h3>
                   <?php endif; ?>
-
                   <?php if ($b_str !== '') : ?>
                     <div class="pdx-body__left-body">
                       <?php echo wp_kses_post($b_str); ?>
@@ -224,26 +178,25 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
         </div>
       </div>
 
-      <?php if ($row_enabled && ($row_heading !== '' || $row_sub_str !== '')) : ?>
+      <?php if ($row_enabled && ($row_heading !== '' || $row_sub !== '')) : ?>
         <div class="pdx-body__row-text">
           <?php if ($row_heading !== '') : ?>
             <h3 class="pdx-body__row-heading"><?php echo esc_html($row_heading); ?></h3>
           <?php endif; ?>
 
-          <?php if ($row_sub_str !== '') : ?>
+          <?php if ($row_sub !== '') : ?>
             <div class="pdx-body__row-subheading">
-              <?php echo wp_kses_post($row_sub_str); ?>
+              <?php echo wp_kses_post($row_sub); ?>
             </div>
           <?php endif; ?>
         </div>
       <?php endif; ?>
 
       <?php if ($logos_id || $logos_url) : ?>
-        <!-- PDX_BODY_LOGOS_SWAP_FINAL -->
         <div class="pdx-body__logos" aria-label="Client logos">
 
           <?php
-          // DESKTOP TAG (always render desktop if we have it)
+          // Desktop
           if ($logos_id) {
             echo wp_get_attachment_image(
               $logos_id,
@@ -266,8 +219,28 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
           <?php } ?>
 
           <?php
-          // MOBILE TAG (always render something on mobile; falls back to desktop if mobile not set)
-          if ($mobile_will_render) :
+          // Mobile (real mobile image if set; otherwise fallback to desktop)
+          if ($has_mobile_logos && $logos_mobile_id) {
+            echo wp_get_attachment_image(
+              $logos_mobile_id,
+              'full',
+              false,
+              [
+                'class' => 'pdx-body__logos-img pdx-body__logos-img--mobile',
+                'loading' => 'lazy',
+                'decoding' => 'async',
+              ]
+            );
+          } elseif ($has_mobile_logos && $logos_mobile_url !== '') { ?>
+            <img
+              class="pdx-body__logos-img pdx-body__logos-img--mobile"
+              src="<?php echo esc_url($logos_mobile_url); ?>"
+              alt="<?php echo esc_attr($logos_mobile_alt); ?>"
+              loading="lazy"
+              decoding="async"
+            />
+          <?php } else {
+            // fallback
             if ($mobile_fallback_id) {
               echo wp_get_attachment_image(
                 $mobile_fallback_id,
@@ -279,16 +252,16 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
                   'decoding' => 'async',
                 ]
               );
-            } else { ?>
+            } elseif ($mobile_fallback_url !== '') { ?>
               <img
                 class="pdx-body__logos-img pdx-body__logos-img--mobile"
                 src="<?php echo esc_url($mobile_fallback_url); ?>"
-                alt="<?php echo esc_attr($mobile_fallback_alt); ?>"
+                alt=""
                 loading="lazy"
                 decoding="async"
               />
             <?php }
-          endif; ?>
+          } ?>
 
         </div>
       <?php endif; ?>

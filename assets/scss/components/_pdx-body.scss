@@ -271,3 +271,11 @@
     max-width: 640px;
   }
 }
+
+.pdx-body .pdx-body__logos-img--desktop { display: block !important; }
+.pdx-body .pdx-body__logos-img--mobile  { display: none  !important; }
+
+@media screen and (max-width: 768px) {
+  .pdx-body .pdx-body__logos-img--desktop { display: none  !important; }
+  .pdx-body .pdx-body__logos-img--mobile  { display: block !important; }
+}

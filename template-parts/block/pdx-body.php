@@ -193,6 +193,7 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
       <?php endif; ?>
 
       <?php if ($logos_id || $logos_url) : ?>
+        <!-- PDX_BODY_LOGOS_SWAP_V2 -->
         <div class="pdx-body__logos" aria-label="Client logos">
 
           <?php if ($has_mobile_logos) : ?>

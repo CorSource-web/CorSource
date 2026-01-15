@@ -1,6 +1,10 @@
+/* ============================
+   PDX BODY (FULL FILE)
+   ============================ */
+
 .pdx-body {
   padding: clamp(48px, 6vw, 96px) 16px;
-/* PDX_DEPLOY_TEST_999 */
+  /* PDX_DEPLOY_TEST_999 */
 
   background-color: #f7f4f0;
   background-position: 0 0, 6px 6px;
@@ -9,72 +13,74 @@
   font-family: inherit;
   color: #1d0800;
   --pdx-section-gap: clamp(32px, 4.2vw, 52px);
-
-  p,
-  li,
-  span,
-  em,
-  a,
-  .pdx-body__left-body {
-    font-size: 1.3rem;
-    line-height: 150%;
-    color: inherit;
-  }
-
-  a { color: inherit; }
-
-  p {
-    margin: 0 0 18px;
-    font-weight: 400;
-  }
-
-  ul,
-  ol {
-    margin: 0 0 18px;
-    padding-left: 1.25rem;
-  }
-
-  li {
-    margin: 0 0 18px;
-    font-weight: 300;
-  }
-
-  li:last-child { margin-bottom: 0; }
-
-  strong,
-  b {
-    font-weight: 700;
-    color: inherit;
-  }
-
-  li strong { margin-right: 10px; }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: inherit;
-    line-height: 1.12;
-    margin: 0;
-    color: #1d0800;
-  }
-
-//   h3 {
-//   font-size: clamp(22px, 2.6vw, 32px) !important;
-//   font-weight: 500 !important;
-// }
-
-  .pdx-body__left-body {
-    font-weight: 400;
-    margin: 0 0 18px;
-    text-align: left;
-  }
-
-  .pdx-body__left-body p {
-    margin: 0 0 18px;
-    font-weight: 400;
-    text-align: left;
-  }
-
-  .pdx-body__left-body p:last-child { margin-bottom: 0; }
 }
+
+/* Type baseline */
+.pdx-body p,
+.pdx-body li,
+.pdx-body span,
+.pdx-body em,
+.pdx-body a,
+.pdx-body .pdx-body__left-body {
+  font-size: 1.3rem;
+  line-height: 150%;
+  color: inherit;
+}
+
+.pdx-body a { color: inherit; }
+
+.pdx-body p {
+  margin: 0 0 18px;
+  font-weight: 400;
+}
+
+.pdx-body ul,
+.pdx-body ol {
+  margin: 0 0 18px;
+  padding-left: 1.25rem;
+}
+
+.pdx-body li {
+  margin: 0 0 18px;
+  font-weight: 300;
+}
+
+.pdx-body li:last-child { margin-bottom: 0; }
+
+.pdx-body strong,
+.pdx-body b {
+  font-weight: 700;
+  color: inherit;
+}
+
+.pdx-body li strong { margin-right: 10px; }
+
+.pdx-body h1,
+.pdx-body h2,
+.pdx-body h3,
+.pdx-body h4,
+.pdx-body h5,
+.pdx-body h6 {
+  font-family: inherit;
+  line-height: 1.12;
+  margin: 0;
+  color: #1d0800;
+}
+
+/* Left body text */
+.pdx-body .pdx-body__left-body {
+  font-weight: 400;
+  margin: 0 0 18px;
+  text-align: left;
+}
+
+.pdx-body .pdx-body__left-body p {
+  margin: 0 0 18px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.pdx-body .pdx-body__left-body p:last-child { margin-bottom: 0; }
 
 /* Center the card */
 .pdx-body__outer {
@@ -95,19 +101,18 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* Header itself should not “center bleed” into content */
+/* Header */
 .pdx-body__header {
   width: 100%;
   padding-bottom: 40px;
   padding-top: 20px;
 }
 
-/* ✅ THIS is the bulletproof center + margin */
 .pdx-body__title-wrap {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 0 0 40px; /* <- your title spacing */
+  margin: 0 0 40px; /* title spacing */
   text-align: center;
 }
 
@@ -123,15 +128,6 @@
   color: #1d0800;
 }
 
-/* Only matters when logos_mobile exists */
-.pdx-body__logos-img--mobile { display: none; }
-
-@media (max-width: 768px) {
-  .pdx-body__logos-img--desktop { display: none; }
-  .pdx-body__logos-img--mobile  { display: block; }
-}
-
-
 .pdx-body__subheading {
   max-width: 760px;
   margin: 0 auto var(--pdx-section-gap);
@@ -139,18 +135,18 @@
   line-height: 155%;
   color: #1d0800;
   opacity: 0.85;
-
-  p { margin: 0 0 18px; font-weight: 400; }
-  p:last-child { margin-bottom: 0; }
 }
 
+.pdx-body__subheading p { margin: 0 0 18px; font-weight: 400; }
+.pdx-body__subheading p:last-child { margin-bottom: 0; }
+
+/* Content grid */
 .pdx-body__content {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: clamp(22px, 3.2vw, 48px);
   align-items: start;
   text-align: left;
-
   margin-bottom: var(--pdx-section-gap);
 }
 
@@ -168,14 +164,13 @@
   line-height: 150%;
   color: #1d0800;
   text-align: left;
-margin-bottom: 10px!important;
-
+  margin-bottom: 10px !important;
 }
 
 .pdx-body__left-title + .pdx-body__left-body { margin-top: 0; }
 .pdx-body__left-body + .pdx-body__left-title { margin-top: 18px; }
 
-/* Right: no box/shadow, top aligned */
+/* Right image */
 .pdx-body__right {
   align-self: start;
   display: block;
@@ -197,7 +192,7 @@ margin-bottom: 10px!important;
   background: transparent;
 }
 
-/* ✅ Optional Row Text (between 2-col and logos) */
+/* Optional Row Text */
 .pdx-body__row-text {
   width: 100%;
   max-width: 760px;
@@ -212,7 +207,7 @@ margin-bottom: 10px!important;
   line-height: 1.12;
   font-weight: 500;
   color: #1d0800;
-    margin-bottom: 10px!important;
+  margin-bottom: 10px !important;
 }
 
 .pdx-body__row-subheading {
@@ -220,27 +215,23 @@ margin-bottom: 10px!important;
   opacity: 0.85;
   color: #1d0800;
 
-  /* Match base paragraph styles exactly */
   font-size: 1.3rem;
   line-height: 150%;
   font-weight: 400;
-
-  p {
-    margin: 0 0 18px;
-    font-size: 1.3rem;
-    line-height: 150%;
-    font-weight: 400;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
 }
 
+.pdx-body__row-subheading p {
+  margin: 0 0 18px;
+  font-size: 1.3rem;
+  line-height: 150%;
+  font-weight: 400;
+}
 
-/* Logos: full width */
+.pdx-body__row-subheading p:last-child { margin-bottom: 0; }
+
+/* Logos */
 .pdx-body__logos {
-  margin-top: 0; /* ✅ spacing handled by content/row-text above */
+  margin-top: 0; /* spacing handled above */
   width: 100%;
 }
 
@@ -251,6 +242,22 @@ margin-bottom: 10px!important;
   display: block;
 }
 
+/* ======================================================
+   ✅ LOGOS SWAP RULES (FIXED)
+   - Desktop shows desktop image only
+   - Mobile shows mobile image only
+   - !important ensures it beats .pdx-body__logos-img {display:block}
+   ====================================================== */
+
+.pdx-body__logos-img--desktop { display: block !important; }
+.pdx-body__logos-img--mobile  { display: none  !important; }
+
+@media (max-width: 768px) {
+  .pdx-body__logos-img--desktop { display: none  !important; }
+  .pdx-body__logos-img--mobile  { display: block !important; }
+}
+
+/* Responsive */
 @media (max-width: 900px) {
   .pdx-body__content {
     grid-template-columns: 1fr;

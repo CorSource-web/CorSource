@@ -53,7 +53,7 @@ if (is_array($right_image)) {
   $right_image_url = $right_image;
 }
 
-// Logos image: inside content, fallback to top-level just in case
+// Logos image (desktop): inside content, fallback to top-level just in case
 $logos_image = $content['logos'] ?? get_field('logos');
 
 $logos_id  = 0;
@@ -72,6 +72,27 @@ if (is_array($logos_image)) {
   $logos_url = $logos_image;
 }
 
+// Logos image (mobile - OPTIONAL)
+$logos_mobile_image = $content['logos_mobile'] ?? get_field('logos_mobile');
+
+$logos_mobile_id  = 0;
+$logos_mobile_url = '';
+$logos_mobile_alt = '';
+
+if (is_array($logos_mobile_image)) {
+  $logos_mobile_id  = !empty($logos_mobile_image['ID']) ? (int) $logos_mobile_image['ID'] : 0;
+  $logos_mobile_url = !empty($logos_mobile_image['url']) ? (string) $logos_mobile_image['url'] : '';
+  $logos_mobile_alt = !empty($logos_mobile_image['alt']) ? (string) $logos_mobile_image['alt'] : '';
+} elseif (is_numeric($logos_mobile_image)) {
+  $logos_mobile_id  = (int) $logos_mobile_image;
+  $logos_mobile_url = wp_get_attachment_url($logos_mobile_id) ?: '';
+  $logos_mobile_alt = get_post_meta($logos_mobile_id, '_wp_attachment_image_alt', true) ?: '';
+} elseif (is_string($logos_mobile_image)) {
+  $logos_mobile_url = $logos_mobile_image;
+}
+
+$has_mobile_logos = ($logos_mobile_id || $logos_mobile_url);
+
 // --- Row Text group (matches your ACF names) ---
 $row_text = get_field('row_text');
 if (!is_array($row_text)) $row_text = [];
@@ -80,7 +101,6 @@ $row_heading = trim((string)($row_text['row_heading'] ?? ''));
 $row_sub     = trim((string)($row_text['row_subheading'] ?? ''));
 
 // True/False can come back as "1"/"0", 1/0, true/false depending on context.
-// This handles both the new key and the old trailing-underscore key (just in case).
 $raw_toggle = $row_text['enable_row'] ?? ($row_text['enable_row_'] ?? null);
 $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_toggle === 1);
 ?>
@@ -174,27 +194,82 @@ $row_enabled = ((string)$raw_toggle === '1' || $raw_toggle === true || $raw_togg
 
       <?php if ($logos_id || $logos_url) : ?>
         <div class="pdx-body__logos" aria-label="Client logos">
-          <?php
-          if ($logos_id) {
-            echo wp_get_attachment_image(
-              $logos_id,
-              'full',
-              false,
-              [
-                'class' => 'pdx-body__logos-img',
-                'loading' => 'lazy',
-                'decoding' => 'async',
-              ]
-            );
-          } else { ?>
-            <img
-              class="pdx-body__logos-img"
-              src="<?php echo esc_url($logos_url); ?>"
-              alt="<?php echo esc_attr($logos_alt); ?>"
-              loading="lazy"
-              decoding="async"
-            />
-          <?php } ?>
+
+          <?php if ($has_mobile_logos) : ?>
+
+            <?php
+            // Desktop (hide on mobile via CSS)
+            if ($logos_id) {
+              echo wp_get_attachment_image(
+                $logos_id,
+                'full',
+                false,
+                [
+                  'class' => 'pdx-body__logos-img pdx-body__logos-img--desktop',
+                  'loading' => 'lazy',
+                  'decoding' => 'async',
+                ]
+              );
+            } else { ?>
+              <img
+                class="pdx-body__logos-img pdx-body__logos-img--desktop"
+                src="<?php echo esc_url($logos_url); ?>"
+                alt="<?php echo esc_attr($logos_alt); ?>"
+                loading="lazy"
+                decoding="async"
+              />
+            <?php } ?>
+
+            <?php
+            // Mobile (show on mobile via CSS)
+            if ($logos_mobile_id) {
+              echo wp_get_attachment_image(
+                $logos_mobile_id,
+                'full',
+                false,
+                [
+                  'class' => 'pdx-body__logos-img pdx-body__logos-img--mobile',
+                  'loading' => 'lazy',
+                  'decoding' => 'async',
+                ]
+              );
+            } else { ?>
+              <img
+                class="pdx-body__logos-img pdx-body__logos-img--mobile"
+                src="<?php echo esc_url($logos_mobile_url); ?>"
+                alt="<?php echo esc_attr($logos_mobile_alt); ?>"
+                loading="lazy"
+                decoding="async"
+              />
+            <?php } ?>
+
+          <?php else : ?>
+
+            <?php
+            // Original single-image render (unchanged)
+            if ($logos_id) {
+              echo wp_get_attachment_image(
+                $logos_id,
+                'full',
+                false,
+                [
+                  'class' => 'pdx-body__logos-img',
+                  'loading' => 'lazy',
+                  'decoding' => 'async',
+                ]
+              );
+            } else { ?>
+              <img
+                class="pdx-body__logos-img"
+                src="<?php echo esc_url($logos_url); ?>"
+                alt="<?php echo esc_attr($logos_alt); ?>"
+                loading="lazy"
+                decoding="async"
+              />
+            <?php } ?>
+
+          <?php endif; ?>
+
         </div>
       <?php endif; ?>
 

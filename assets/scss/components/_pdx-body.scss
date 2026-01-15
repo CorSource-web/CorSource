@@ -123,6 +123,15 @@
   color: #1d0800;
 }
 
+/* Only matters when logos_mobile exists */
+.pdx-body__logos-img--mobile { display: none; }
+
+@media (max-width: 768px) {
+  .pdx-body__logos-img--desktop { display: none; }
+  .pdx-body__logos-img--mobile  { display: block; }
+}
+
+
 .pdx-body__subheading {
   max-width: 760px;
   margin: 0 auto var(--pdx-section-gap);

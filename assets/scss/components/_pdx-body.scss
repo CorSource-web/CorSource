@@ -7,6 +7,9 @@
   /* PDX_DEPLOY_TEST_999 */
 
   background-color: #f7f4f0;
+
+  /* If you want a pattern, you need background-image layers.
+     Otherwise you can delete the next two lines. */
   background-position: 0 0, 6px 6px;
   background-size: 12px 12px;
 
@@ -112,14 +115,14 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 0 0 40px; /* title spacing */
+  margin: 0 0 40px;
   text-align: center;
 }
 
 .pdx-body__heading {
   width: 100%;
-  max-width: 520px; /* keeps the 2-line break */
-  margin: 0;        /* margin handled by title-wrap */
+  max-width: 520px;
+  margin: 0;
   text-align: center;
 
   font-size: clamp(30px, 3.4vw, 46px);
@@ -231,24 +234,17 @@
 
 /* Logos */
 .pdx-body__logos {
-  margin-top: 0; /* spacing handled above */
+  margin-top: 0;
   width: 100%;
 }
 
-.pdx-body__logos-img {
-  width: 100%;
-  max-width: none;
-  height: auto;
+.pdx-body__logos img {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* ======================================================
-   ✅ LOGOS SWAP RULES (FIXED)
-   - Desktop shows desktop image only
-   - Mobile shows mobile image only
-   - !important ensures it beats .pdx-body__logos-img {display:block}
-   ====================================================== */
-
+/* ✅ LOGOS SWAP RULES (single source of truth) */
 .pdx-body__logos-img--desktop { display: block !important; }
 .pdx-body__logos-img--mobile  { display: none  !important; }
 
@@ -269,19 +265,5 @@
 
   .pdx-body__heading {
     max-width: 640px;
-  }
-}
-
-.pdx-body__logos-img--mobile {
-  display: none;
-}
-
-@media (max-width: 800px) {
-  .pdx-body__logos-img--desktop {
-    display: none;
-  }
-
-  .pdx-body__logos-img--mobile {
-    display: block;
   }
 }

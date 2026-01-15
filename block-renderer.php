@@ -749,7 +749,6 @@ acf_register_block(array(
 
 
 
-
 acf_register_block(array(
   'name'            => 'pdx-body',
   'title'           => __('PDX Body'),
@@ -759,17 +758,11 @@ acf_register_block(array(
   'icon'            => 'admin-comments',
   'align'           => 'full',
   'keywords'        => array('PDX Body'),
-
-
-  'mode'            => 'edit',
-
-
   'supports'        => array(
     'align' => array('full'),
     'mode'  => true,
     'jsx'   => true,
   ),
-
   'example'         => array(
     'attributes' => array(
       'mode' => 'preview',

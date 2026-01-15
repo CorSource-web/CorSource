@@ -18,30 +18,36 @@ if (!empty($block['data']['preview_image'])) : ?>
  * - array (with keys ID/id, url, alt)
  * - numeric (attachment ID)
  * - string (URL)
+ *
+ * NOTE:
+ * Gutenberg/ACF can render the same block template multiple times per request.
+ * Without this guard you can get: "Cannot redeclare pdx_norm_image()"
  */
-function pdx_norm_image($img) : array {
-  $id  = 0;
-  $url = '';
-  $alt = '';
+if (!function_exists('pdx_norm_image')) {
+  function pdx_norm_image($img) : array {
+    $id  = 0;
+    $url = '';
+    $alt = '';
 
-  if (is_array($img)) {
-    $raw_id = $img['ID'] ?? ($img['id'] ?? 0);
-    $id  = !empty($raw_id) ? (int) $raw_id : 0;
-    $url = !empty($img['url']) ? (string) $img['url'] : '';
-    $alt = !empty($img['alt']) ? (string) $img['alt'] : '';
-  } elseif (is_numeric($img)) {
-    $id  = (int) $img;
-    $url = wp_get_attachment_url($id) ?: '';
-    $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: '';
-  } elseif (is_string($img)) {
-    $url = trim($img);
+    if (is_array($img)) {
+      $raw_id = $img['ID'] ?? ($img['id'] ?? 0);
+      $id  = !empty($raw_id) ? (int) $raw_id : 0;
+      $url = !empty($img['url']) ? (string) $img['url'] : '';
+      $alt = !empty($img['alt']) ? (string) $img['alt'] : '';
+    } elseif (is_numeric($img)) {
+      $id  = (int) $img;
+      $url = wp_get_attachment_url($id) ?: '';
+      $alt = get_post_meta($id, '_wp_attachment_image_alt', true) ?: '';
+    } elseif (is_string($img)) {
+      $url = trim($img);
+    }
+
+    if ($id && $url === '') {
+      $url = wp_get_attachment_url($id) ?: '';
+    }
+
+    return [$id, $url, $alt];
   }
-
-  if ($id && $url === '') {
-    $url = wp_get_attachment_url($id) ?: '';
-  }
-
-  return [$id, $url, $alt];
 }
 
 // =====================
@@ -85,8 +91,8 @@ $right_image = $right_col['right_image'] ?? null;
 $logos_image = $content['logos'] ?? null;
 [$logos_id, $logos_url, $logos_alt] = pdx_norm_image($logos_image);
 
-// Logos mobile (TOP LEVEL field in your ACF — do NOT look inside content)
-$logos_mobile_image = get_field('logos_mobile');
+// Logos mobile (INSIDE content group per your ACF JSON)
+$logos_mobile_image = $content['logos_mobile'] ?? null;
 [$logos_mobile_id, $logos_mobile_url, $logos_mobile_alt] = pdx_norm_image($logos_mobile_image);
 
 $has_mobile_logos = ($logos_mobile_id > 0 || $logos_mobile_url !== '');
@@ -96,19 +102,10 @@ $mobile_fallback_id  = $logos_id;
 $mobile_fallback_url = $logos_url;
 
 // =====================
-// DEBUG (HTML comments)
+// OUTPUT
 // =====================
 ?>
 <section id="<?php echo esc_attr($id); ?>" class="pdx-body">
-
-  <!-- PDX_BODY_DEBUG id: <?php echo esc_html($id); ?> -->
-  <!-- PDX_BODY_DEBUG block_name: <?php echo esc_html($block['name'] ?? ''); ?> -->
-  <!-- PDX_BODY_DEBUG has_mobile_logos: <?php echo $has_mobile_logos ? 'true' : 'false'; ?> -->
-  <!-- PDX_BODY_DEBUG logos_desktop_id: <?php echo (int)$logos_id; ?> -->
-  <!-- PDX_BODY_DEBUG logos_desktop_url: <?php echo esc_url($logos_url); ?> -->
-  <!-- PDX_BODY_DEBUG logos_mobile_id: <?php echo (int)$logos_mobile_id; ?> -->
-  <!-- PDX_BODY_DEBUG logos_mobile_url: <?php echo esc_url($logos_mobile_url); ?> -->
-
   <div class="pdx-body__outer">
     <div class="pdx-body__card">
 

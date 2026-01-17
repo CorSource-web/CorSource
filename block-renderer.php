@@ -1,9 +1,16 @@
 <?php
 // Load block parts
 
+add_action('acf/include_fields', 'init_acf_fields', 5);
 add_action('acf/init', 'init_acf_fields');
 function init_acf_fields()
 {
+    static $done = false;
+    if ($done) {
+        return;
+    }
+    $done = true;
+
     // check function exists
     if (function_exists('acf_register_block')) {
 
@@ -701,8 +708,8 @@ function init_acf_fields()
             )
         ));
 
-                    // register source Background Wrapper
-            acf_register_block(array(
+        // register source Background Wrapper
+        acf_register_block(array(
             'name'              => 'pdx-two-column',
             'title'             => __('PDX Two Column'),
             'description'       => __('PDX Two Column'),
@@ -724,56 +731,53 @@ function init_acf_fields()
                 )
             )
         ));
-acf_register_block(array(
-  'name'              => 'background-wrapper',
-  'title'             => __('Background Wrapper'),
-  'description'       => __('Full-width wrapper with background color + InnerBlocks'),
-  'render_callback'   => 'block_renderer',
-  'category'          => 'formatting',
-  'icon'              => 'align-full-width',
-  'align'             => 'full',
-  'supports'          => array(
-    'align' => array('full'),
-    'jsx'   => true,
-  ),
-  'keywords'          => array('background', 'wrapper', 'section'),
-  'example'           => array(
-    'attributes' => array(
-      'mode' => 'preview',
-      'data' => array(
-        'preview_image' => [],
-      )
-    )
-  )
-));
 
+        acf_register_block(array(
+            'name'              => 'background-wrapper',
+            'title'             => __('Background Wrapper'),
+            'description'       => __('Full-width wrapper with background color + InnerBlocks'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'formatting',
+            'icon'              => 'align-full-width',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+                'jsx'   => true,
+            ),
+            'keywords'          => array('background', 'wrapper', 'section'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
 
-
-acf_register_block(array(
-  'name'            => 'pdx-body',
-  'title'           => __('PDX Body'),
-  'description'     => __('PDX Body'),
-  'render_callback' => 'block_renderer',
-  'category'        => 'formatting',
-  'icon'            => 'admin-comments',
-  'align'           => 'full',
-  'keywords'        => array('PDX Body'),
-  'supports'        => array(
-    'align' => array('full'),
-    'mode'  => true,
-    'jsx'   => true,
-  ),
-  'example'         => array(
-    'attributes' => array(
-      'mode' => 'preview',
-      'data' => array(
-        'preview_image' => [],
-      )
-    )
-  )
-));
-
-
+        acf_register_block(array(
+            'name'            => 'pdx-body',
+            'title'           => __('PDX Body'),
+            'description'     => __('PDX Body'),
+            'render_callback' => 'block_renderer',
+            'category'        => 'formatting',
+            'icon'            => 'admin-comments',
+            'align'           => 'full',
+            'keywords'        => array('PDX Body'),
+            'supports'        => array(
+                'align' => array('full'),
+                'mode'  => true,
+                'jsx'   => true,
+            ),
+            'example'         => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
 
         // register source AQ resource center
         acf_register_block(array(

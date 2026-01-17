@@ -148,7 +148,6 @@
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: clamp(22px, 3.2vw, 48px);
-  align-items: start;
   text-align: left;
   margin-bottom: var(--pdx-section-gap);
   align-items: center;
@@ -170,7 +169,7 @@
   line-height: 135.023%;
   letter-spacing: .045rem;
   text-transform: uppercase;
-  color: #d64936;
+  color: #d64936!important;
 
 }
 

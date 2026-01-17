@@ -314,3 +314,8 @@ add_action('admin_footer', function () {
     echo 'console.log("ACF DEBUG: groups matching ' . esc_js($block) . ' =", ' . wp_json_encode($groups) . ');';
     echo '</script>';
 });
+add_filter('acf/settings/load_json', function ($paths) {
+    $paths[] = get_stylesheet_directory() . '/acf-json'; // child (or active theme)
+    $paths[] = get_template_directory()   . '/acf-json'; // parent theme
+    return array_values(array_unique($paths));
+});

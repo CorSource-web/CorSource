@@ -151,6 +151,7 @@
   align-items: start;
   text-align: left;
   margin-bottom: var(--pdx-section-gap);
+  align-items: center;
 }
 
 .pdx-body__left,
@@ -160,14 +161,17 @@
 }
 
 .pdx-body__left-title {
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin: 0 0 12px;
-  font-size: 1.3rem;
-  line-height: 150%;
   color: #1d0800;
   text-align: left;
   margin-bottom: 10px !important;
+    font-size: 1.1rem;
+  font-family: "Inter";
+  font-weight: 700;
+  line-height: 135.023%;
+  letter-spacing: .045rem;
+  text-transform: uppercase;
+  color: #d64936;
+
 }
 
 .pdx-body__left-title + .pdx-body__left-body { margin-top: 0; }

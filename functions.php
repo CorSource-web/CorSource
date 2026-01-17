@@ -294,3 +294,23 @@ add_filter('acf/settings/load_json', function ($paths) {
     $paths[] = get_stylesheet_directory() . '/acf-json';
     return $paths;
 });
+
+
+// TEMP: Debug which ACF field groups match a given ACF block in the editor.
+// Remove after you confirm.
+add_action('admin_footer', function () {
+    if ( ! current_user_can('manage_options') ) return;
+
+    // Only run on post editor screens.
+    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+    if ( ! $screen || $screen->base !== 'post' ) return;
+
+    if ( ! function_exists('acf_get_field_groups') ) return;
+
+    $block = 'acf/pdx-body';
+    $groups = acf_get_field_groups(['block' => $block]);
+
+    echo '<script>';
+    echo 'console.log("ACF DEBUG: groups matching ' . esc_js($block) . ' =", ' . wp_json_encode($groups) . ');';
+    echo '</script>';
+});

@@ -162,6 +162,51 @@ function init_acf_fields()
             )
         ));
 
+
+        acf_register_block(array(
+            'name'              => 'center-image-cta-2026',
+            'title'             => __('2026-Center Image CTA'),
+            'description'       => __('2026 centered image CTA section'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'format-image',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'image', 'cta', 'center'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+        acf_register_block(array(
+        'name'              => 'blue-cta-2026',
+        'title'             => __('2026-Blue CTA'),
+        'description'       => __('2026 blue image CTA section'),
+        'render_callback'   => 'block_renderer',
+        'category'          => 'text',
+        'icon'              => 'align-wide',
+        'align'             => 'full',
+        'supports'          => array(
+            'align' => array('full'),
+        ),
+        'keywords'          => array('2026', 'blue', 'cta', 'image'),
+        'example'           => array(
+            'attributes' => array(
+                'mode' => 'preview',
+                'data' => array(
+                    'preview_image' => [],
+                )
+            )
+        )
+    ));
+
         // register three card row block
         acf_register_block(array(
             'name'              => 'three-card-row',

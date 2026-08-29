@@ -25,78 +25,112 @@ $button_url  = $button['url'] ?? '';
 
                 <div class="testimonial-2026-slider">
 
-                    <?php foreach ($testimonials as $testimonial) :
+                    <div class="testimonial-2026-viewport">
 
-                        $image = $testimonial['image'] ?? '';
-                        $name  = $testimonial['name'] ?? '';
-                        $job   = $testimonial['job'] ?? '';
-                        $icon  = $testimonial['icon'] ?? '';
-                        $quote = $testimonial['quote'] ?? '';
-                    ?>
+                        <div class="testimonial-2026-track">
 
-                        <div class="testimonial-2026-slide">
+                            <?php foreach ($testimonials as $testimonial) :
 
-                            <div class="testimonial-2026-person">
+                                $image = $testimonial['image'] ?? '';
+                                $name  = $testimonial['name'] ?? '';
+                                $job   = $testimonial['job'] ?? '';
+                                $icon  = $testimonial['icon'] ?? '';
+                                $quote = $testimonial['quote'] ?? '';
+                            ?>
 
-                                <?php if ($image) : ?>
-                                    <div class="testimonial-2026-person__image">
-                                        <img
-                                            src="<?php echo esc_url($image); ?>"
-                                            alt="<?php echo esc_attr($name); ?>"
-                                        >
-                                    </div>
-                                <?php endif; ?>
+                                <div
+                                    class="testimonial-2026-slide"
+                                    data-testimonial-slide
+                                >
 
-                                <?php if ($name) : ?>
-                                    <div class="testimonial-2026-person__name">
-                                        <?php echo esc_html($name); ?>
-                                    </div>
-                                <?php endif; ?>
+                                    <div class="testimonial-2026-person">
 
-                                <?php if ($job) : ?>
-                                    <div class="testimonial-2026-person__job">
-                                        <?php echo esc_html($job); ?>
-                                    </div>
-                                <?php endif; ?>
+                                        <?php if ($image) : ?>
+                                            <div class="testimonial-2026-person__image">
+                                                <img
+                                                    src="<?php echo esc_url($image); ?>"
+                                                    alt="<?php echo esc_attr($name); ?>"
+                                                >
+                                            </div>
+                                        <?php endif; ?>
 
-                                <?php if ($icon) : ?>
-                                    <div class="testimonial-2026-person__icon">
-                                        <img
-                                            src="<?php echo esc_url($icon); ?>"
-                                            alt=""
-                                        >
-                                    </div>
-                                <?php endif; ?>
+                                        <?php if ($name) : ?>
+                                            <div class="testimonial-2026-person__name">
+                                                <?php echo esc_html($name); ?>
+                                            </div>
+                                        <?php endif; ?>
 
-                            </div>
+                                        <?php if ($job) : ?>
+                                            <div class="testimonial-2026-person__job">
+                                                <?php echo esc_html($job); ?>
+                                            </div>
+                                        <?php endif; ?>
 
-
-                            <div class="testimonial-2026-content">
-
-                                <?php if ($quote) : ?>
-                                    <div class="testimonial-2026-quote">
-                                        <?php echo wpautop(wp_kses_post($quote)); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if ($button_text && $button_url) : ?>
-                                    <div class="testimonial-2026-button-wrapper">
-
-                                        <a
-                                            href="<?php echo esc_url($button_url); ?>"
-                                            class="btn_red testimonial-2026-button"
-                                        >
-                                            <?php echo esc_html($button_text); ?>
-                                        </a>
+                                        <?php if ($icon) : ?>
+                                            <div class="testimonial-2026-person__icon">
+                                                <img
+                                                    src="<?php echo esc_url($icon); ?>"
+                                                    alt=""
+                                                >
+                                            </div>
+                                        <?php endif; ?>
 
                                     </div>
-                                <?php endif; ?>
 
-                            </div>
+                                    <div class="testimonial-2026-content">
+
+                                        <?php if ($quote) : ?>
+                                            <div class="testimonial-2026-quote">
+                                                <?php echo wpautop(wp_kses_post($quote)); ?>
+                                            </div>
+                                        <?php endif; ?>
+
+                                    </div>
+
+                                </div>
+
+                            <?php endforeach; ?>
 
                         </div>
 
-                    <?php endforeach; ?>
+                    </div>
+
+                    <?php if ($button_text && $button_url) : ?>
+
+                        <div class="testimonial-2026-button-row">
+                            <div class="testimonial-2026-button-wrapper">
+
+                                <a
+                                    href="<?php echo esc_url($button_url); ?>"
+                                    class="btn_red testimonial-2026-button"
+                                >
+                                    <?php echo esc_html($button_text); ?>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    <?php endif; ?>
+
+                    <?php if (count($testimonials) > 1) : ?>
+
+                        <button
+                            type="button"
+                            class="testimonial-2026-arrow testimonial-2026-prev"
+                            aria-label="Previous testimonial"
+                        >
+                            &#10094;&#10094;
+                        </button>
+
+                        <button
+                            type="button"
+                            class="testimonial-2026-arrow testimonial-2026-next"
+                            aria-label="Next testimonial"
+                        >
+                            &#10095;&#10095;
+                        </button>
+
+                    <?php endif; ?>
 
                 </div>
 

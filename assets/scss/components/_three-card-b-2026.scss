@@ -59,7 +59,6 @@
         min-height: 32rem;
         overflow: hidden;
 
-
         &__image {
             aspect-ratio: 4 / 3;
             overflow: hidden;
@@ -111,14 +110,20 @@
     }
 
     @media(max-width: $bp-small) {
-        padding: 3.5rem 0;
+        padding: 2rem 0;
+
+        .container {
+            padding: 0 1rem;
+        }
 
         &-inner {
-            padding: 2.5rem 0 3rem;
+            background-color: transparent;
+            padding: 3rem 0 0;
         }
 
         &-heading {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
         }
 
         &-title {
@@ -130,33 +135,43 @@
         }
 
         &-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-top: 1.5rem;
-            max-width: 90%;
+            max-width: 32rem;
         }
 
         &-grid {
+            gap: 1.25rem;
             grid-template-columns: 1fr;
-            max-width: 30rem;
+            max-width: none;
+            width: 100%;
         }
 
         &-card {
+            border: 1px solid rgba(29, 8, 0, 0.2);
             min-height: auto;
+            width: 100%;
+
+            &__image {
+                aspect-ratio: 16 / 10;
+            }
 
             &__content {
-                padding: 1.25rem 1.25rem 1.5rem;
+                padding: 1.25rem 1rem 1.35rem;
             }
 
             &__title {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
+                margin-bottom: 0.6rem;
             }
 
             &__subtitle {
                 font-size: 1rem;
+                line-height: 1.35;
             }
 
             &__button-wrapper {
-                margin-top: 1.5rem;
+                margin-top: 1.25rem;
                 padding-top: 0;
             }
         }

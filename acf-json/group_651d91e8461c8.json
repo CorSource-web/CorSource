@@ -43,14 +43,59 @@
             "append": ""
         },
         {
+            "key": "field_6a926710e368f",
+            "label": "Resource Type",
+            "name": "resource_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "read": "Read",
+                "watch": "Watch",
+                "download": "Download"
+            },
+            "default_value": "read",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_651d945ddd240",
-            "label": "Reading Time",
+            "label": "Time (Minutes)",
             "name": "reading_time",
             "aria-label": "",
             "type": "number",
             "instructions": "Number (in minutes) of reading time",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a926710e368f",
+                        "operator": "==",
+                        "value": "read"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6a926710e368f",
+                        "operator": "==",
+                        "value": "watch"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -59,6 +104,7 @@
             "default_value": "",
             "min": "",
             "max": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "step": "",
             "prepend": "",
@@ -109,5 +155,8 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1706548103
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1787979966
 }

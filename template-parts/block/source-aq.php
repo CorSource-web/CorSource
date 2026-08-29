@@ -106,7 +106,20 @@ $search = get_query_var('search') ? get_query_var('search') : '';
                             <div class="resources__card-content">
                                 <h5><?php the_title(); ?></h5>
                                 <div class="desc"><?php the_field('short_description', get_the_ID()); ?></div>
-                                <button class="btn_red"><?php the_field('reading_time', get_the_ID()); ?> MIN READ</button>
+                                <?php
+                                    $resource_type = get_field('resource_type', get_the_ID()) ?: 'read';
+                                    $reading_time  = get_field('reading_time', get_the_ID());
+
+                                    if ($resource_type === 'download') {
+                                        $button_text = 'DOWNLOAD';
+                                    } elseif ($resource_type === 'watch') {
+                                        $button_text = $reading_time . ' MIN WATCH';
+                                    } else {
+                                        $button_text = $reading_time . ' MIN READ';
+                                    }
+                                    ?>
+
+                                    <span class="btn_red"><?php echo esc_html($button_text); ?></span>
                             </div>
                         </a>
                     <?php endwhile; ?>

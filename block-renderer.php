@@ -38,6 +38,130 @@ function init_acf_fields()
 
         ));
 
+
+
+
+
+        acf_register_block(array(
+            'name'              => 'hero-2026',
+            'title'             => __('2026-Hero'),
+            'description'       => __('2026 reusable image hero'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'cover-image',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'hero'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+        // register 2026 text centered block
+        acf_register_block(array(
+            'name'              => 'text-centered-2026',
+            'title'             => __('2026 Text Centered'),
+            'description'       => __('2026 centered text section'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'editor-aligncenter',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'text', 'centered'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+
+
+                // register 2026 3 Card A block
+        acf_register_block(array(
+            'name'              => 'three-card-a-2026',
+            'title'             => __('2026-3-Card-A'),
+            'description'       => __('2026 three card section with icons'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'columns',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'three', 'cards'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+        // register 2026 3 Card B block
+        acf_register_block(array(
+            'name'              => 'three-card-b-2026',
+            'title'             => __('2026-3-Card-B'),
+            'description'       => __('2026 three card image section'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'columns',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'three', 'cards', 'images'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+        // register 2026 testimonial block
+        acf_register_block(array(
+            'name'              => 'testimonial-2026',
+            'title'             => __('2026-Testimonial'),
+            'description'       => __('2026 testimonial slider'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'format-quote',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'testimonial', 'slider'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
         // register three card row block
         acf_register_block(array(
             'name'              => 'three-card-row',

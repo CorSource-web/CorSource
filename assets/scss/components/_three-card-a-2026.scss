@@ -1,0 +1,125 @@
+.three-card-a-2026 {
+    padding: 2rem 0;
+
+    .container {
+        width: 100%;
+    }
+
+    &-inner {
+        background-color: $color-white;
+        padding: 4.5rem 4rem 5rem;
+    }
+
+    &-heading {
+        margin: 0 auto 4rem;
+        text-align: center;
+    }
+
+    &-title {
+        color: $color-licorice;
+        font-family: $header;
+        font-size: 2.5rem;
+        font-weight: 400;
+        line-height: 1.15;
+        margin: 0;
+    }
+
+    &-blue-title {
+        color: $color-blue;
+        font-family: $header;
+        font-size: 2.85rem;
+        font-weight: 400;
+        line-height: 1.1;
+        margin-top: 0.15rem;
+    }
+
+&-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+    max-width: 64rem; 
+}
+
+    &-card {
+        background-color: $color-linen;
+        border-radius: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 27rem;
+        padding: 2rem 1.5rem 2.5rem;
+
+        &__icon {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            min-height: 13rem;
+            margin-bottom: 2rem;
+
+            img {
+                display: block;
+                height: auto;
+                max-height: 12.5rem;
+                max-width: 13rem;
+                width: auto;
+            }
+        }
+
+        &__title {
+            color: $color-licorice;
+            font-family: $header;
+            font-size: 1.3rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin: 0 0 1rem;
+        }
+
+        &__subtitle {
+            color: $color-licorice;
+            font-family: $body;
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.35;
+            margin: 0;
+        }
+    }
+
+    @media(max-width: $bp-small) {
+        padding: 1.5rem 0;
+
+        &-inner {
+            padding: 3rem 1.25rem;
+        }
+
+        &-heading {
+            margin-bottom: 2.5rem;
+        }
+
+        &-title {
+            font-size: 2rem;
+        }
+
+        &-blue-title {
+            font-size: 2.25rem;
+        }
+
+        &-grid {
+            grid-template-columns: 1fr;
+            max-width: 30rem;
+        }
+
+        &-card {
+            min-height: auto;
+
+            &__icon {
+                min-height: auto;
+                margin-bottom: 1.5rem;
+
+                img {
+                    max-height: 9.5rem;
+                    max-width: 10rem;
+                }
+            }
+        }
+    }
+}

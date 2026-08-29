@@ -14,3 +14,4 @@ import './info-cards';
 import './contact-navigation-modal';
 import './leadership';
 import './echojobs-footer';
+import './testimonial-2026';

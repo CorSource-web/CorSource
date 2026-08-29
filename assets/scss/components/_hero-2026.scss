@@ -1,0 +1,95 @@
+.hero-2026 {
+    background-position: center 42%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 54rem;
+    position: relative;
+    width: 100%;
+
+    @media(max-width: $bp-small) {
+        min-height: 40rem;
+    }
+
+    &-overlay {
+        background-color: rgba(255, 255, 255, 0.78);
+        bottom: 0;
+        left: 0;
+        min-height: 35%;
+        position: absolute;
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+
+        padding: 2.25rem 0;
+
+        @media(max-width: $bp-small) {
+            min-height: 46%;
+            padding: 1.75rem 0;
+        }
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    &-content {
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    &-title {
+        color: $color-licorice;
+        font-family: $header;
+        font-size: 3.2rem;
+        font-weight: 400;
+        line-height: 1.08;
+        margin: 0 auto;
+        max-width: 62rem;
+
+        &__line {
+            display: block;
+        }
+
+        @media(max-width: $bp-small) {
+            font-size: 2.25rem;
+            max-width: 90%;
+        }
+    }
+
+&-subtitle {
+    color: $color-licorice;
+    font-family: $body;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.45;
+    margin: 1.25rem auto 0;
+    max-width: 62rem;
+
+    @media(max-width: $bp-small) {
+        font-size: 1.2rem;
+        max-width: 90%;
+    }
+
+    &__main {
+        display: inline;
+    }
+
+    &__highlight {
+        color: $color-blue;
+        display: inline;
+        white-space: nowrap;
+    }
+}
+
+    &-button-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.75rem;
+    }
+
+    &-button {
+        @extend .btn_red;
+    }
+}

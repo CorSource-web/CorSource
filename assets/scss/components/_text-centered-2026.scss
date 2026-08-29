@@ -1,0 +1,37 @@
+.text-centered-2026 {
+    display: flex;
+    align-items: center;
+    min-height: 24rem;
+    width: 100%;
+
+    .container {
+        width: 100%;
+    }
+
+    &-content {
+        margin: 0 auto;
+        max-width: 62rem;
+        text-align: center;
+
+        p {
+            color: $color-licorice;
+            font-family: $body;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.45;
+            margin: 0;
+        }
+    }
+
+    @media(max-width: $bp-small) {
+        min-height: 18rem;
+
+        &-content {
+            max-width: 90%;
+
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}

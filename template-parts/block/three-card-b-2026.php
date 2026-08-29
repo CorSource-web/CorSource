@@ -44,7 +44,6 @@ $cards      = get_field('cards');
                 </div>
             <?php endif; ?>
 
-
             <?php if ($cards) : ?>
                 <div class="three-card-b-2026-grid">
 
@@ -62,7 +61,14 @@ $cards      = get_field('cards');
                         $image_alt = $image['alt'] ?? $card_title;
                     ?>
 
-                        <article class="three-card-b-2026-card">
+                        <?php if ($button_url) : ?>
+                            <a
+                                href="<?php echo esc_url($button_url); ?>"
+                                class="three-card-b-2026-card"
+                            >
+                        <?php else : ?>
+                            <article class="three-card-b-2026-card">
+                        <?php endif; ?>
 
                             <?php if ($image_url) : ?>
                                 <div class="three-card-b-2026-card__image">
@@ -87,22 +93,21 @@ $cards      = get_field('cards');
                                     </p>
                                 <?php endif; ?>
 
-                                <?php if ($button_text && $button_url) : ?>
+                                <?php if ($button_text) : ?>
                                     <div class="three-card-b-2026-card__button-wrapper">
-
-                                        <a
-                                            href="<?php echo esc_url($button_url); ?>"
-                                            class="btn_red three-card-b-2026-card__button"
-                                        >
+                                        <span class="btn_red three-card-b-2026-card__button">
                                             <?php echo esc_html($button_text); ?>
-                                        </a>
-
+                                        </span>
                                     </div>
                                 <?php endif; ?>
 
                             </div>
 
-                        </article>
+                        <?php if ($button_url) : ?>
+                            </a>
+                        <?php else : ?>
+                            </article>
+                        <?php endif; ?>
 
                     <?php endforeach; ?>
 

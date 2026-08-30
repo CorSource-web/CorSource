@@ -128,7 +128,7 @@
 	<div class="background-color-band" style="background-color: <?php the_field('header_background_color') ?>">
 		<div class="navigation-menu-wrapper">
 			<a class="nav-icon" href="<?php echo site_url('/'); ?>">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/navigation/logo.svg" />
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/navigation/logo-2026.svg" />
 			</a>
 			<?php
 			wp_nav_menu(array(
@@ -148,7 +148,7 @@
 		<div class="mobile-container">
 			<div class="hamburger-and-image-wrapper">
 				<a href="<?php echo site_url('/'); ?>">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/navigation/logo.svg" />
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/navigation/logo-2026.svg" />
 				</a>
 				<div id="myBtn" class="hamburger">
 					<span></span>

@@ -18,37 +18,49 @@
     &-title {
         color: $color-licorice;
         font-family: $header;
-        font-size: 2.8rem;
+        font-size: 3.3rem;
         font-weight: 400;
         line-height: 1.15;
         margin: 0;
+
+        @media(max-width: 800px) {
+            font-size: 2.7rem;
+        }
     }
 
     &-blue-title {
         color: $color-blue;
         font-family: $header;
-        font-size: 3.1rem;
+        font-size: 3.7rem;
         font-weight: 400;
         line-height: 1.1;
         margin: 0.15rem 0 0;
+
+        @media(max-width: 800px) {
+            font-size: 3rem;
+        }
     }
 
     &-subtitle {
         color: $color-licorice;
         font-family: $body;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: 400;
         line-height: 1.4;
         margin: 2.5rem auto 0;
         max-width: 56rem;
+
+        @media(max-width: 800px) {
+            font-size: 1.5rem;
+        }
     }
 
     &-grid {
         display: grid;
-        gap: 1rem;
+        gap: 1.25rem;
         grid-template-columns: repeat(3, 1fr);
         margin: 0 auto;
-        max-width: 68rem;
+        max-width: 76rem;
     }
 
     &-card {
@@ -90,19 +102,27 @@
         &__title {
             color: $color-licorice;
             font-family: $header;
-            font-size: 1.3rem;
+            font-size: 1.7rem;
             font-weight: 500;
             line-height: 1.3;
             margin: 0 0 0.75rem;
+
+            @media(max-width: 800px) {
+                font-size: 1.5rem;
+            }
         }
 
         &__subtitle {
             color: $color-licorice;
             font-family: $body;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             font-weight: 400;
             line-height: 1.4;
             margin: 0;
+
+            @media(max-width: 800px) {
+                font-size: 1.3rem;
+            }
         }
 
         &__button-wrapper {
@@ -120,8 +140,15 @@
             background-color: transparent;
             border-color: $color-licorice;
             color: $color-licorice !important;
+            font-size: 1.1rem;
             opacity: 0.5;
+            padding: 0.65rem 1.5rem;
             transition: all 300ms;
+
+            @media(max-width: 800px) {
+                font-size: 1rem;
+                padding: 0.6rem 1.25rem;
+            }
         }
 
         &:hover {
@@ -189,12 +216,12 @@
             }
 
             &__title {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 margin-bottom: 0.6rem;
             }
 
             &__subtitle {
-                font-size: 1rem;
+                font-size: 1.1rem;
                 line-height: 1.35;
             }
 
@@ -206,7 +233,9 @@
             .btn_red {
                 border-color: $color-red;
                 color: $color-red !important;
+                font-size: 1rem;
                 opacity: 1;
+                padding: 0.6rem 1.25rem;
             }
         }
     }

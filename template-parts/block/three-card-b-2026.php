@@ -49,10 +49,11 @@ $cards      = get_field('cards');
 
                     <?php foreach ($cards as $card) :
 
-                        $image         = $card['image'] ?? null;
-                        $card_title    = $card['title'] ?? '';
-                        $card_subtitle = $card['subtitle'] ?? '';
-                        $button        = $card['button'] ?? array();
+                        $image             = $card['image'] ?? null;
+                        $card_title        = $card['title'] ?? '';
+                        $card_title_bottom = $card['title_bottom'] ?? '';
+                        $card_subtitle     = $card['subtitle'] ?? '';
+                        $button            = $card['button'] ?? array();
 
                         $button_text = $button['button_text'] ?? '';
                         $button_url  = $button['url'] ?? '';
@@ -61,14 +62,7 @@ $cards      = get_field('cards');
                         $image_alt = $image['alt'] ?? $card_title;
                     ?>
 
-                        <?php if ($button_url) : ?>
-                            <a
-                                href="<?php echo esc_url($button_url); ?>"
-                                class="three-card-b-2026-card"
-                            >
-                        <?php else : ?>
-                            <article class="three-card-b-2026-card">
-                        <?php endif; ?>
+                        <article class="three-card-b-2026-card">
 
                             <?php if ($image_url) : ?>
                                 <div class="three-card-b-2026-card__image">
@@ -81,9 +75,20 @@ $cards      = get_field('cards');
 
                             <div class="three-card-b-2026-card__content">
 
-                                <?php if ($card_title) : ?>
+                                <?php if ($card_title || $card_title_bottom) : ?>
                                     <h3 class="three-card-b-2026-card__title">
-                                        <?php echo esc_html($card_title); ?>
+
+                                        <span class="three-card-b-2026-card__title-top">
+                                            <?php echo esc_html($card_title); ?>
+                                        </span>
+
+                                        <span class="three-card-b-2026-card__title-bottom">
+                                            <?php echo $card_title_bottom
+                                                ? esc_html($card_title_bottom)
+                                                : '&nbsp;';
+                                            ?>
+                                        </span>
+
                                     </h3>
                                 <?php endif; ?>
 
@@ -93,21 +98,20 @@ $cards      = get_field('cards');
                                     </p>
                                 <?php endif; ?>
 
-                                <?php if ($button_text) : ?>
+                                <?php if ($button_text && $button_url) : ?>
                                     <div class="three-card-b-2026-card__button-wrapper">
-                                        <span class="btn_red three-card-b-2026-card__button">
+                                        <a
+                                            href="<?php echo esc_url($button_url); ?>"
+                                            class="btn_red three-card-b-2026-card__button"
+                                        >
                                             <?php echo esc_html($button_text); ?>
-                                        </span>
+                                        </a>
                                     </div>
                                 <?php endif; ?>
 
                             </div>
 
-                        <?php if ($button_url) : ?>
-                            </a>
-                        <?php else : ?>
-                            </article>
-                        <?php endif; ?>
+                        </article>
 
                     <?php endforeach; ?>
 

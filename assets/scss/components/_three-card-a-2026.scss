@@ -40,13 +40,14 @@
             font-size: 3rem;
         }
     }
-&-grid {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 0 auto;
-    max-width: 76rem;
-}
+
+    &-grid {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0 auto;
+        max-width: 76rem;
+    }
 
     &-card {
         background-color: $color-linen;
@@ -56,21 +57,22 @@
         min-height: 27rem;
         padding: 2rem 1.5rem 2.5rem;
 
-       &__icon {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    min-height: 16rem;
-    margin-bottom: 2rem;
+        &__icon {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            min-height: 16rem;
+            margin-bottom: 2rem;
 
-    img {
-        display: block;
-        height: auto;
-        max-height: 15rem;
-        max-width: 15.5rem;
-        width: auto;
-    }
-}
+            img {
+                display: block;
+                height: auto;
+                max-height: 12rem;
+                max-width: 12.4rem;
+                width: auto;
+            }
+        }
+
         &__title {
             color: $color-licorice;
             font-family: $header;
@@ -127,12 +129,12 @@
             min-height: auto;
 
             &__icon {
-                min-height: auto;
-                margin-bottom: 1.5rem;
+                min-height: 16rem;
+                margin-bottom: 2rem;
 
                 img {
-                    max-height: 9.5rem;
-                    max-width: 10rem;
+                    max-height: 12rem;
+                    max-width: 12.4rem;
                 }
             }
 

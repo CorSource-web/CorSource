@@ -1,65 +1,124 @@
 <?php
 
 /**
- * Block Name: Three Card Row
- *
- * This is the template that displays the hero block.
+ * Block Name: 2026-3-Card-B
  */
 
-// create id attribute for specific styling
-$id = 'three-card-row-' . $block['id'];
-if (isset($block['data']['preview_image'])) : ?>
-  <img src="<?php echo get_template_directory_uri() . '/assets/images/block-previews/three-card-row.png' ?>" alt="">
-<?php return; endif;
+$id = 'three-card-b-2026-' . $block['id'];
+
+$title      = get_field('title');
+$blue_title = get_field('blue_title');
+$subtitle   = get_field('subtitle');
+$cards      = get_field('cards');
 ?>
 
+<section
+    id="<?php echo esc_attr($id); ?>"
+    class="three-card-b-2026"
+>
+    <div class="container">
 
-<section id="<?php echo $id; ?>" class="three-card-row">
-  <div class="container">
+        <div class="three-card-b-2026-inner">
 
-    <div class="three-card-row__top">
-      <h2 class="title <?php echo is_admin() ? '' : 'reveal-text'?>"><?php the_field('title'); ?></h2>
-      <p class="title <?php echo is_admin() ? '' : 'reveal-text'?>"><?php the_field('subtitle'); ?></p>
+            <?php if ($title || $blue_title || $subtitle) : ?>
+                <div class="three-card-b-2026-heading">
+
+                    <?php if ($title) : ?>
+                        <h2 class="three-card-b-2026-title">
+                            <?php echo esc_html($title); ?>
+                        </h2>
+                    <?php endif; ?>
+
+                    <?php if ($blue_title) : ?>
+                        <div class="three-card-b-2026-blue-title">
+                            <?php echo esc_html($blue_title); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($subtitle) : ?>
+                        <p class="three-card-b-2026-subtitle">
+                            <?php echo esc_html($subtitle); ?>
+                        </p>
+                    <?php endif; ?>
+
+                </div>
+            <?php endif; ?>
+
+            <?php if ($cards) : ?>
+                <div class="three-card-b-2026-grid">
+
+                    <?php foreach ($cards as $card) :
+
+                        $image             = $card['image'] ?? null;
+                        $card_title        = $card['title'] ?? '';
+                        $card_title_bottom = $card['title_bottom'] ?? '';
+                        $card_subtitle     = $card['subtitle'] ?? '';
+                        $button            = $card['button'] ?? array();
+
+                        $button_text = $button['button_text'] ?? '';
+                        $button_url  = $button['url'] ?? '';
+
+                        $image_url = $image['url'] ?? '';
+                        $image_alt = $image['alt'] ?? $card_title;
+                    ?>
+
+                        <article class="three-card-b-2026-card">
+
+                            <?php if ($image_url) : ?>
+                                <div class="three-card-b-2026-card__image">
+                                    <img
+                                        src="<?php echo esc_url($image_url); ?>"
+                                        alt="<?php echo esc_attr($image_alt); ?>"
+                                    >
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="three-card-b-2026-card__content">
+
+                                <?php if ($card_title || $card_title_bottom) : ?>
+                                    <h3 class="three-card-b-2026-card__title">
+
+                                        <span class="three-card-b-2026-card__title-top">
+                                            <?php echo esc_html($card_title); ?>
+                                        </span>
+
+                                        <span class="three-card-b-2026-card__title-bottom">
+                                            <?php echo $card_title_bottom
+                                                ? esc_html($card_title_bottom)
+                                                : '&nbsp;';
+                                            ?>
+                                        </span>
+
+                                    </h3>
+                                <?php endif; ?>
+
+                                <?php if ($card_subtitle) : ?>
+                                    <p class="three-card-b-2026-card__subtitle">
+                                        <?php echo esc_html($card_subtitle); ?>
+                                    </p>
+                                <?php endif; ?>
+
+                                <?php if ($button_text && $button_url) : ?>
+                                    <div class="three-card-b-2026-card__button-wrapper">
+                                        <a
+                                            href="<?php echo esc_url($button_url); ?>"
+                                            class="btn_red three-card-b-2026-card__button"
+                                        >
+                                            <?php echo esc_html($button_text); ?>
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+
+                            </div>
+
+                        </article>
+
+                    <?php endforeach; ?>
+
+                </div>
+            <?php endif; ?>
+
+        </div>
+
     </div>
-    <div class="cards-wrapper">
-
-
-      <?php if( have_rows('card') ): ?>
-      <?php while( have_rows('card') ): the_row();
-
-        // Get sub field values.
-        $title = get_sub_field('title');
-        $copy = get_sub_field('copy');
-        $image = get_sub_field('image');
-        $background_color = get_sub_field('card_background_color');
-
-        ?>
-          <div class="three-card-row__card">
-            <div class="three-card-row__card__top" style="background-color: <?php the_field('card_background_color'); ?>">
-              <img src="<?php echo $image ?>"/>
-            </div>
-            <div class="three-card-row__card__bottom" style="background-color: <?php the_field('card_background_color'); ?>">
-              <h5><?php echo $title ; ?></h5>
-              <p class="minor"><?php echo $copy ; ?></p>
-            </div>
-          </div>
-        <?php endwhile; ?>
-        <?php endif; ?>
-      </div>
-      <?php
-        if( get_field('is_button') ) {
-          ?>
-      <?php
-        $button = get_field('button');
-      ?>
-      <div class="btn-wrapper">
-        <a class="btn_red" href="<?php echo esc_url( $button['url'] ); ?>"><?php echo esc_html( $button['text'] ); ?></a>
-      </div>
-        <?php
-
-        }
-      ?>
-
-    </div>
-  </div>
 </section>

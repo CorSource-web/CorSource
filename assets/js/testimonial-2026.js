@@ -1,5 +1,7 @@
 class Testimonial2026 {
     constructor(slider) {
+        console.log('[Testimonial2026] constructor', slider);
+
         this.slider = slider;
         this.track = slider.querySelector('.testimonial-2026-track');
 
@@ -16,7 +18,15 @@ class Testimonial2026 {
     }
 
     init() {
+        console.log('[Testimonial2026] init', {
+            track: this.track,
+            slides: this.slides.length,
+            prev: this.prev,
+            next: this.next
+        });
+
         if (!this.track || !this.slides.length) {
+            console.warn('[Testimonial2026] missing track or slides');
             return;
         }
 
@@ -28,6 +38,8 @@ class Testimonial2026 {
 
         if (this.prev) {
             this.prev.addEventListener('click', () => {
+                console.log('[Testimonial2026] prev clicked');
+
                 this.current--;
 
                 if (this.current < 0) {
@@ -40,6 +52,8 @@ class Testimonial2026 {
 
         if (this.next) {
             this.next.addEventListener('click', () => {
+                console.log('[Testimonial2026] next clicked');
+
                 this.current++;
 
                 if (this.current >= this.slides.length) {
@@ -52,6 +66,8 @@ class Testimonial2026 {
     }
 
     updateSlider() {
+        console.log('[Testimonial2026] update', this.current);
+
         this.track.style.transform =
             `translate3d(-${this.current * 100}%, 0, 0)`;
 
@@ -65,7 +81,11 @@ class Testimonial2026 {
 }
 
 const initTestimonial2026 = () => {
+    console.log('[Testimonial2026] script loaded');
+
     const sliders = document.querySelectorAll('.testimonial-2026-slider');
+
+    console.log('[Testimonial2026] sliders found:', sliders.length);
 
     sliders.forEach((slider) => {
         if (slider.dataset.sliderInitialized) {

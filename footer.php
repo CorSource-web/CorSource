@@ -7,7 +7,7 @@
 			<div class="footer-wrapper__top">
 				<div class="left">
 					<h4>
-						We’re a <span class="red">technology consulting firm</span> that supplies strategic consultants, subject matter experts, and agile project teams to harness the power of both <span class="red">people</span> and <span class="red">technology</span>.
+						We help business and technology leaders navigate inflection points with expertise, leadership, and hands-on support to drive outcomes that stick.
 					</h4>
 				</div>
 				<div class="right">

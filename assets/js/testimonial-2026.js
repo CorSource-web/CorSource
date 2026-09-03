@@ -71,6 +71,11 @@ class Testimonial2026 {
         this.track.style.transform =
             `translate3d(-${this.current * 100}%, 0, 0)`;
 
+        console.log(
+            '[Testimonial2026] transform:',
+            this.track.style.transform
+        );
+
         this.slides.forEach((slide, index) => {
             slide.setAttribute(
                 'aria-hidden',
@@ -81,6 +86,11 @@ class Testimonial2026 {
 }
 
 const initTestimonial2026 = () => {
+    console.log(
+        '%cJOHN — DO YOU SEE ME? TESTIMONIAL JS IS LOADED.',
+        'font-size: 20px; font-weight: bold;'
+    );
+
     console.log('[Testimonial2026] script loaded');
 
     const sliders = document.querySelectorAll('.testimonial-2026-slider');
@@ -89,6 +99,7 @@ const initTestimonial2026 = () => {
 
     sliders.forEach((slider) => {
         if (slider.dataset.sliderInitialized) {
+            console.log('[Testimonial2026] already initialized', slider);
             return;
         }
 

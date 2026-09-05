@@ -8,6 +8,11 @@
     &-inner {
         background-color: $color-white;
         padding: 6rem 0 7rem;
+
+        @media(min-width: 1500px) {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
     }
 
     &-heading {
@@ -48,7 +53,7 @@
         font-weight: 400;
         line-height: 1.4;
         margin: 2.5rem auto 0;
-        max-width: 56rem;
+        max-width: 59rem;
 
         @media(max-width: 800px) {
             font-size: 1.5rem;
@@ -98,6 +103,7 @@
             font-weight: 500;
             line-height: 1.3;
             margin: 0 0 0.75rem;
+            text-align: center;
 
             &-top,
             &-bottom {

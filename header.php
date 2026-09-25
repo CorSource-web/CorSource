@@ -110,6 +110,21 @@
 			a.appendChild(r);
 		})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
 	</script>
+
+
+    <!-- Bullhorn Website Tracking -->
+    <script type="text/javascript">
+        window.hfAccountId = "86334adf-d521-4848-a5ca-83dcbb0f8930";
+        window.hfDomain = "https://api.herefish.com";
+        (function() {
+            var hf = document.createElement('script'); hf.type = 'text/javascript'; hf.async = true;
+            hf.src = window.hfDomain + '/scripts/hf.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hf, s);
+        })();
+    </script>
+    <!-- End Bullhorn Website Tracking -->
+
+
 	<!-- END Tracking scripts -->
 
 	<?php wp_head(); ?>

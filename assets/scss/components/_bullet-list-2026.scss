@@ -30,7 +30,7 @@
     &__item {
         display: grid;
         grid-template-columns: 8.5rem minmax(0, 1fr);
-        align-items: start;
+        align-items: center;
         column-gap: 3.5rem;
     }
 

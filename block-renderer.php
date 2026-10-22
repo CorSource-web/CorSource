@@ -67,6 +67,21 @@ function init_acf_fields()
 
 
 
+        acf_register_block_type([
+            'name'            => 'industry-focus-2026',
+            'title'           => __('2026 Industry Focus'),
+            'description'     => __('Industry focus section with image and two content columns.'),
+            'render_template' => 'template-parts/block/industry-focus-2026.php',
+            'category'        => 'formatting',
+            'icon'            => 'columns',
+            'keywords'        => ['industry', 'focus', 'content'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align' => false,
+            ],
+        ]);
+
+
         // register 2026 3 Card C block
         acf_register_block(array(
             'name'              => 'three-card-c-2026',

@@ -1,0 +1,215 @@
+.bullet-list-2026 {
+    width: 100%;
+    background-color: $color-linen;
+    padding: 5rem 0 6rem;
+
+    // Global container consistency.
+    .container {
+        width: 90%;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    &__inner {
+        width: 100%;
+    }
+
+    // Keep the list itself narrower than the full container.
+    &__items {
+        width: 100%;
+        max-width: 1050px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3.5rem;
+    }
+
+    // Individual bullet row.
+    &__item {
+        display: grid;
+        grid-template-columns: 8.5rem minmax(0, 1fr);
+        align-items: start;
+        column-gap: 3.5rem;
+    }
+
+    // Dark gray circular marker.
+    &__marker {
+        width: 8.5rem;
+        height: 8.5rem;
+        border-radius: 50%;
+        background-color: #565e68;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+        box-sizing: border-box;
+        padding: 0.75rem;
+    }
+
+    &__marker-text {
+        color: $color-white;
+        font-family: $header;
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.1;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    // Right content column.
+    &__content {
+        min-width: 0;
+    }
+
+    &__heading {
+        color: $color-blue;
+        font-family: $header;
+        font-size: 1.8rem;
+        font-weight: 600;
+        line-height: 1.25;
+        margin: 0 0 0.75rem;
+    }
+
+    &__body {
+        color: $color-licorice;
+        font-family: $body;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.5;
+
+        p,
+        li {
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        p {
+            margin: 0 0 1.5rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong,
+        b {
+            font-weight: 700;
+        }
+
+        ul,
+        ol {
+            margin: 0 0 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            list-style-type: disc;
+        }
+
+        ol li {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+        }
+
+        a {
+            color: $color-blue;
+            text-decoration: underline;
+        }
+    }
+
+    // Tablet
+    @media (max-width: 1000px) {
+        padding: 4rem 0;
+
+        &__items {
+            max-width: 900px;
+            gap: 3rem;
+        }
+
+        &__item {
+            grid-template-columns: 7rem minmax(0, 1fr);
+            column-gap: 2.5rem;
+        }
+
+        &__marker {
+            width: 7rem;
+            height: 7rem;
+        }
+
+        &__marker-text {
+            font-size: 1.7rem;
+        }
+
+        &__heading {
+            font-size: 1.6rem;
+        }
+
+        &__body {
+            font-size: 1.2rem;
+        }
+    }
+
+    // Mobile
+    @media (max-width: $bp-small) {
+        padding: 3rem 0;
+
+        &__items {
+            gap: 2.5rem;
+        }
+
+        &__item {
+            grid-template-columns: 5rem minmax(0, 1fr);
+            column-gap: 1.25rem;
+        }
+
+        &__marker {
+            width: 5rem;
+            height: 5rem;
+            padding: 0.4rem;
+        }
+
+        &__marker-text {
+            font-size: 1.15rem;
+        }
+
+        &__heading {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        &__body {
+            font-size: 1.1rem;
+            line-height: 1.5;
+
+            p {
+                margin-bottom: 1.25rem;
+            }
+        }
+    }
+
+    // Very narrow screens.
+    @media (max-width: 420px) {
+        &__item {
+            grid-template-columns: 4.25rem minmax(0, 1fr);
+            column-gap: 1rem;
+        }
+
+        &__marker {
+            width: 4.25rem;
+            height: 4.25rem;
+        }
+
+        &__marker-text {
+            font-size: 1rem;
+        }
+    }
+}

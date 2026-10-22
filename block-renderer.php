@@ -65,7 +65,19 @@ function init_acf_fields()
         ));
 
 
-
+        acf_register_block_type([
+            'name'            => 'bullet-list-2026',
+            'title'           => __('2026 Bullet List'),
+            'description'     => __('Repeating circular labels with headings and formatted content.'),
+            'render_template' => 'template-parts/block/bullet-list-2026.php',
+            'category'        => 'formatting',
+            'icon'            => 'editor-ul',
+            'keywords'        => ['bullet', 'list', 'circle', 'content'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align' => false,
+            ],
+        ]);
 
         acf_register_block_type([
             'name'            => 'industry-focus-2026',

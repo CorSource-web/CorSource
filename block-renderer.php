@@ -65,6 +65,24 @@ function init_acf_fields()
         ));
 
 
+
+
+        // register 2026 Blue Info Band
+        acf_register_block(array(
+            'name'              => 'blue-info-band-2026',
+            'title'             => __('2026 Blue Info Band'),
+            'description'       => __('2026 full-width blue information band'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'align-wide',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'blue', 'info', 'band'),
+        ));
+
+
         // register 2026 text centered block
         acf_register_block(array(
             'name'              => 'text-centered-2026',

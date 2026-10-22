@@ -24,6 +24,27 @@
             "new_lines": ""
         },
         {
+            "key": "field_6ada7c5bab5f4",
+            "label": "Subtitle",
+            "name": "subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_6ada4a499c3dd",
             "label": "Cards",
             "name": "cards",
@@ -181,5 +202,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792691032
+    "modified": 1792703595
 }

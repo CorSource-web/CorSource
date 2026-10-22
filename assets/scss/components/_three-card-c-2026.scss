@@ -1,15 +1,14 @@
-
 .three-card-c-2026 {
     background-color: $color-linen;
     padding: 5rem 0 4rem;
 
-    // Constrain the section to the site's content width.
+    // Match the site's global content container.
     .container {
         width: 90%;
         max-width: 1500px;
         margin: 0 auto;
         padding: 0;
-    box-sizing: border-box;
+        box-sizing: border-box;
     }
 
     &-inner {
@@ -35,8 +34,19 @@
         margin: 0 auto;
     }
 
+    // Optional blue subtitle beneath the heading.
+    &-subtitle {
+        color: $color-blue;
+        font-family: $body;
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1.35;
+        max-width: 55rem;
+        margin: 1.5rem auto 0;
+        text-align: center;
+    }
+
     // White panel constrained to the content container.
-    // Cards remain evenly spaced inside.
     &-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -119,13 +129,8 @@
     }
 
     // Tablet
-    @media(max-width: 1000px) {
+    @media (max-width: 1000px) {
         padding: 3.5rem 0 3rem;
-
-        .container {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-        }
 
         &-heading {
             margin-bottom: 3rem;
@@ -133,6 +138,10 @@
 
         &-title {
             font-size: 2.7rem;
+        }
+
+        &-subtitle {
+            font-size: 1.5rem;
         }
 
         &-grid {
@@ -161,13 +170,8 @@
     }
 
     // Mobile
-    @media(max-width: $bp-small) {
+    @media (max-width: $bp-small) {
         padding: 3rem 0;
-
-        .container {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
 
         &-heading {
             margin-bottom: 2.5rem;
@@ -176,6 +180,11 @@
 
         &-title {
             font-size: 2rem;
+        }
+
+        &-subtitle {
+            font-size: 1.2rem;
+            margin-top: 1rem;
         }
 
         &-grid {

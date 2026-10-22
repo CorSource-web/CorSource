@@ -1,14 +1,17 @@
-
 <?php
 
 /**
  * Block Name: 2026-3-Card-C
+ *
+ * Three-card section with optional main heading,
+ * blue subtitle, images, descriptions, and buttons.
  */
 
 $id = 'three-card-c-2026-' . $block['id'];
 
-$title = get_field('title');
-$cards = get_field('cards');
+$title    = get_field('title');
+$subtitle = get_field('subtitle');
+$cards    = get_field('cards');
 ?>
 
 <section
@@ -19,11 +22,21 @@ $cards = get_field('cards');
 
         <div class="three-card-c-2026-inner">
 
-            <?php if ($title) : ?>
+            <?php if ($title || $subtitle) : ?>
                 <div class="three-card-c-2026-heading">
-                    <h2 class="three-card-c-2026-title">
-                        <?php echo esc_html($title); ?>
-                    </h2>
+
+                    <?php if ($title) : ?>
+                        <h2 class="three-card-c-2026-title">
+                            <?php echo esc_html($title); ?>
+                        </h2>
+                    <?php endif; ?>
+
+                    <?php if ($subtitle) : ?>
+                        <p class="three-card-c-2026-subtitle">
+                            <?php echo nl2br(esc_html($subtitle)); ?>
+                        </p>
+                    <?php endif; ?>
+
                 </div>
             <?php endif; ?>
 
@@ -34,12 +47,17 @@ $cards = get_field('cards');
 
                         $image       = $card['image'] ?? null;
                         $card_title  = $card['title'] ?? '';
-                        $subtitle    = $card['subtitle'] ?? '';
+                        $card_subtitle = $card['subtitle'] ?? '';
                         $button_text = $card['button_text'] ?? '';
                         $button_url  = $card['button_url'] ?? '';
 
-                        $image_url = is_array($image) ? ($image['url'] ?? '') : '';
-                        $image_alt = is_array($image) ? ($image['alt'] ?? $card_title) : $card_title;
+                        $image_url = is_array($image)
+                            ? ($image['url'] ?? '')
+                            : '';
+
+                        $image_alt = is_array($image)
+                            ? ($image['alt'] ?? $card_title)
+                            : $card_title;
                     ?>
 
                         <article class="three-card-c-2026-card">
@@ -62,9 +80,9 @@ $cards = get_field('cards');
                                     </h3>
                                 <?php endif; ?>
 
-                                <?php if ($subtitle) : ?>
+                                <?php if ($card_subtitle) : ?>
                                     <p class="three-card-c-2026-card__subtitle">
-                                        <?php echo esc_html($subtitle); ?>
+                                        <?php echo esc_html($card_subtitle); ?>
                                     </p>
                                 <?php endif; ?>
 

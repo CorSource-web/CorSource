@@ -79,6 +79,23 @@ function init_acf_fields()
             ],
         ]);
 
+
+
+        acf_register_block_type([
+            'name'            => 'image-two-column-2026',
+            'title'           => __('2026 Image Two Column'),
+            'description'     => __('Wide image with two WYSIWYG content columns.'),
+            'render_template' => 'template-parts/block/image-two-column-2026.php',
+            'category'        => 'formatting',
+            'icon'            => 'columns',
+            'keywords'        => ['image', 'columns', 'content', '2026'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align' => false,
+            ],
+        ]);
+
+
         acf_register_block_type([
             'name'            => 'industry-focus-2026',
             'title'           => __('2026 Industry Focus'),

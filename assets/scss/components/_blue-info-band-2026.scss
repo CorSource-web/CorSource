@@ -1,0 +1,31 @@
+.blue-info-band-2026 {
+    width: 100%;
+    background-color: #0073C6;
+    padding: 40px 0;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &__text {
+        color: #ffffff;
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 1.4;
+        max-width: 650px;
+        margin: 0;
+    }
+
+    @media (max-width: $bp-small) {
+        padding: 32px 0;
+
+        &__text {
+            font-size: 1rem;
+            line-height: 1.5;
+            max-width: 100%;
+        }
+    }
+}

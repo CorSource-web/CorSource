@@ -1,0 +1,213 @@
+.image-content-cta-2026 {
+    background-color: $color-linen;
+    padding: 2.5rem 0 5rem;
+
+    .container {
+        width: 90%;
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    &__panel {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+        align-items: start;
+        gap: 3.5rem;
+
+        background-color: $color-white;
+        padding: 2rem;
+    }
+
+    &__image {
+        width: 100%;
+        min-width: 0;
+        overflow: hidden;
+        border-radius: 12px;
+
+        // Diagonal cut at the top-right corner.
+        clip-path: polygon(
+            0 0,
+            88% 0,
+            100% 15%,
+            100% 100%,
+            0 100%
+        );
+
+        img {
+            display: block;
+            width: 100%;
+            height: 15rem;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &__content {
+        min-width: 0;
+        padding: 0.5rem 0 0.75rem;
+    }
+
+    &__title {
+        color: $color-blue;
+        font-family: $header;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0 0 1.75rem;
+    }
+
+    &__body {
+        color: $color-licorice;
+        font-family: $body;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.5;
+
+        p,
+        li {
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        p {
+            margin: 0 0 1.75rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong,
+        b {
+            font-weight: 700;
+        }
+
+        ul,
+        ol {
+            margin: 0 0 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            list-style-type: disc;
+        }
+
+        ol li {
+            list-style-type: decimal;
+        }
+
+        a {
+            color: $color-blue;
+            text-decoration: underline;
+        }
+    }
+
+    &__button {
+        margin-top: 2rem;
+
+        .btn_red {
+            display: inline-block;
+        }
+    }
+
+    // Optional reversed layout: image on the right.
+    &--right {
+        .image-content-cta-2026__panel {
+            grid-template-columns: minmax(0, 2fr) minmax(0, 0.9fr);
+        }
+
+        .image-content-cta-2026__image {
+            grid-column: 2;
+            grid-row: 1;
+
+            // Mirror the diagonal cut for the left side.
+            clip-path: polygon(
+                12% 0,
+                100% 0,
+                100% 100%,
+                0 100%,
+                0 15%
+            );
+        }
+
+        .image-content-cta-2026__content {
+            grid-column: 1;
+            grid-row: 1;
+        }
+    }
+
+    @media (max-width: 900px) {
+        padding: 2rem 0 3.5rem;
+
+        &__panel {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+        }
+
+        &__image {
+            img {
+                height: 18rem;
+            }
+        }
+
+        &__content {
+            padding: 0;
+        }
+
+        &__title {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        &__body {
+            font-size: 1.2rem;
+        }
+
+        &--right {
+            .image-content-cta-2026__panel {
+                grid-template-columns: 1fr;
+            }
+
+            .image-content-cta-2026__image,
+            .image-content-cta-2026__content {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
+    }
+
+    @media (max-width: $bp-small) {
+        padding: 1.5rem 0 3rem;
+
+        .container {
+            width: 90%;
+        }
+
+        &__panel {
+            gap: 1.5rem;
+            padding: 1.25rem;
+        }
+
+        &__image {
+            img {
+                height: 13rem;
+            }
+        }
+
+        &__title {
+            font-size: 1.75rem;
+        }
+
+        &__body {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        &__button {
+            margin-top: 1.5rem;
+        }
+    }
+}

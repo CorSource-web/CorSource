@@ -95,6 +95,23 @@ function init_acf_fields()
 
 
 
+
+        acf_register_block_type(array(
+            'name'            => 'image-content-cta-2026',
+            'title'           => __('2026 Image Content CTA'),
+            'description'     => __('Image and content panel with CTA button.'),
+            'render_template' => 'template-parts/block/image-content-cta-2026.php',
+            'category'        => 'layout',
+            'icon'            => 'align-pull-left',
+            'keywords'        => array('image', 'content', 'cta', '2026'),
+            'mode'            => 'preview',
+            'supports'        => array(
+                'align' => false,
+            ),
+        ));
+
+
+
         // register 2026 Focus Content block
         acf_register_block(array(
             'name'              => 'focus-content-2026',

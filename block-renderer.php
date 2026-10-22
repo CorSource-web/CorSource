@@ -67,6 +67,32 @@ function init_acf_fields()
 
 
 
+        // register 2026 3 Card C block
+        acf_register_block(array(
+            'name'              => 'three-card-c-2026',
+            'title'             => __('2026-3-Card-C'),
+            'description'       => __('2026 three card photo section with buttons'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'columns',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'three', 'cards', 'photos'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+
+
         // register 2026 Blue Info Band
         acf_register_block(array(
             'name'              => 'blue-info-band-2026',

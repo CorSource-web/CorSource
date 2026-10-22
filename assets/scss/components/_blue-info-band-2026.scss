@@ -1,7 +1,8 @@
+
 .blue-info-band-2026 {
     width: 100%;
     background-color: #0073C6;
-    padding: 40px 0;
+    padding: 60px 0;
 
     &__inner {
         display: flex;
@@ -11,21 +12,25 @@
     }
 
     &__text {
-        color: #ffffff;
-        font-size: 1.125rem;
-        font-weight: 600;
-        line-height: 1.4;
-        max-width: 650px;
-        margin: 0;
+        color: $color-white;
+        font-family: $body;
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1.45;
+        max-width: 53rem;
+        margin: 0 auto;
+
+        @media(max-width: 800px) {
+            font-size: 1.5rem;
+        }
+
+        @media(max-width: $bp-small) {
+            font-size: 1.2rem;
+            max-width: 90%;
+        }
     }
 
-    @media (max-width: $bp-small) {
+    @media(max-width: $bp-small) {
         padding: 32px 0;
-
-        &__text {
-            font-size: 1rem;
-            line-height: 1.5;
-            max-width: 100%;
-        }
     }
 }

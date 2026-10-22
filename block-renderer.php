@@ -93,6 +93,33 @@ function init_acf_fields()
 
 
 
+
+
+        // register 2026 Focus Content block
+        acf_register_block(array(
+            'name'              => 'focus-content-2026',
+            'title'             => __('2026 Focus Content'),
+            'description'       => __('2026 focus content section with masked image and two content columns'),
+            'render_callback'   => 'block_renderer',
+            'category'          => 'text',
+            'icon'              => 'align-wide',
+            'align'             => 'full',
+            'supports'          => array(
+                'align' => array('full'),
+            ),
+            'keywords'          => array('2026', 'focus', 'content', 'services'),
+            'example'           => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'preview_image' => [],
+                    )
+                )
+            )
+        ));
+
+
+
         // register 2026 Blue Info Band
         acf_register_block(array(
             'name'              => 'blue-info-band-2026',

@@ -1,0 +1,327 @@
+.focus-content-2026 {
+    background-color: $color-linen;
+    padding: 4.5rem 0 5rem;
+    width: 100%;
+    position: relative;
+
+    // Match the site's existing container and navigation alignment.
+    > .container {
+        width: 90%;
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    // --------------------------------
+    // Heading
+    // --------------------------------
+
+    &-heading {
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto 3.5rem;
+    }
+
+    &-title {
+        color: $color-licorice;
+        font-family: $header;
+        font-size: 3.8rem;
+        font-weight: 400;
+        line-height: 1.15;
+        margin: 0 0 1rem;
+    }
+
+    &-subtitle {
+        color: $color-blue;
+        font-family: $header;
+        font-size: 2rem;
+        font-weight: 400;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    // --------------------------------
+    // Shaped image
+    // --------------------------------
+
+    &-image {
+        width: 100%;
+        height: 450px;
+        position: relative;
+        overflow: hidden;
+        margin: 0 0 3.5rem;
+
+        // Reuse the existing hero mask.
+        @media (min-width: 1200px) {
+            -webkit-mask-image: url("../images/hero/monitor-hero-mask.svg");
+            mask-image: url("../images/hero/monitor-hero-mask.svg");
+
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    // --------------------------------
+    // Two-column content
+    // --------------------------------
+
+    &-columns {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 5rem;
+        align-items: start;
+        width: 100%;
+        margin: 0;
+    }
+
+    // --------------------------------
+    // Left column
+    // --------------------------------
+
+    &-left {
+        min-width: 0;
+
+        &__section {
+            margin-bottom: 2.5rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__title {
+            color: $color-blue;
+            font-family: $header;
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.25;
+            margin: 0 0 0.75rem;
+        }
+
+        &__content {
+            color: $color-licorice;
+            font-family: $body;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.5;
+
+            p {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                line-height: inherit;
+                margin: 0 0 1rem;
+            }
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+
+            ul,
+            ol {
+                margin: 0 0 1rem;
+                padding-left: 1.4rem;
+            }
+
+            li {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: 400;
+                line-height: 1.5;
+                margin-bottom: 0.35rem;
+                padding-left: 0;
+            }
+
+            ul li {
+                list-style-type: disc;
+            }
+
+            ol li {
+                list-style-type: decimal;
+            }
+
+            strong,
+            b {
+                font-weight: 700;
+            }
+        }
+    }
+
+    // --------------------------------
+    // Right column
+    // --------------------------------
+
+    &-right {
+        background-color: $color-white;
+        padding: 2rem 2.5rem 2.5rem;
+        min-width: 0;
+
+        &__title {
+            color: $color-red;
+            font-family: $header;
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1.25;
+            margin: 0 0 0.75rem;
+        }
+
+        &__subtitle {
+            color: $color-blue;
+            font-family: $header;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.35;
+            margin: 0 0 1.25rem;
+        }
+
+        &__content {
+            color: $color-licorice;
+            font-family: $body;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.5;
+
+            p {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                line-height: inherit;
+                margin: 0 0 1.5rem;
+            }
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+
+            ul,
+            ol {
+                margin: 0 0 2rem;
+                padding-left: 1.4rem;
+            }
+
+            li {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: 400;
+                line-height: 1.5;
+                margin-bottom: 0.35rem;
+                padding-left: 0;
+            }
+
+            ul li {
+                list-style-type: disc;
+            }
+
+            ol li {
+                list-style-type: decimal;
+            }
+
+            strong,
+            b {
+                font-weight: 700;
+            }
+        }
+    }
+
+    // --------------------------------
+    // Tablet
+    // --------------------------------
+
+    @media (max-width: 1100px) {
+        &-columns {
+            gap: 3rem;
+        }
+
+        &-image {
+            height: 380px;
+        }
+
+        &-right {
+            padding: 2rem;
+        }
+    }
+
+    // --------------------------------
+    // Mobile
+    // --------------------------------
+
+    @media (max-width: $bp-small) {
+        padding: 3rem 0;
+
+        > .container {
+            width: 90%;
+        }
+
+        &-heading {
+            margin-bottom: 2rem;
+        }
+
+        &-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+
+        &-subtitle {
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        &-image {
+            height: 260px;
+            margin-bottom: 2.5rem;
+
+            -webkit-mask-image: none;
+            mask-image: none;
+
+            border-radius: 0.5rem;
+        }
+
+        &-columns {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        &-left {
+            &__section {
+                margin-bottom: 2rem;
+            }
+
+            &__title {
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+
+            &__content {
+                font-size: 1.1rem;
+            }
+        }
+
+        &-right {
+            padding: 1.75rem;
+
+            &__title {
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+
+            &__subtitle {
+                font-size: 1.3rem;
+                font-weight: 600;
+            }
+
+            &__content {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

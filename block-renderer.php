@@ -162,6 +162,26 @@ function init_acf_fields()
         ]);
 
 
+
+
+
+        // Register 2026 Our Team
+        acf_register_block_type(array(
+            'name'            => 'our-team-2026',
+            'title'           => __('2026 Our Team'),
+            'description'     => __('Team section with three image and content rows.'),
+            'render_template' => 'template-parts/block/our-team-2026.php',
+            'category'        => 'layout',
+            'icon'            => 'groups',
+            'keywords'        => array('2026', 'team', 'people', 'consultants'),
+            'mode'            => 'preview',
+            'supports'        => array(
+                'align' => false,
+            ),
+        ));
+
+
+
         // register 2026 3 Card C block
         acf_register_block(array(
             'name'              => 'three-card-c-2026',

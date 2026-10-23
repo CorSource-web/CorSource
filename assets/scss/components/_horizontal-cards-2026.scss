@@ -1,0 +1,234 @@
+
+.horizontal-cards-2026 {
+    background-color: $color-linen;
+    padding: 4rem 0;
+
+    // Match the site's global content container.
+    .container {
+        width: 90%;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    &-inner {
+        background-color: $color-white;
+        padding: 3rem 4rem;
+        box-sizing: border-box;
+    }
+
+    &-card {
+        display: grid;
+        grid-template-columns: 30% minmax(0, 1fr);
+        gap: 3rem;
+        align-items: start;
+        padding: 2.5rem 0;
+        border-bottom: 1px solid #cccccc;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        &__image {
+            width: 100%;
+            overflow: hidden;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+                object-position: center;
+                margin: 0;
+            }
+        }
+
+        &__content {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__title {
+            color: $color-blue;
+            font-family: $header;
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin: 0 0 0.5rem;
+        }
+
+        &__subtitle {
+            color: $color-licorice;
+            font-family: $body;
+            font-size: 1.1rem;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.4;
+            margin: 0 0 1.5rem;
+        }
+
+        &__body {
+            color: $color-licorice;
+            font-family: $body;
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            width: 100%;
+
+            p {
+                margin: 0 0 1.25rem;
+            }
+
+            strong,
+            b {
+                font-weight: 700;
+            }
+
+            ul,
+            ol {
+                font-family: inherit;
+                font-size: inherit;
+                line-height: 1.4;
+                margin: 0 0 1.25rem;
+                padding-left: 1.25rem;
+                list-style-position: outside;
+            }
+
+            ul {
+                list-style-type: disc;
+            }
+
+            ol {
+                list-style-type: decimal;
+            }
+
+            ul > li,
+            ol > li {
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                margin: 0 0 0.15rem;
+                padding: 0;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            a {
+                color: $color-blue;
+                text-decoration: underline;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            .make-blue {
+                color: $color-blue;
+            }
+
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__button-wrapper {
+            margin-top: 1.5rem;
+        }
+
+        &__button {
+            font-size: 1rem;
+            padding: 0.5rem 1.3125rem;
+            white-space: nowrap;
+        }
+    }
+
+    // Tablet
+    @media (max-width: 1000px) {
+        padding: 3rem 0;
+
+        &-inner {
+            padding: 2.5rem;
+        }
+
+        &-card {
+            grid-template-columns: 32% minmax(0, 1fr);
+            gap: 2rem;
+            padding: 2rem 0;
+
+            &__title {
+                font-size: 1.9rem;
+            }
+
+            &__subtitle {
+                font-size: 1rem;
+            }
+
+            &__body {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    // Mobile
+    @media (max-width: $bp-small) {
+        padding: 2.5rem 0;
+
+        &-inner {
+            padding: 1.5rem;
+        }
+
+        &-card {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 2rem 0;
+
+            &__image {
+                img {
+                    aspect-ratio: 1.4 / 1;
+                }
+            }
+
+            &__title {
+                font-size: 1.7rem;
+            }
+
+            &__subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.25rem;
+            }
+
+            &__body {
+                font-size: 1rem;
+                line-height: 1.5;
+
+                p {
+                    margin-bottom: 1rem;
+                }
+
+                ul,
+                ol {
+                    margin-bottom: 1rem;
+                }
+            }
+
+            &__button-wrapper {
+                margin-top: 1.25rem;
+            }
+        }
+    }
+}

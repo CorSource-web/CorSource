@@ -182,6 +182,24 @@ function init_acf_fields()
 
 
 
+        acf_register_block_type(array(
+            'name'            => 'horizontal-cards-2026',
+            'title'           => __('2026 Horizontal Cards'),
+            'description'     => __('Repeating horizontal cards with images, WYSIWYG content, and buttons.'),
+            'render_template' => 'template-parts/block/horizontal-cards-2026.php',
+            'category'        => 'formatting',
+            'icon'            => 'align-pull-left',
+            'keywords'        => array('2026', 'horizontal', 'cards'),
+            'mode'            => 'edit',
+            'supports'        => array(
+                'align'  => false,
+                'anchor' => false,
+            ),
+        ));
+
+
+
+
         // Register 2026 Our Team
         acf_register_block_type(array(
             'name'            => 'our-team-2026',

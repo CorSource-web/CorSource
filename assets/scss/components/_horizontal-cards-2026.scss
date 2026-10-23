@@ -4,7 +4,7 @@
     padding: 4rem 0;
 
     // Standard site container.
-    .container {
+    > .container {
         width: 90%;
         max-width: 1500px;
         margin: 0 auto;
@@ -14,9 +14,9 @@
 
     &-inner {
         background-color: $color-white;
-        padding: 3rem 4rem;
-        box-sizing: border-box;
         width: 100%;
+        padding: 3rem;
+        box-sizing: border-box;
     }
 
     &-card {
@@ -163,7 +163,7 @@
         padding: 3rem 0;
 
         &-inner {
-            padding: 2.5rem;
+            padding: 2.5rem 2rem 3rem;
         }
 
         &-card {
@@ -237,20 +237,15 @@
 // -----------------------------------------
 // Background Wrapper compatibility
 // -----------------------------------------
-// The Background Wrapper already constrains
-// its children. Avoid a second 90% container
-// restriction when Horizontal Cards is nested
-// inside it.
+// The Background Wrapper already provides
+// the outer width constraint.
+//
+// Keep the Horizontal Cards white panel
+// full width and remove its linen padding.
+// The inner content uses the same horizontal
+// inset as the 2026 3 Card C grid.
+// -----------------------------------------
 
-.background-wrapper .horizontal-cards-2026 {
-    > .container {
-        width: 100%;
-        max-width: none;
-        margin: 0 auto;
-        padding: 0;
-    }
-}
-// Horizontal Cards inside Background Wrapper
 .background-wrapper .horizontal-cards-2026 {
     background-color: $color-white;
     padding: 0;

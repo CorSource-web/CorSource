@@ -171,6 +171,29 @@
                     "append": ""
                 }
             ]
+        },
+        {
+            "key": "field_6adba8cba1563",
+            "label": "Hero Height",
+            "name": "hero_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Adjust the height of the hero image. Default is 54rem.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 54,
+            "min": 20,
+            "max": 100,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "rem"
         }
     ],
     "location": [
@@ -194,5 +217,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787958586
+    "modified": 1792780653
 }

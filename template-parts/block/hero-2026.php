@@ -6,7 +6,16 @@
 
 $id = 'hero-2026-' . $block['id'];
 
-$background_image   = get_field('background_image');
+$background_image = get_field('background_image');
+
+// Hero height in rem. Defaults to 54.
+$hero_height = get_field('hero_height');
+
+if ($hero_height === '' || $hero_height === null || $hero_height === false) {
+    $hero_height = 54;
+}
+
+$hero_height = max(20, min(100, (float) $hero_height));
 
 $title_line_1       = get_field('title_line_1');
 $title_line_2       = get_field('title_line_2');
@@ -18,14 +27,18 @@ $button             = get_field('button');
 
 $button_text = $button['button_text'] ?? '';
 $button_url  = $button['url'] ?? '';
+
 ?>
 
 <section
     id="<?php echo esc_attr($id); ?>"
     class="hero-2026"
-    <?php if ($background_image) : ?>
-        style="background-image: url('<?php echo esc_url($background_image); ?>');"
-    <?php endif; ?>
+    style="
+        --hero-height: <?php echo esc_attr($hero_height); ?>rem;
+        <?php if ($background_image) : ?>
+            background-image: url('<?php echo esc_url($background_image); ?>');
+        <?php endif; ?>
+    "
 >
 
     <div class="hero-2026-overlay">

@@ -1,29 +1,30 @@
+
 .hero-2026 {
     background-position: center 42%;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 54rem;
+    min-height: var(--hero-height, 54rem);
     position: relative;
     width: 100%;
 
-    @media(max-width: $bp-small) {
+    @media (max-width: $bp-small) {
         min-height: 40rem;
     }
 
-   &-overlay {
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.78);
-    bottom: 0;
-    display: flex;
-    left: 0;
-    padding: 4rem 0 4.25rem;
-    position: absolute;
-    width: 100%;
+    &-overlay {
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.78);
+        bottom: 0;
+        display: flex;
+        left: 0;
+        padding: 4rem 0 4.25rem;
+        position: absolute;
+        width: 100%;
 
-    @media(max-width: $bp-small) {
-        padding: 2rem 0 2.25rem;
+        @media (max-width: $bp-small) {
+            padding: 2rem 0 2.25rem;
+        }
     }
-}
 
     .container {
         width: 100%;
@@ -48,11 +49,11 @@
             display: block;
         }
 
-        @media(max-width: 800px) {
+        @media (max-width: 800px) {
             font-size: 3.2rem;
         }
 
-        @media(max-width: $bp-small) {
+        @media (max-width: $bp-small) {
             font-size: 2.25rem;
             max-width: 90%;
         }
@@ -67,11 +68,11 @@
         margin: 1.25rem auto 0;
         max-width: 62rem;
 
-        @media(max-width: 800px) {
+        @media (max-width: 800px) {
             font-size: 1.5rem;
         }
 
-        @media(max-width: $bp-small) {
+        @media (max-width: $bp-small) {
             font-size: 1.2rem;
             max-width: 90%;
         }
@@ -98,7 +99,7 @@
         font-size: 1.1rem;
         padding: 0.65rem 1.5rem;
 
-        @media(max-width: 800px) {
+        @media (max-width: 800px) {
             font-size: 1rem;
             padding: 0.6rem 1.25rem;
         }

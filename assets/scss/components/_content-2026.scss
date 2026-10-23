@@ -38,7 +38,7 @@
             font-family: $header;
             font-weight: 400;
             line-height: 1.25;
-            margin: 0 0 1.5rem;
+            margin: 0 0 0.75rem;
         }
 
         h2 {
@@ -70,11 +70,23 @@
         ul,
         ol {
             margin: 0 0 1.5rem;
-            padding-left: 2rem;
+            padding-left: 1.25rem;
+            line-height: 1.4;
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.15rem;
+            padding-left: 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            // Prevent nested WYSIWYG paragraphs
+            // from adding extra spacing.
+            p {
+                margin: 0;
+            }
         }
 
         // Links
@@ -157,6 +169,20 @@
             ul,
             ol {
                 margin-bottom: 1.25rem;
+            }
+
+            // Keep list spacing tight on mobile.
+            ul,
+            ol {
+                line-height: 1.4;
+            }
+
+            li {
+                margin-bottom: 0.15rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
     }

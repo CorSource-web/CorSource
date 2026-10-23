@@ -115,6 +115,21 @@ function init_acf_fields()
         ));
 
 
+        // Register 2026 Leadership Grid
+        acf_register_block_type(array(
+            'name'            => 'leadership-grid-2026',
+            'title'           => __('2026 Leadership Grid'),
+            'description'     => __('Leadership portrait grid with centered heading.'),
+            'render_template' => 'template-parts/block/leadership-grid-2026.php',
+            'category'        => 'layout',
+            'icon'            => 'grid-view',
+            'keywords'        => array('2026', 'leadership', 'team', 'portraits'),
+            'mode'            => 'preview',
+            'supports'        => array(
+                'align' => false,
+            ),
+        ));
+
 
 
         acf_register_block_type([

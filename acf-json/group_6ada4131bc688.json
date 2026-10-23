@@ -81,6 +81,29 @@
             },
             "return_format": "array",
             "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6adb8b310d065",
+            "label": "Content Max Width",
+            "name": "content_max_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Optional. Controls the maximum width of the content area in pixels. Lower values create a narrower layout, causing text to wrap onto more lines. Higher values allow content to spread out horizontally. Leave blank to use the standard 1500px width.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 300,
+            "max": 1500,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
         }
     ],
     "location": [
@@ -104,5 +127,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792699716
+    "modified": 1792773097
 }

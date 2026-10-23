@@ -250,3 +250,15 @@
         padding: 0;
     }
 }
+// Horizontal Cards inside Background Wrapper
+.background-wrapper .horizontal-cards-2026 {
+    background-color: $color-white;
+    padding: 0;
+
+    > .container {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 0;
+    }
+}

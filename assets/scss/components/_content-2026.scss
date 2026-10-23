@@ -63,29 +63,57 @@
 
         // Paragraphs
         p {
+            font-family: $body;
+            font-size: inherit;
+            font-weight: 400;
+            line-height: 1.65;
             margin: 0 0 1.5rem;
         }
 
-        // Lists
+        // Lists — same typography as paragraphs,
+        // with tighter spacing between items.
         ul,
         ol {
+            font-family: $body;
+            font-size: inherit;
+            font-weight: 400;
+            line-height: 1.4;
             margin: 0 0 1.5rem;
             padding-left: 1.25rem;
-            line-height: 1.4;
+            list-style-position: outside;
         }
 
-        li {
-            margin-bottom: 0.15rem;
-            padding-left: 0;
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        // Override global theme list item spacing.
+        ul > li,
+        ol > li {
+            font-family: $body;
+            font-size: inherit;
+            font-weight: 400;
+            line-height: inherit;
+            margin: 0 0 0.15rem;
+            padding: 0;
 
             &:last-child {
                 margin-bottom: 0;
             }
 
-            // Prevent nested WYSIWYG paragraphs
-            // from adding extra spacing.
+            // Prevent WYSIWYG paragraphs inside
+            // list items from adding extra spacing.
             p {
+                font-family: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+                line-height: inherit;
                 margin: 0;
+                padding: 0;
             }
         }
 
@@ -171,13 +199,14 @@
                 margin-bottom: 1.25rem;
             }
 
-            // Keep list spacing tight on mobile.
+            // Maintain tight list spacing on mobile.
             ul,
             ol {
                 line-height: 1.4;
             }
 
-            li {
+            ul > li,
+            ol > li {
                 margin-bottom: 0.15rem;
 
                 &:last-child {

@@ -1,3 +1,4 @@
+
 .blue-info-band-2026 {
     width: 100%;
     background-color: #0073C6;
@@ -17,7 +18,9 @@
         font-size: 3rem;
         font-weight: 400;
         line-height: 1.2;
-        margin: 0 0 2.5rem;
+        max-width: 85rem;
+        margin: 0 auto 2.5rem;
+        text-wrap: balance;
     }
 
     &__text {

@@ -99,6 +99,24 @@ function init_acf_fields()
 
 
 
+        acf_register_block_type(array(
+            'name'            => 'three-card-d-2026',
+            'title'           => __('2026 3 Card D'),
+            'description'     => __('Three rounded cards with a heading, supporting text, and bottom CTA.'),
+            'render_template' => 'template-parts/block/three-card-d-2026.php',
+            'category'        => 'layout',
+            'icon'            => 'screenoptions',
+            'keywords'        => array('cards', 'values', 'about'),
+            'mode'            => 'preview',
+            'supports'        => array(
+                'align' => false,
+                'jsx'   => false,
+            ),
+        ));
+
+
+
+
         acf_register_block_type([
             'name'            => 'image-two-column-2026',
             'title'           => __('2026 Image Two Column'),

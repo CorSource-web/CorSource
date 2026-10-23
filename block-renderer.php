@@ -81,6 +81,24 @@ function init_acf_fields()
 
 
 
+
+        acf_register_block_type([
+            'name'            => 'center-image-content-2026',
+            'title'           => __('2026 Center Image Content'),
+            'description'     => __('Centered image with two editable content columns.'),
+            'render_template' => 'template-parts/block/center-image-content-2026.php',
+            'category'        => 'layout',
+            'icon'            => 'columns',
+            'keywords'        => ['image', 'columns', 'content', 'cta'],
+            'mode'            => 'edit',
+            'supports'        => [
+                'align'  => false,
+                'anchor' => true,
+            ],
+        ]);
+
+
+
         acf_register_block_type([
             'name'            => 'image-two-column-2026',
             'title'           => __('2026 Image Two Column'),

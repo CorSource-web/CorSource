@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -9,6 +10,10 @@ $id = 'three-card-a-2026-' . $block['id'];
 $title         = get_field('title');
 $blue_subtitle = get_field('blue_subtitle');
 $cards         = get_field('cards');
+
+// Optional footer fields.
+$footer_content = get_field('footer_content');
+$footer_button  = get_field('footer_button');
 ?>
 
 <section
@@ -76,6 +81,31 @@ $cards         = get_field('cards');
                         </article>
 
                     <?php endforeach; ?>
+
+                </div>
+            <?php endif; ?>
+
+            <?php if ($footer_content || !empty($footer_button['url'])) : ?>
+                <div class="three-card-a-2026-footer">
+
+                    <?php if ($footer_content) : ?>
+                        <div class="three-card-a-2026-footer__content">
+                            <?php echo wp_kses_post($footer_content); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($footer_button['url'])) : ?>
+                        <div class="three-card-a-2026-footer__button">
+                            <a
+                                href="<?php echo esc_url($footer_button['url']); ?>"
+                                target="<?php echo esc_attr($footer_button['target'] ?: '_self'); ?>"
+                                class="btn_red"
+                                <?php echo ($footer_button['target'] ?? '') === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>
+                            >
+                                <?php echo esc_html($footer_button['title'] ?: 'Learn More'); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
 
                 </div>
             <?php endif; ?>

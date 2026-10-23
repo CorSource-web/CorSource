@@ -1,0 +1,163 @@
+
+.content-2026 {
+    background-color: $color-white;
+    padding: 4rem 0;
+
+    // Match the site's global content container.
+    .container {
+        width: 90%;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    // Adjustable content width, centered in the container.
+    &-inner {
+        width: 100%;
+        max-width: var(--content-width, 900px);
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    &-body {
+        color: $color-licorice;
+        font-family: $body;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.65;
+
+        // Headings
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $color-licorice;
+            font-family: $header;
+            font-weight: 400;
+            line-height: 1.25;
+            margin: 0 0 1.5rem;
+        }
+
+        h2 {
+            font-size: 3.3rem;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+        }
+
+        h4 {
+            font-size: 1.8rem;
+        }
+
+        h5 {
+            font-size: 1.5rem;
+        }
+
+        h6 {
+            font-size: 1.3rem;
+        }
+
+        // Paragraphs
+        p {
+            margin: 0 0 1.5rem;
+        }
+
+        // Lists
+        ul,
+        ol {
+            margin: 0 0 1.5rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        // Links
+        a {
+            color: $color-blue;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        // Optional blue text class.
+        .make-blue {
+            color: $color-blue;
+        }
+
+        // Images inserted into the WYSIWYG editor.
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        // Remove extra bottom margin.
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Tablet
+    @media (max-width: 1000px) {
+        padding: 3rem 0;
+
+        &-body {
+            font-size: 1.2rem;
+
+            h2 {
+                font-size: 2.7rem;
+            }
+
+            h3 {
+                font-size: 2.2rem;
+            }
+
+            h4 {
+                font-size: 1.6rem;
+            }
+        }
+    }
+
+    // Mobile
+    @media (max-width: $bp-small) {
+        padding: 2.5rem 0;
+
+        &-body {
+            font-size: 1.1rem;
+            line-height: 1.6;
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+            }
+
+            h4 {
+                font-size: 1.4rem;
+            }
+
+            h5 {
+                font-size: 1.2rem;
+            }
+
+            h6 {
+                font-size: 1.1rem;
+            }
+
+            p,
+            ul,
+            ol {
+                margin-bottom: 1.25rem;
+            }
+        }
+    }
+}

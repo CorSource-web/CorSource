@@ -1,0 +1,72 @@
+{
+    "key": "group_6adbbe82a6dee",
+    "title": "2026 Content",
+    "fields": [
+        {
+            "key": "field_6adbbe82aa626",
+            "label": "Content",
+            "name": "content",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_6adbbea4aa627",
+            "label": "Content Width",
+            "name": "content_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Adjust the maximum width of the content area. Narrower widths create shorter lines and more text wrapping. The content stays centered within the site's standard container. Default is 900px.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 400,
+            "max": 1500,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 10,
+            "prepend": "",
+            "append": "px"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/content-2026"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1792786167
+}

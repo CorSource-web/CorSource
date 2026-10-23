@@ -1,17 +1,9 @@
 
 .three-card-c-2026 {
+    // Default background.
+    // The ACF hex field overrides this through inline CSS.
     background-color: $color-linen;
     padding: 5rem 0 4rem;
-
-    // Selectable section backgrounds.
-    // Linen remains the default.
-    &--linen {
-        background-color: $color-linen;
-    }
-
-    &--white {
-        background-color: $color-white;
-    }
 
     // Match the site's global content container.
     .container {

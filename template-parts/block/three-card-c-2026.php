@@ -6,7 +6,7 @@
  *
  * Three-card section with optional main heading,
  * blue subtitle, images, descriptions, buttons,
- * and selectable section background color.
+ * and customizable background color.
  */
 
 $id = 'three-card-c-2026-' . $block['id'];
@@ -15,15 +15,11 @@ $title    = get_field('title');
 $subtitle = get_field('subtitle');
 $cards    = get_field('cards');
 
-// Section background color.
-// Default to linen to preserve existing designs.
-$background_color = get_field('background_color');
-
-if (!in_array($background_color, array('linen', 'white'), true)) {
-    $background_color = 'linen';
-}
-
-$background_class = 'three-card-c-2026--' . $background_color;
+// Custom background hex color.
+// If empty or invalid, the SCSS default linen is used.
+$background_color = sanitize_hex_color(
+    trim((string) get_field('background_color'))
+);
 
 $additional_class = isset($block['className'])
     ? $block['className']
@@ -33,7 +29,10 @@ $additional_class = isset($block['className'])
 
 <section
     id="<?php echo esc_attr($id); ?>"
-    class="three-card-c-2026 <?php echo esc_attr($background_class); ?> <?php echo esc_attr($additional_class); ?>"
+    class="three-card-c-2026 <?php echo esc_attr($additional_class); ?>"
+    <?php if ($background_color) : ?>
+        style="background-color: <?php echo esc_attr($background_color); ?>;"
+    <?php endif; ?>
 >
     <div class="container">
 

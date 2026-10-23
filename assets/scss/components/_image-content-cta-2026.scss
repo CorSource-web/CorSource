@@ -1,20 +1,40 @@
 .image-content-cta-2026 {
     background-color: $color-linen;
     padding: 2.5rem 0 5rem;
+    width: 100%;
+    box-sizing: border-box;
 
-    .container {
+    // Standard standalone container.
+    // Matches the site's established 90% / 1500px width.
+    > .container {
         width: 90%;
         max-width: 1500px;
         margin: 0 auto;
-    }
-    .background-wrapper & {
-    > .container {
-        width: 100%;
-        max-width: none;
         padding: 0;
+        box-sizing: border-box;
     }
-}
 
+    // BACKGROUND WRAPPER FIX
+    //
+    // The Background Wrapper already contains a .container.
+    // When this block is nested inside it, avoid applying
+    // a second 90% width restriction.
+    //
+    // This allows the white panel to fill the available
+    // width of the Background Wrapper's container.
+    .background-wrapper & {
+        background-color: transparent;
+
+        > .container {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    }
+
+    // Main white panel.
     &__panel {
         display: grid;
         grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
@@ -23,8 +43,14 @@
 
         background-color: $color-white;
         padding: 2rem;
+
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        box-sizing: border-box;
     }
 
+    // Image.
     &__image {
         width: 100%;
         min-width: 0;
@@ -44,16 +70,20 @@
             display: block;
             width: 100%;
             height: 15rem;
+            max-width: none;
             object-fit: cover;
             object-position: center;
+            margin: 0;
         }
     }
 
+    // Right content column.
     &__content {
         min-width: 0;
         padding: 0.5rem 0 0.75rem;
     }
 
+    // Blue heading.
     &__title {
         color: $color-blue;
         font-family: $header;
@@ -63,6 +93,7 @@
         margin: 0 0 1.75rem;
     }
 
+    // WYSIWYG content.
     &__body {
         color: $color-licorice;
         font-family: $body;
@@ -97,6 +128,10 @@
             padding-left: 1.5rem;
         }
 
+        li {
+            margin-bottom: 0.35rem;
+        }
+
         ul li {
             list-style-type: disc;
         }
@@ -111,6 +146,7 @@
         }
     }
 
+    // CTA button.
     &__button {
         margin-top: 2rem;
 
@@ -119,7 +155,7 @@
         }
     }
 
-    // Optional reversed layout: image on the right.
+    // Optional reversed layout: image on right.
     &--right {
         .image-content-cta-2026__panel {
             grid-template-columns: minmax(0, 2fr) minmax(0, 0.9fr);
@@ -129,7 +165,7 @@
             grid-column: 2;
             grid-row: 1;
 
-            // Mirror the diagonal cut for the left side.
+            // Mirror diagonal cut.
             clip-path: polygon(
                 12% 0,
                 100% 0,
@@ -145,6 +181,7 @@
         }
     }
 
+    // Tablet.
     @media (max-width: 900px) {
         padding: 2rem 0 3.5rem;
 
@@ -186,11 +223,22 @@
         }
     }
 
+    // Mobile.
     @media (max-width: $bp-small) {
         padding: 1.5rem 0 3rem;
 
-        .container {
+        // Standalone container stays consistent.
+        > .container {
             width: 90%;
+        }
+
+        // Nested container must still fill its parent.
+        .background-wrapper & {
+            > .container {
+                width: 100%;
+                max-width: none;
+                padding: 0;
+            }
         }
 
         &__panel {

@@ -35,13 +35,15 @@
     &__intro {
         color: $color-licorice;
         font-family: $body;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: 400;
         line-height: 1.5;
 
         p {
+            color: inherit;
             font-family: inherit;
-            font-size: inherit;
+            font-size: 1.5rem;
+            font-weight: inherit;
             line-height: inherit;
             margin: 0 0 1.5rem;
 
@@ -85,7 +87,8 @@
             88% 0,
             100% 22%,
             100% 100%,
-            0 100%
+            0 100%,
+            0 0
         );
 
         margin-bottom: 2.5rem;
@@ -189,7 +192,7 @@
         }
     }
 
-    // Tablet
+    // Tablet.
     @media (max-width: 1000px) {
         padding: 4rem 0;
 
@@ -202,7 +205,11 @@
         }
 
         &__intro {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+
+            p {
+                font-size: 1.4rem;
+            }
         }
 
         &__columns {
@@ -223,7 +230,7 @@
         }
     }
 
-    // Mobile
+    // Mobile.
     @media (max-width: $bp-small) {
         padding: 3rem 0;
 
@@ -237,7 +244,11 @@
         }
 
         &__intro {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+
+            p {
+                font-size: 1.2rem;
+            }
         }
 
         &__columns {

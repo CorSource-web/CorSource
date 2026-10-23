@@ -3,7 +3,7 @@
     background-color: $color-linen;
     padding: 4rem 0;
 
-    // Match the site's global content container.
+    // Standard site container.
     .container {
         width: 90%;
         max-width: 1500px;
@@ -16,6 +16,7 @@
         background-color: $color-white;
         padding: 3rem 4rem;
         box-sizing: border-box;
+        width: 100%;
     }
 
     &-card {
@@ -230,5 +231,22 @@
                 margin-top: 1.25rem;
             }
         }
+    }
+}
+
+// -----------------------------------------
+// Background Wrapper compatibility
+// -----------------------------------------
+// The Background Wrapper already constrains
+// its children. Avoid a second 90% container
+// restriction when Horizontal Cards is nested
+// inside it.
+
+.background-wrapper .horizontal-cards-2026 {
+    > .container {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+        padding: 0;
     }
 }

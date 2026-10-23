@@ -328,3 +328,8 @@ html :where(.is-reusable) :where(.wp-block) {
     width: 90%;
   }
 }
+
+
+.white-background {
+  background-color: $color-white;
+}

@@ -339,3 +339,20 @@ html :where(.is-reusable) :where(.wp-block) {
         background-color: $color-white;
     }
 }
+.page-id-28283 {
+    .animated-text {
+        margin-bottom: 0;
+
+        > .container {
+            background-color: $color-white;
+        }
+
+        .acf-innerblocks-container > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .animated-text + .content-2026 {
+        margin-top: 0;
+    }
+}

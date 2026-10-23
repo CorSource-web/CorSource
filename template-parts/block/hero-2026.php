@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -8,14 +9,22 @@ $id = 'hero-2026-' . $block['id'];
 
 $background_image = get_field('background_image');
 
-// Hero height in rem. Defaults to 54.
-$hero_height = get_field('hero_height');
+// Background image vertical position in percent.
+// Defaults to 42%, matching the original design.
+$background_position_y = get_field('background_position_y');
 
-if ($hero_height === '' || $hero_height === null || $hero_height === false) {
-    $hero_height = 54;
+if (
+    $background_position_y === '' ||
+    $background_position_y === null ||
+    $background_position_y === false
+) {
+    $background_position_y = 42;
 }
 
-$hero_height = max(20, min(100, (float) $hero_height));
+$background_position_y = max(
+    0,
+    min(100, (float) $background_position_y)
+);
 
 $title_line_1       = get_field('title_line_1');
 $title_line_2       = get_field('title_line_2');
@@ -34,7 +43,7 @@ $button_url  = $button['url'] ?? '';
     id="<?php echo esc_attr($id); ?>"
     class="hero-2026"
     style="
-        --hero-height: <?php echo esc_attr($hero_height); ?>rem;
+        --hero-position-y: <?php echo esc_attr($background_position_y); ?>%;
         <?php if ($background_image) : ?>
             background-image: url('<?php echo esc_url($background_image); ?>');
         <?php endif; ?>

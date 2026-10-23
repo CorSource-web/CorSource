@@ -1,9 +1,9 @@
 
 .hero-2026 {
-    background-position: center 42%;
+    background-position: center var(--hero-position-y, 42%);
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: var(--hero-height, 54rem);
+    min-height: 54rem;
     position: relative;
     width: 100%;
 

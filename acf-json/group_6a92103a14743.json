@@ -174,11 +174,11 @@
         },
         {
             "key": "field_6adba8cba1563",
-            "label": "Hero Height",
-            "name": "hero_height",
+            "label": "Background Image Vertical Position",
+            "name": "background_position_y",
             "aria-label": "",
             "type": "number",
-            "instructions": "Adjust the height of the hero image. Default is 54rem.",
+            "instructions": "Adjust the vertical position of the hero background image. 0% aligns the image to the top, 50% centers it, and 100% aligns it to the bottom. The default is 42%, matching the original design. Use this setting to adjust which portion of the image is visible without changing the hero's height.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -187,13 +187,13 @@
                 "id": ""
             },
             "default_value": 54,
-            "min": 20,
+            "min": 0,
             "max": 100,
             "allow_in_bindings": 0,
             "placeholder": "",
             "step": 1,
             "prepend": "",
-            "append": "rem"
+            "append": "%"
         }
     ],
     "location": [
@@ -217,5 +217,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792780653
+    "modified": 1792780948
 }

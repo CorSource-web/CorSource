@@ -1,10 +1,12 @@
+
 <?php
 
 /**
  * Block Name: 2026-3-Card-C
  *
  * Three-card section with optional main heading,
- * blue subtitle, images, descriptions, and buttons.
+ * blue subtitle, images, descriptions, buttons,
+ * and selectable section background color.
  */
 
 $id = 'three-card-c-2026-' . $block['id'];
@@ -12,11 +14,26 @@ $id = 'three-card-c-2026-' . $block['id'];
 $title    = get_field('title');
 $subtitle = get_field('subtitle');
 $cards    = get_field('cards');
+
+// Section background color.
+// Default to linen to preserve existing designs.
+$background_color = get_field('background_color');
+
+if (!in_array($background_color, array('linen', 'white'), true)) {
+    $background_color = 'linen';
+}
+
+$background_class = 'three-card-c-2026--' . $background_color;
+
+$additional_class = isset($block['className'])
+    ? $block['className']
+    : '';
+
 ?>
 
 <section
     id="<?php echo esc_attr($id); ?>"
-    class="three-card-c-2026 <?php echo isset($block['className']) ? esc_attr($block['className']) : ''; ?>"
+    class="three-card-c-2026 <?php echo esc_attr($background_class); ?> <?php echo esc_attr($additional_class); ?>"
 >
     <div class="container">
 
@@ -45,11 +62,11 @@ $cards    = get_field('cards');
 
                     <?php foreach ($cards as $card) :
 
-                        $image       = $card['image'] ?? null;
-                        $card_title  = $card['title'] ?? '';
+                        $image         = $card['image'] ?? null;
+                        $card_title    = $card['title'] ?? '';
                         $card_subtitle = $card['subtitle'] ?? '';
-                        $button_text = $card['button_text'] ?? '';
-                        $button_url  = $card['button_url'] ?? '';
+                        $button_text   = $card['button_text'] ?? '';
+                        $button_url    = $card['button_url'] ?? '';
 
                         $image_url = is_array($image)
                             ? ($image['url'] ?? '')

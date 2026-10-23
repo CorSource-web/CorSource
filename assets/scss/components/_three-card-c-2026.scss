@@ -3,6 +3,16 @@
     background-color: $color-linen;
     padding: 5rem 0 4rem;
 
+    // Selectable section backgrounds.
+    // Linen remains the default.
+    &--linen {
+        background-color: $color-linen;
+    }
+
+    &--white {
+        background-color: $color-white;
+    }
+
     // Match the site's global content container.
     .container {
         width: 90%;
@@ -17,7 +27,7 @@
         padding: 0;
     }
 
-    // Heading sits on the linen background.
+    // Heading sits on the section background.
     &-heading {
         background-color: transparent;
         margin: 0 auto 4rem;

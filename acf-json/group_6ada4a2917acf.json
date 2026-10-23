@@ -179,6 +179,27 @@
                     "parent_repeater": "field_6ada4a499c3dd"
                 }
             ]
+        },
+        {
+            "key": "field_6adbccf00aaad",
+            "label": "Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter a hex color, including the # symbol. Leave blank for the default linen background.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#f7f4f0",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -202,5 +223,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792704057
+    "modified": 1792789850
 }

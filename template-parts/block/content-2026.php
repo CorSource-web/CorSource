@@ -23,6 +23,17 @@ if (
 
 $content_width = max(400, min(1500, (int) $content_width));
 
+// Background color from ACF.
+// Defaults to white if the field is empty or invalid.
+$background_color = sanitize_hex_color(
+    trim((string) get_field('background_color'))
+);
+
+if (!$background_color) {
+    $background_color = '#ffffff';
+}
+
+// Additional Gutenberg CSS classes.
 $additional_class = isset($block['className'])
     ? $block['className']
     : '';
@@ -32,6 +43,7 @@ $additional_class = isset($block['className'])
 <section
     id="<?php echo esc_attr($id); ?>"
     class="content-2026 <?php echo esc_attr($additional_class); ?>"
+    style="background-color: <?php echo esc_attr($background_color); ?>;"
 >
     <div class="container">
 

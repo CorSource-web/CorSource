@@ -319,3 +319,39 @@ add_filter('acf/settings/load_json', function ($paths) {
     $paths[] = get_template_directory()   . '/acf-json'; // parent theme
     return array_values(array_unique($paths));
 });
+
+
+
+/**
+ * Add a Slug column to the WordPress Pages admin list.
+ */
+
+// Register the column.
+add_filter('manage_pages_columns', function ($columns) {
+    $columns['page_slug'] = 'Slug';
+    return $columns;
+});
+
+// Display each page's slug.
+add_action('manage_pages_custom_column', function ($column, $post_id) {
+    if ($column === 'page_slug') {
+        echo esc_html(get_post_field('post_name', $post_id));
+    }
+}, 10, 2);
+
+// Make the Slug column sortable.
+add_filter('manage_edit-page_sortable_columns', function ($columns) {
+    $columns['page_slug'] = 'Slug';
+    return $columns;
+});
+
+// Handle sorting by slug.
+add_action('pre_get_posts', function ($query) {
+    if (
+        is_admin() &&
+        $query->is_main_query() &&
+        $query->get('orderby') === 'page_slug'
+    ) {
+        $query->set('orderby', 'name');
+    }
+});

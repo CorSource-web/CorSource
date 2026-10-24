@@ -45,6 +45,34 @@
             "new_lines": ""
         },
         {
+            "key": "field_6adcff160c689",
+            "label": "Subtitle Color",
+            "name": "subtitle_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "blue": "Blue and black"
+            },
+            "default_value": "blue",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_6ada4a499c3dd",
             "label": "Cards",
             "name": "cards",
@@ -223,5 +251,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792789850
+    "modified": 1792868162
 }

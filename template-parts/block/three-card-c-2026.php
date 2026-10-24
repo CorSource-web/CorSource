@@ -5,7 +5,7 @@
  * Block Name: 2026-3-Card-C
  *
  * Three-card section with optional main heading,
- * blue subtitle, images, descriptions, buttons,
+ * blue/black subtitle, images, descriptions, buttons,
  * and customizable background color.
  */
 
@@ -14,6 +14,13 @@ $id = 'three-card-c-2026-' . $block['id'];
 $title    = get_field('title');
 $subtitle = get_field('subtitle');
 $cards    = get_field('cards');
+
+// Subtitle color: blue (default) or black.
+$subtitle_color = get_field('subtitle_color');
+
+if (!in_array($subtitle_color, ['blue', 'black'], true)) {
+    $subtitle_color = 'blue';
+}
 
 // Custom background hex color.
 // If empty or invalid, the SCSS default linen is used.
@@ -48,7 +55,7 @@ $additional_class = isset($block['className'])
                     <?php endif; ?>
 
                     <?php if ($subtitle) : ?>
-                        <p class="three-card-c-2026-subtitle">
+                        <p class="three-card-c-2026-subtitle three-card-c-2026-subtitle--<?php echo esc_attr($subtitle_color); ?>">
                             <?php echo nl2br(esc_html($subtitle)); ?>
                         </p>
                     <?php endif; ?>

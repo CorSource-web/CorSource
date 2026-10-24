@@ -37,7 +37,8 @@
         margin: 0 auto;
     }
 
-    // Optional blue subtitle beneath the heading.
+    // Optional subtitle beneath the heading.
+    // Blue by default, black when selected in ACF.
     &-subtitle {
         color: $color-blue;
         font-family: $body;
@@ -47,6 +48,10 @@
         max-width: 55rem;
         margin: 1.5rem auto 0;
         text-align: center;
+
+        &.three-card-c-2026-subtitle--black {
+            color: $color-licorice;
+        }
     }
 
     // White panel constrained to the content container.
@@ -138,7 +143,7 @@
         }
     }
 
-    // Tablet
+    // Tablet.
     @media (max-width: 1000px) {
         padding: 3.5rem 0 3rem;
 
@@ -183,7 +188,7 @@
         }
     }
 
-    // Mobile
+    // Mobile.
     @media (max-width: $bp-small) {
         padding: 3rem 0;
 
@@ -231,6 +236,7 @@
         }
     }
 }
+
 // Solutions page: custom 3 Card C spacing.
 .three-card-c-2026.solutions-3-card-padding {
     padding-top: 1rem;

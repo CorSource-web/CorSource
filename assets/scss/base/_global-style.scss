@@ -1,3 +1,4 @@
+
 #wpadminbar {
   display: none;
 }
@@ -35,21 +36,23 @@ body {
 }
 
 body.disable-scroll {
-  overflow: hidden!important;
-  height: 100%!important;
+  overflow: hidden !important;
+  height: 100% !important;
 }
+
 :root.disable-scroll {
-  overflow: hidden!important;
-  height: 100%!important;
+  overflow: hidden !important;
+  height: 100% !important;
 }
 
 body.enable-scroll {
-  overflow: auto!important;
-  height: auto!important;
+  overflow: auto !important;
+  height: auto !important;
 }
+
 :root.enable-scroll {
-  overflow: auto!important;
-  height: auto!important;
+  overflow: auto !important;
+  height: auto !important;
 }
 
 .container {
@@ -90,6 +93,7 @@ body.enable-scroll {
 
 .texture {
   position: relative;
+
   &:before {
     content: "";
     width: 100%;
@@ -111,10 +115,10 @@ body.enable-scroll {
 }
 
 ::selection {
-  background: rgb(214, 73, 54, 0.4); /* WebKit/Blink Browsers */
+  background: rgb(214, 73, 54, 0.4);
 }
 
-// Gutenberg default block stlying
+// Gutenberg default block styling
 .alignwide {
   max-width: 56.25rem;
   width: 100%;
@@ -154,16 +158,15 @@ html :where(.is-reusable) :where(.wp-block) {
 .error404 {
   background-color: $color-linen;
 }
+
 .error404 footer {
-  display: none!important;
+  display: none !important;
 }
 
-
-//Tweak Page Hero for Meet Page
+// Tweak Page Hero for Meet Page
 .page-id-626 #page #main .content .page-hero .desktop-image {
-  min-height: 51vh!important;
+  min-height: 51vh !important;
 }
-
 
 .wp-block-separator {
   height: 1px;
@@ -172,12 +175,13 @@ html :where(.is-reusable) :where(.wp-block) {
 }
 
 .text-align-center {
-  @media(max-width: 800px){
+  @media (max-width: 800px) {
     text-align: center;
   }
 }
+
 .robust-agreements {
-  @media(max-width: 800px){
+  @media (max-width: 800px) {
     margin-top: 48px;
   }
 }
@@ -188,15 +192,17 @@ html :where(.is-reusable) :where(.wp-block) {
   font-style: $body;
   font-weight: 700;
   line-height: 22.73px;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 
   @media (max-width: $bp-small) {
     font-size: 1rem;
   }
 }
 
-
+// -----------------------------------------
 // Contact Modal
+// -----------------------------------------
+
 .modal {
   position: fixed;
   width: 100vw;
@@ -210,36 +216,41 @@ html :where(.is-reusable) :where(.wp-block) {
   align-items: center;
   justify-content: center;
   z-index: 2000;
+
   &.open {
     visibility: visible;
     opacity: 1;
     transition-delay: 0s;
   }
+
   &-bg {
     position: absolute;
-    background-color: rgb(29, 8, 0, .35);
+    background-color: rgb(29, 8, 0, 0.35);
     width: 100%;
     height: 100%;
   }
+
   &-container {
     border-radius: 10px;
     background: #fff;
     position: relative;
     padding: 53px 80px 0 80px;
-    // width: 89vw;
     max-width: 1800px;
     overflow: auto;
-    @media(max-height: 600px){
+
+    @media (max-height: 600px) {
       height: 100%;
     }
-    @media(max-width: $bp-small){
+
+    @media (max-width: $bp-small) {
       height: 100vh;
       width: 100vw;
       border-radius: 0;
       transform: translatey(100px);
       overflow: auto;
-      padding:  53px 20px 20px 20px;
+      padding: 53px 20px 20px 20px;
     }
+
     &__top {
       h3 {
         margin-bottom: 32px;
@@ -247,16 +258,18 @@ html :where(.is-reusable) :where(.wp-block) {
         color: $color-licorice;
       }
     }
+
     &__body {
       position: relative;
 
       .modal-in-touch {
         font-style: italic;
-        color: rgb(29, 8, 0, .5);
+        color: rgb(29, 8, 0, 0.5);
         margin-left: 48%;
         transform: translate(21px, -18px);
-            padding-top: 20px;
-        @media(max-width: $bp-small){
+        padding-top: 20px;
+
+        @media (max-width: $bp-small) {
           margin-left: unset;
           margin-top: 92px;
           margin-bottom: 100px;
@@ -264,10 +277,12 @@ html :where(.is-reusable) :where(.wp-block) {
         }
       }
     }
+
     .subtitle {
       margin-bottom: 2.25rem;
     }
   }
+
   &-close {
     position: absolute;
     right: 50px;
@@ -278,12 +293,14 @@ html :where(.is-reusable) :where(.wp-block) {
     border: 0px;
     font-weight: bold;
     cursor: pointer;
-    @media(max-width: $bp-small){
+
+    @media (max-width: $bp-small) {
       right: 25px;
       top: 25px;
     }
   }
 }
+
 .gfield_error input {
   background-image: url('../images/form/warn.svg');
   background-position: 98% 50%;
@@ -298,30 +315,42 @@ html :where(.is-reusable) :where(.wp-block) {
   background-size: auto;
 }
 
+// -----------------------------------------
+// Gutenberg editor canvas parity
+// -----------------------------------------
 
-/* ----------------------------
-   Gutenberg editor canvas parity
-   ---------------------------- */
 .editor-styles-wrapper {
-  /* match your site defaults */
-  font-family: Inter, sans-serif; // or whatever your real $font-body is
+  font-family: Inter, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: $color-licorice;
 
-  /* stop Gutenberg's block spacing from blowing things up */
-  p, li {
+  p,
+  li {
     font-size: inherit;
     line-height: inherit;
   }
 
-  /* headings: keep sane sizing inside editor */
-  h1 { font-size: 2.25rem; line-height: 1.15; }
-  h2 { font-size: 2rem; line-height: 1.15; }
-  h3 { font-size: 1.5rem; line-height: 1.2; }
-  h4 { font-size: 1.25rem; line-height: 1.25; }
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.15;
+  }
 
-  /* your container width behavior in editor */
+  h2 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
   .container {
     max-width: 1500px;
     margin: 0 auto;
@@ -329,37 +358,42 @@ html :where(.is-reusable) :where(.wp-block) {
   }
 }
 
+// -----------------------------------------
+// Utility Background
+// -----------------------------------------
 
 .white-background {
   background-color: $color-white;
 }
 
+// -----------------------------------------
+// Services Page — Animated Text
+// -----------------------------------------
+// The Animated Text PHP applies the selected
+// ACF background color directly to the section.
+//
+// Previously, a page-specific rule forced the
+// inner container to white, hiding that color.
+//
+// Keep inner containers transparent so the
+// section's ACF background shows through.
+// -----------------------------------------
+
 .page-id-28283 {
-    .animated-text {
-        background-color: $color-white;
-    }
-}
-.page-id-28283 {
-    .animated-text {
-        margin-bottom: 0;
+  .animated-text {
+    margin-bottom: 0;
 
-        > .container {
-            background-color: $color-white;
-        }
-
-        .acf-innerblocks-container > :last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    .animated-text + .content-2026 {
-        margin-top: 0;
-    }
-}
-
-.animated-text {
     > .container,
     .acf-innerblocks-container {
-        background-color: transparent;
+      background-color: transparent;
     }
+
+    .acf-innerblocks-container > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .animated-text + .content-2026 {
+    margin-top: 0;
+  }
 }

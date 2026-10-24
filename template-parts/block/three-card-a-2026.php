@@ -18,7 +18,7 @@ $footer_button  = get_field('footer_button');
 
 <section
     id="<?php echo esc_attr($id); ?>"
-    class="three-card-a-2026"
+    class="three-card-a-2026 <?php echo esc_attr($block['className'] ?? ''); ?>"
 >
     <div class="container">
 

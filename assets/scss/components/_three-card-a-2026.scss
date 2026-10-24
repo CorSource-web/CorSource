@@ -209,7 +209,10 @@
         }
     }
 }
-// Clients page: remove top padding on this instance only.
 .three-card-a-2026.clients-three-card-no-top-padding {
     padding-top: 0;
+
+    .three-card-a-2026-inner {
+        padding-top: 0;
+    }
 }

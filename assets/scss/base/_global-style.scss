@@ -356,3 +356,10 @@ html :where(.is-reusable) :where(.wp-block) {
         margin-top: 0;
     }
 }
+
+.animated-text {
+    > .container,
+    .acf-innerblocks-container {
+        background-color: transparent;
+    }
+}

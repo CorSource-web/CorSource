@@ -59,7 +59,8 @@
                 "id": ""
             },
             "choices": {
-                "blue": "Blue and black"
+                "blue": "Blue",
+                "black": "Black"
             },
             "default_value": "blue",
             "return_format": "value",
@@ -251,5 +252,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792868162
+    "modified": 1792868485
 }

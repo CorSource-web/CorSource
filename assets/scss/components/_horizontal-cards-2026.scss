@@ -1,6 +1,12 @@
 
 .horizontal-cards-2026 {
-    background-color: $color-linen;
+    // Default background is white.
+    // The ACF field overrides this CSS variable.
+    background-color: var(
+        --horizontal-cards-background,
+        #FFFFFF
+    );
+
     padding: 4rem 0;
 
     // Standard site container.
@@ -13,7 +19,12 @@
     }
 
     &-inner {
-        background-color: $color-white;
+        // Match the ACF-selected section background.
+        background-color: var(
+            --horizontal-cards-background,
+            #FFFFFF
+        );
+
         width: 100%;
         padding: 3rem 8rem;
         box-sizing: border-box;
@@ -234,20 +245,29 @@
     }
 }
 
+
 // -----------------------------------------
 // Background Wrapper compatibility
 // -----------------------------------------
 // The Background Wrapper already provides
 // the outer width constraint.
 //
-// Keep the Horizontal Cards white panel
-// full width and remove its linen padding.
-// The inner content uses the same horizontal
-// inset as the 2026 3 Card C grid.
+// Remove the second 90% container restriction.
+//
+// IMPORTANT:
+// Do not force a white background here.
+// The ACF field controls the background.
+//
+// Keep the existing horizontal card padding
+// so the content stays aligned.
 // -----------------------------------------
 
 .background-wrapper .horizontal-cards-2026 {
-    background-color: $color-white;
+    background-color: var(
+        --horizontal-cards-background,
+        #FFFFFF
+    );
+
     padding: 0;
 
     > .container {

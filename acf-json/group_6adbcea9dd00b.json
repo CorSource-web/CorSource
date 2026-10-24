@@ -136,6 +136,27 @@
                     "parent_repeater": "field_6adbceaa5c1f1"
                 }
             ]
+        },
+        {
+            "key": "field_6adbfaf1247f4",
+            "label": "Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter a hex color, such as #F7F4F0 for linen or #FFFFFF for white.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#FFFFFF",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -159,5 +180,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792790506
+    "modified": 1792801539
 }

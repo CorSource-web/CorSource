@@ -26,6 +26,24 @@ $background_position_y = max(
     min(100, (float) $background_position_y)
 );
 
+// Hero title maximum width in rem.
+// Defaults to 62rem.
+$title_max_width = get_field('title_max_width');
+
+if (
+    $title_max_width === '' ||
+    $title_max_width === null ||
+    $title_max_width === false ||
+    !is_numeric($title_max_width)
+) {
+    $title_max_width = 62;
+}
+
+$title_max_width = max(
+    20,
+    min(120, (float) $title_max_width)
+);
+
 $title_line_1       = get_field('title_line_1');
 $title_line_2       = get_field('title_line_2');
 
@@ -44,6 +62,7 @@ $button_url  = $button['url'] ?? '';
     class="hero-2026"
     style="
         --hero-position-y: <?php echo esc_attr($background_position_y); ?>%;
+        --hero-title-max-width: <?php echo esc_attr($title_max_width); ?>rem;
         <?php if ($background_image) : ?>
             background-image: url('<?php echo esc_url($background_image); ?>');
         <?php endif; ?>

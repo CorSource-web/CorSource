@@ -194,6 +194,29 @@
             "step": 1,
             "prepend": "",
             "append": "%"
+        },
+        {
+            "key": "field_6adcd82afdf53",
+            "label": "Title Max Width",
+            "name": "title_max_width",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Maximum width of the hero title in rem. Defaults to 62rem.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 62,
+            "min": 20,
+            "max": 120,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -217,5 +240,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792780948
+    "modified": 1792858200
 }

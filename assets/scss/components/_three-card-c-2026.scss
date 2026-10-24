@@ -231,3 +231,12 @@
         }
     }
 }
+// Solutions page: tighter spacing above cards.
+// Only affects blocks with this additional class.
+.three-card-c-2026.solutions-3-card-padding {
+    padding-top: 0;
+
+    .three-card-c-2026-grid {
+        padding-top: 2rem;
+    }
+}

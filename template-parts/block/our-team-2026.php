@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Block Name: 2026 Our Team
@@ -83,9 +82,9 @@ if (!empty($block['className'])) {
                                 <?php endif; ?>
 
                                 <?php if ($description) : ?>
-                                    <p class="our-team-2026-row__description">
-                                        <?php echo nl2br(esc_html($description)); ?>
-                                    </p>
+                                    <div class="our-team-2026-row__description">
+                                        <?php echo wp_kses_post($description); ?>
+                                    </div>
                                 <?php endif; ?>
 
                             </div>

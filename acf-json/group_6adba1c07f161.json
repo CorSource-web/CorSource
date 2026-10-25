@@ -120,21 +120,20 @@
                     "label": "Description",
                     "name": "description",
                     "aria-label": "",
-                    "type": "textarea",
+                    "type": "wysiwyg",
                     "instructions": "",
-                    "required": 0,
+                    "required": false,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
                     "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "rows": "",
-                    "placeholder": "",
-                    "new_lines": "",
+                    "delay": 0,
                     "parent_repeater": "field_6adba1d8e6723"
                 }
             ]
@@ -161,5 +160,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1792778870
+    "modified": 1792962721
 }

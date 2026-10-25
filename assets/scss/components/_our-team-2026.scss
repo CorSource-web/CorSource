@@ -1,4 +1,3 @@
-
 .our-team-2026 {
     background-color: $color-linen;
     padding: 2rem 0 4rem;
@@ -82,12 +81,13 @@
             box-sizing: border-box;
         }
 
+        // Match the blue headings in Life at CorSource.
         &__title {
             color: $color-blue;
             font-family: $header;
-            font-size: 1.8rem;
-            font-weight: 500;
-            line-height: 1.3;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.25;
             margin: 0 0 1rem;
         }
 
@@ -129,7 +129,9 @@
             }
 
             &__title {
-                font-size: 1.6rem;
+                font-size: 2rem;
+                font-weight: 700;
+                line-height: 1.25;
             }
 
             &__description {
@@ -177,7 +179,9 @@
             }
 
             &__title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+                font-weight: 700;
+                line-height: 1.25;
             }
 
             &__description {

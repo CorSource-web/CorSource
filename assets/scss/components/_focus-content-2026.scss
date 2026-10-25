@@ -1,327 +1,304 @@
-.focus-content-2026 {
-    background-color: $color-linen;
-    padding: 4.5rem 0 5rem;
+.industry-focus-2026 {
     width: 100%;
-    position: relative;
+    background-color: $color-linen;
+    padding: 5rem 0 6rem;
 
-    // Match the site's existing container and navigation alignment.
-    > .container {
+    .container {
         width: 90%;
         max-width: 1500px;
         margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    // --------------------------------
-    // Heading
-    // --------------------------------
+    &__inner {
+        width: 100%;
+    }
 
-    &-heading {
+    // Centered heading and introductory content.
+    &__heading {
+        max-width: 75rem;
+        margin: 0 auto 4rem;
         text-align: center;
-        max-width: 1000px;
-        margin: 0 auto 3.5rem;
     }
 
-    &-title {
+    &__title {
         color: $color-licorice;
         font-family: $header;
-        font-size: 3.8rem;
+        font-size: 3.3rem;
         font-weight: 400;
         line-height: 1.15;
-        margin: 0 0 1rem;
+        margin: 0 0 1.75rem;
     }
 
-    &-subtitle {
-        color: $color-blue;
-        font-family: $header;
-        font-size: 2rem;
+    &__intro {
+        color: $color-licorice;
+        font-family: $body;
+        font-size: 1.5rem;
         font-weight: 400;
-        line-height: 1.4;
-        margin: 0;
-    }
+        line-height: 1.5;
 
-    // --------------------------------
-    // Shaped image
-    // --------------------------------
-
-    &-image {
-        width: 100%;
-        height: 450px;
-        position: relative;
-        overflow: hidden;
-        margin: 0 0 3.5rem;
-
-        // Reuse the existing hero mask.
-        @media (min-width: 1200px) {
-            -webkit-mask-image: url("../images/hero/monitor-hero-mask.svg");
-            mask-image: url("../images/hero/monitor-hero-mask.svg");
-
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
-
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
-
-    // --------------------------------
-    // Two-column content
-    // --------------------------------
-
-    &-columns {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 5rem;
-        align-items: start;
-        width: 100%;
-        margin: 0;
-    }
-
-    // --------------------------------
-    // Left column
-    // --------------------------------
-
-    &-left {
-        min-width: 0;
-
-        &__section {
-            margin-bottom: 2.5rem;
+        p {
+            color: inherit;
+            font-family: inherit;
+            font-size: 1.5rem;
+            font-weight: inherit;
+            line-height: inherit;
+            margin: 0 0 1.5rem;
 
             &:last-child {
                 margin-bottom: 0;
             }
         }
 
-        &__title {
-            color: $color-blue;
-            font-family: $header;
-            font-size: 2rem;
+        strong,
+        b {
             font-weight: 600;
-            line-height: 1.25;
-            margin: 0 0 0.75rem;
         }
 
-        &__content {
-            color: $color-licorice;
-            font-family: $body;
-            font-size: 1.25rem;
-            font-weight: 400;
-            line-height: 1.5;
-
-            p {
-                font-family: inherit;
-                font-size: inherit;
-                font-weight: inherit;
-                line-height: inherit;
-                margin: 0 0 1rem;
-            }
-
-            p:last-child {
-                margin-bottom: 0;
-            }
-
-            ul,
-            ol {
-                margin: 0 0 1rem;
-                padding-left: 1.4rem;
-            }
-
-            li {
-                font-family: inherit;
-                font-size: inherit;
-                font-weight: 400;
-                line-height: 1.5;
-                margin-bottom: 0.35rem;
-                padding-left: 0;
-            }
-
-            ul li {
-                list-style-type: disc;
-            }
-
-            ol li {
-                list-style-type: decimal;
-            }
-
-            strong,
-            b {
-                font-weight: 700;
-            }
+        a {
+            color: $color-blue;
+            text-decoration: underline;
         }
     }
 
-    // --------------------------------
-    // Right column
-    // --------------------------------
+    // Two-column content area.
+    &__columns {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        gap: 8rem;
 
-    &-right {
-        background-color: $color-white;
-        padding: 2rem 2.5rem 2.5rem;
+        // Adjustable per block through ACF.
+        // Defaults to 100% for existing instances.
+        width: var(--industry-content-width, 100%);
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    &__left {
         min-width: 0;
+    }
 
-        &__title {
-            color: $color-red;
-            font-family: $header;
-            font-size: 2rem;
-            font-weight: 600;
-            line-height: 1.25;
-            margin: 0 0 0.75rem;
+    // Full-width image with angled top-right corner.
+    &__image {
+        width: 100%;
+        max-width: none;
+        overflow: hidden;
+        border-radius: 10px;
+
+        clip-path: polygon(
+            0 0,
+            88% 0,
+            100% 22%,
+            100% 100%,
+            0 100%,
+            0 0
+        );
+
+        margin-bottom: 2.5rem;
+
+        img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 2.2 / 1;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
         }
+    }
 
-        &__subtitle {
-            color: $color-blue;
-            font-family: $header;
-            font-size: 1.5rem;
-            font-weight: 600;
-            line-height: 1.35;
-            margin: 0 0 1.25rem;
-        }
+    // Left-column paragraphs.
+    &__left-content {
+        color: $color-licorice;
+        font-family: $body;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.5;
 
-        &__content {
-            color: $color-licorice;
-            font-family: $body;
-            font-size: 1.25rem;
-            font-weight: 400;
-            line-height: 1.5;
+        p {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0 0 1.75rem;
 
-            p {
-                font-family: inherit;
-                font-size: inherit;
-                font-weight: inherit;
-                line-height: inherit;
-                margin: 0 0 1.5rem;
-            }
-
-            p:last-child {
+            &:last-child {
                 margin-bottom: 0;
             }
+        }
 
-            ul,
-            ol {
-                margin: 0 0 2rem;
-                padding-left: 1.4rem;
-            }
+        strong,
+        b {
+            font-weight: 700;
+        }
 
-            li {
-                font-family: inherit;
-                font-size: inherit;
-                font-weight: 400;
-                line-height: 1.5;
-                margin-bottom: 0.35rem;
-                padding-left: 0;
-            }
+        ul,
+        ol {
+            padding-left: 1.5rem;
+            margin: 0 0 1.5rem;
+        }
 
-            ul li {
-                list-style-type: disc;
-            }
+        li {
+            font-size: inherit;
+            line-height: inherit;
+        }
 
-            ol li {
-                list-style-type: decimal;
-            }
-
-            strong,
-            b {
-                font-weight: 700;
-            }
+        a {
+            color: $color-blue;
+            text-decoration: underline;
         }
     }
 
-    // --------------------------------
-    // Tablet
-    // --------------------------------
+    // White information panel.
+    &__right {
+        min-width: 0;
+        background-color: $color-white;
+        padding: 2.5rem 3rem;
+        box-sizing: border-box;
+    }
 
-    @media (max-width: 1100px) {
-        &-columns {
-            gap: 3rem;
+    &__right-content {
+        color: $color-licorice;
+        font-family: $body;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.5;
+
+        p {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0 0 1.5rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
 
-        &-image {
-            height: 380px;
+        strong,
+        b {
+            font-weight: 700;
         }
 
-        &-right {
-            padding: 2rem;
+        ul,
+        ol {
+            padding-left: 1.5rem;
+            margin: 0 0 1.5rem;
+        }
+
+        li {
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        a {
+            color: $color-blue;
+            text-decoration: underline;
         }
     }
 
-    // --------------------------------
-    // Mobile
-    // --------------------------------
+    // Tablet.
+    @media (max-width: 1000px) {
+        padding: 4rem 0;
 
-    @media (max-width: $bp-small) {
-        padding: 3rem 0;
-
-        > .container {
-            width: 90%;
+        &__heading {
+            margin-bottom: 3rem;
         }
 
-        &-heading {
-            margin-bottom: 2rem;
+        &__title {
+            font-size: 2.7rem;
         }
 
-        &-title {
-            font-size: 2.5rem;
-            line-height: 1.2;
+        &__intro {
+            font-size: 1.4rem;
+
+            p {
+                font-size: 1.4rem;
+            }
         }
 
-        &-subtitle {
-            font-size: 1.5rem;
-            line-height: 1.4;
-        }
-
-        &-image {
-            height: 260px;
-            margin-bottom: 2.5rem;
-
-            -webkit-mask-image: none;
-            mask-image: none;
-
-            border-radius: 0.5rem;
-        }
-
-        &-columns {
-            grid-template-columns: 1fr;
+        &__columns {
             gap: 2.5rem;
         }
 
-        &-left {
-            &__section {
-                margin-bottom: 2rem;
-            }
+        &__image {
+            width: 100%;
+        }
 
-            &__title {
-                font-size: 1.6rem;
-                font-weight: 600;
-            }
+        &__right {
+            padding: 2rem;
+        }
 
-            &__content {
-                font-size: 1.1rem;
+        &__left-content,
+        &__right-content {
+            font-size: 1.2rem;
+        }
+    }
+
+    // Mobile.
+    @media (max-width: $bp-small) {
+        padding: 3rem 0;
+
+        &__heading {
+            margin-bottom: 2.5rem;
+        }
+
+        &__title {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        &__intro {
+            font-size: 1.2rem;
+
+            p {
+                font-size: 1.2rem;
             }
         }
 
-        &-right {
+        &__columns {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            width: 100%;
+        }
+
+        &__image {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        &__left-content,
+        &__right-content {
+            font-size: 1.1rem;
+        }
+
+        &__right {
             padding: 1.75rem;
+        }
+    }
+}
 
-            &__title {
-                font-size: 1.6rem;
-                font-weight: 600;
-            }
+// Life at CorSource: image directly on linen background.
+// This affects only blocks with the "life-at-corsource" class.
+.industry-focus-2026.life-at-corsource {
+    .industry-focus-2026__right {
+        background-color: $color-linen;
+        padding: 0;
+    }
 
-            &__subtitle {
-                font-size: 1.3rem;
-                font-weight: 600;
-            }
+    .industry-focus-2026__right-content {
+        p {
+            margin: 0;
+            padding: 0;
+        }
 
-            &__content {
-                font-size: 1.1rem;
-            }
+        img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
         }
     }
 }

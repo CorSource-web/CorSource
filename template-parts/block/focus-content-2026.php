@@ -1,129 +1,110 @@
-
 <?php
 /**
- * Block Name: 2026 Focus Content
+ * Block Name: 2026 Industry Focus
  */
 
-$id = 'focus-content-2026-' . $block['id'];
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-$title    = get_field('title');
-$subtitle = get_field('subtitle');
-$image    = get_field('image');
+$id = 'industry-focus-2026-' . $block['id'];
 
-$left_title_1   = get_field('left_title_1');
-$left_content_1 = get_field('left_content_1');
+if (!empty($block['anchor'])) {
+    $id = $block['anchor'];
+}
 
-$left_title_2   = get_field('left_title_2');
-$left_content_2 = get_field('left_content_2');
+$classes = 'industry-focus-2026';
 
-$right_title    = get_field('right_title');
-$right_subtitle = get_field('right_subtitle');
-$right_content  = get_field('right_content');
+if (!empty($block['className'])) {
+    $classes .= ' ' . $block['className'];
+}
 
+// ACF fields.
+$title         = get_field('title');
+$intro         = get_field('intro');
+$image         = get_field('image');
+$left_content  = get_field('left_content');
+$right_content = get_field('right_content');
+
+// Adjustable width of the two-column content area.
+// Defaults to 100% to preserve existing block layouts.
+$content_width = get_field('content_width');
+
+$content_width = is_numeric($content_width)
+    ? max(60, min(100, (float) $content_width))
+    : 100;
+
+// Image handling.
 $image_url = '';
 $image_alt = '';
 
 if (is_array($image)) {
     $image_url = $image['url'] ?? '';
     $image_alt = $image['alt'] ?? '';
+} elseif (is_numeric($image)) {
+    $image_url = wp_get_attachment_image_url((int) $image, 'full');
+    $image_alt = get_post_meta((int) $image, '_wp_attachment_image_alt', true);
+} elseif (is_string($image)) {
+    $image_url = $image;
 }
 ?>
 
 <section
     id="<?php echo esc_attr($id); ?>"
-    class="focus-content-2026"
+    class="<?php echo esc_attr($classes); ?>"
 >
-    <div class="container">
+    <div class="industry-focus-2026__inner container">
 
-        <div class="focus-content-2026-heading">
+        <?php if ($title || $intro) : ?>
+            <div class="industry-focus-2026__heading">
 
-            <?php if ($title) : ?>
-                <h2 class="focus-content-2026-title">
-                    <?php echo esc_html($title); ?>
-                </h2>
-            <?php endif; ?>
+                <?php if ($title) : ?>
+                    <h2 class="industry-focus-2026__title">
+                        <?php echo esc_html($title); ?>
+                    </h2>
+                <?php endif; ?>
 
-            <?php if ($subtitle) : ?>
-                <div class="focus-content-2026-subtitle">
-                    <?php echo esc_html($subtitle); ?>
-                </div>
-            <?php endif; ?>
+                <?php if ($intro) : ?>
+                    <div class="industry-focus-2026__intro">
+                        <?php echo wp_kses_post($intro); ?>
+                    </div>
+                <?php endif; ?>
 
-        </div>
-
-        <?php if ($image_url) : ?>
-            <div class="focus-content-2026-image">
-                <img
-                    src="<?php echo esc_url($image_url); ?>"
-                    alt="<?php echo esc_attr($image_alt); ?>"
-                    loading="lazy"
-                >
             </div>
         <?php endif; ?>
 
-        <div class="focus-content-2026-columns">
+        <div
+            class="industry-focus-2026__columns"
+            style="--industry-content-width: <?php echo esc_attr($content_width); ?>%;"
+        >
 
-            <div class="focus-content-2026-left">
+            <div class="industry-focus-2026__left">
 
-                <?php if ($left_title_1 || $left_content_1) : ?>
-                    <div class="focus-content-2026-left__section">
-
-                        <?php if ($left_title_1) : ?>
-                            <h3 class="focus-content-2026-left__title">
-                                <?php echo esc_html($left_title_1); ?>
-                            </h3>
-                        <?php endif; ?>
-
-                        <?php if ($left_content_1) : ?>
-                            <div class="focus-content-2026-left__content">
-                                <?php echo wp_kses_post($left_content_1); ?>
-                            </div>
-                        <?php endif; ?>
-
+                <?php if ($image_url) : ?>
+                    <div class="industry-focus-2026__image">
+                        <img
+                            src="<?php echo esc_url($image_url); ?>"
+                            alt="<?php echo esc_attr($image_alt); ?>"
+                            loading="lazy"
+                        >
                     </div>
                 <?php endif; ?>
 
-                <?php if ($left_title_2 || $left_content_2) : ?>
-                    <div class="focus-content-2026-left__section">
-
-                        <?php if ($left_title_2) : ?>
-                            <h3 class="focus-content-2026-left__title">
-                                <?php echo esc_html($left_title_2); ?>
-                            </h3>
-                        <?php endif; ?>
-
-                        <?php if ($left_content_2) : ?>
-                            <div class="focus-content-2026-left__content">
-                                <?php echo wp_kses_post($left_content_2); ?>
-                            </div>
-                        <?php endif; ?>
-
+                <?php if ($left_content) : ?>
+                    <div class="industry-focus-2026__left-content">
+                        <?php echo wp_kses_post($left_content); ?>
                     </div>
                 <?php endif; ?>
 
             </div>
 
-            <div class="focus-content-2026-right">
-
-                <?php if ($right_title) : ?>
-                    <h3 class="focus-content-2026-right__title">
-                        <?php echo esc_html($right_title); ?>
-                    </h3>
-                <?php endif; ?>
-
-                <?php if ($right_subtitle) : ?>
-                    <h4 class="focus-content-2026-right__subtitle">
-                        <?php echo esc_html($right_subtitle); ?>
-                    </h4>
-                <?php endif; ?>
-
-                <?php if ($right_content) : ?>
-                    <div class="focus-content-2026-right__content">
+            <?php if ($right_content) : ?>
+                <div class="industry-focus-2026__right">
+                    <div class="industry-focus-2026__right-content">
                         <?php echo wp_kses_post($right_content); ?>
                     </div>
-                <?php endif; ?>
-
-            </div>
+                </div>
+            <?php endif; ?>
 
         </div>
 

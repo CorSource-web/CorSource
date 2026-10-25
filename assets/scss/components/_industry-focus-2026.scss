@@ -272,3 +272,18 @@
         }
     }
 }
+// Life at CorSource: remove the white panel around the montage.
+.industry-focus-2026.life-at-corsource {
+    .industry-focus-2026__right {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .industry-focus-2026__right-content {
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+}

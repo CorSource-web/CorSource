@@ -23,6 +23,14 @@ $left_image    = get_field('left_image');
 $left_content  = get_field('left_content');
 $right_content = get_field('right_content');
 
+// ACF Content Width field.
+// Default to 100% to preserve existing block layouts.
+$content_width = get_field('content_width');
+
+$content_width = is_numeric($content_width)
+    ? max(60, min(100, (float) $content_width))
+    : 100;
+
 $image_url = is_array($left_image)
     ? ($left_image['sizes']['large'] ?? $left_image['url'] ?? '')
     : '';
@@ -56,7 +64,10 @@ $image_alt = is_array($left_image)
             </div>
         <?php endif; ?>
 
-        <div class="industry-focus-2026__columns">
+        <div
+            class="industry-focus-2026__columns"
+            style="--industry-content-width: <?php echo esc_attr($content_width); ?>%;"
+        >
 
             <div class="industry-focus-2026__left">
 

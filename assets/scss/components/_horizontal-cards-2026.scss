@@ -35,7 +35,10 @@
         grid-template-columns: 30% minmax(0, 1fr);
         gap: 3rem;
         align-items: start;
-        padding: 2.5rem 0;
+
+        // QA adjustment:
+        // Increase vertical breathing room between rows.
+        padding: 3rem 0;
         border-bottom: 1px solid #cccccc;
 
         &:first-child {
@@ -180,7 +183,9 @@
         &-card {
             grid-template-columns: 32% minmax(0, 1fr);
             gap: 2rem;
-            padding: 2rem 0;
+
+            // Slightly more room between tablet rows.
+            padding: 2.5rem 0;
 
             &__title {
                 font-size: 1.9rem;
@@ -207,7 +212,7 @@
         &-card {
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
 
             &__image {
                 img {

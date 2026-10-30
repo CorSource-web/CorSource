@@ -369,21 +369,21 @@ add_action('template_redirect', function () {
     }
 
     $redirects = [
-        '/team/'                              => '/about/',
-        '/services/project-leadership/'       => '/project-leadership/',
-        '/services/software-development/'     => '/software-development/',
+        '/team/'                                => '/about/',
+        '/services/project-leadership/'         => '/project-leadership/',
+        '/services/software-development/'       => '/software-development/',
         '/solutions/application-modernization/' => '/application-modernization/',
-        '/solutions/cloud-migration/'         => '/cloud-migration/',
-        '/solutions/data-management/'         => '/data-management/',
-        '/2025-about/'                        => '/about/',
-        '/2025-clients/'                      => '/clients/',
-        '/2025-consultants/'                  => '/consultants/',
-        '/2025-energy-sector/'                => '/energy-sector/',
-        '/2025-team/'                         => '/about/',
-        '/2025-services/'                     => '/services/',
-        '/2025-solutions/'                    => '/solutions/',
-        '/2025-energy/'                       => '/energy-sector/',
-        '/energy/'                            => '/energy-sector/',
+        '/solutions/cloud-migration/'           => '/cloud-migration/',
+        '/solutions/data-management/'           => '/data-management/',
+        '/2025-about/'                          => '/about/',
+        '/2025-clients/'                        => '/clients/',
+        '/2025-consultants/'                    => '/consultants/',
+        '/2025-energy-sector/'                  => '/energy-sector/',
+        '/2025-team/'                           => '/about/',
+        '/2025-services/'                       => '/services/',
+        '/2025-solutions/'                      => '/solutions/',
+        '/2025-energy/'                         => '/energy-sector/',
+        '/energy/'                              => '/energy-sector/',
     ];
 
     $path = wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -402,4 +402,5 @@ add_action('template_redirect', function () {
         );
         exit;
     }
-});
+
+}, 1);

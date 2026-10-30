@@ -335,9 +335,23 @@
 }
 
 
-// Service Catalog only: allow subtitle to span one line.
+// Service Catalog: prevent heading from wrapping on desktop.
 .three-card-c-2026.solutions-service-catalog.widen-subtitle {
-    .three-card-c-2026-subtitle {
+
+    .three-card-c-2026-heading {
+        width: 100%;
         max-width: none;
+    }
+
+    .three-card-c-2026-subtitle {
+        width: 100%;
+        max-width: none;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 1000px) {
+        .three-card-c-2026-subtitle {
+            white-space: normal;
+        }
     }
 }

@@ -398,14 +398,18 @@ html :where(.is-reusable) :where(.wp-block) {
   }
 }
 
-// Solutions page — hide anchor Code blocks visually
+// Solutions page — invisible anchor blocks
 .page-id-28277 {
-  .wp-block-code:has([id]) {
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    border: 0;
+  #focus-tech-investments,
+  #enable-technology-initiatives,
+  #accelerate-data-ai {
+    display: block !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    overflow: hidden !important;
   }
 }
-
 

@@ -398,4 +398,14 @@ html :where(.is-reusable) :where(.wp-block) {
   }
 }
 
+// Solutions page — hide anchor Code blocks visually
+.page-id-28277 {
+  .wp-block-code:has([id]) {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
+}
+
 

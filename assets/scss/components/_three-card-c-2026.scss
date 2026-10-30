@@ -333,3 +333,11 @@
         }
     }
 }
+
+
+// Service Catalog only: allow subtitle to span one line.
+.three-card-c-2026.solutions-service-catalog.widen-subtitle {
+    .three-card-c-2026-subtitle {
+        max-width: none;
+    }
+}

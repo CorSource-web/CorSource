@@ -355,3 +355,51 @@ add_action('pre_get_posts', function ($query) {
         $query->set('orderby', 'name');
     }
 });
+
+
+
+/**
+ * CorSource 2026 site migration redirects.
+ * Permanently redirect retired URLs to their replacements.
+ */
+add_action('template_redirect', function () {
+
+    if (is_admin()) {
+        return;
+    }
+
+    $redirects = [
+        '/team/'                              => '/about/',
+        '/services/project-leadership/'       => '/project-leadership/',
+        '/services/software-development/'     => '/software-development/',
+        '/solutions/application-modernization/' => '/application-modernization/',
+        '/solutions/cloud-migration/'         => '/cloud-migration/',
+        '/solutions/data-management/'         => '/data-management/',
+        '/2025-about/'                        => '/about/',
+        '/2025-clients/'                      => '/clients/',
+        '/2025-consultants/'                  => '/consultants/',
+        '/2025-energy-sector/'                => '/energy-sector/',
+        '/2025-team/'                         => '/about/',
+        '/2025-services/'                     => '/services/',
+        '/2025-solutions/'                    => '/solutions/',
+        '/2025-energy/'                       => '/energy-sector/',
+        '/energy/'                            => '/energy-sector/',
+    ];
+
+    $path = wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+    if (!is_string($path)) {
+        return;
+    }
+
+    // Normalize trailing slashes.
+    $path = '/' . trim($path, '/') . '/';
+
+    if (isset($redirects[$path])) {
+        wp_safe_redirect(
+            home_url($redirects[$path]),
+            301
+        );
+        exit;
+    }
+});

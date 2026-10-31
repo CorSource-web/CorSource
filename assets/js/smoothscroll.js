@@ -17,6 +17,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const normalizePath = (path) =>
     path.replace(/\/+$/, '') || '/'
 
+  const isModalHash = (hash) =>
+    hash === '#contact-navigation-modal' ||
+    hash === '#contact-modal'
+
+  // Handle anchors when arriving from another page
+  const scrollToInitialHash = () => {
+    const hash = window.location.hash
+
+    if (!hash || isModalHash(hash)) {
+      return
+    }
+
+    const target = document.getElementById(
+      decodeURIComponent(hash.substring(1))
+    )
+
+    if (!target) {
+      return
+    }
+
+    lenis.scrollTo(target, {
+      offset: -100,
+      duration: 1.2
+    })
+  }
+
+  // Wait until the page and its resources have loaded
+  if (document.readyState === 'complete') {
+    scrollToInitialHash()
+  } else {
+    window.addEventListener('load', scrollToInitialHash, {
+      once: true
+    })
+  }
+
   // Smooth scroll for same-page anchor links
   document.querySelectorAll('a[href*="#"]').forEach((link) => {
     link.addEventListener('click', (event) => {
@@ -46,10 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Leave contact modal links alone
-      if (
-        url.hash === '#contact-navigation-modal' ||
-        url.hash === '#contact-modal'
-      ) {
+      if (isModalHash(url.hash)) {
         return
       }
 
@@ -65,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Prevent page navigation or reload
       event.preventDefault()
 
-      // Preserve the current page URL when updating the anchor
+      // Preserve the destination pathname and hash
       history.pushState(
         null,
         '',
@@ -93,8 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   requestAnimationFrame(raf)
 })
-
-
 
 
 

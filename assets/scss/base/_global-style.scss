@@ -407,3 +407,15 @@ body.page-id-28277 pre.wp-block-code {
   background: transparent !important;
   overflow: hidden !important;
 }
+
+@media (max-width: 767px) {
+    .engagement-content {
+        h2 {
+            font-size: 32px !important;
+        }
+
+        h3 {
+            font-size: 24px !important;
+        }
+    }
+}

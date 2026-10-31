@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Smoothly scroll to the target
       lenis.scrollTo(target, {
-        offset: -100,
+        offset: -30,
         duration: 1.2
       })
     })

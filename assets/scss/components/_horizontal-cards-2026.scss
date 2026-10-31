@@ -278,3 +278,24 @@
         padding: 0;
     }
 }
+
+// -----------------------------------------
+// Background Wrapper compatibility
+// -----------------------------------------
+
+.background-wrapper .horizontal-cards-2026 {
+    background-color: var(
+        --horizontal-cards-background,
+        #FFFFFF
+    );
+
+    padding: 0;
+
+    > .container {
+        width: 90%;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}

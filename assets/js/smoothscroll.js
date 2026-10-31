@@ -1,4 +1,3 @@
-
 import Lenis from '@studio-freight/lenis'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,9 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return
     }
 
-    lenis.scrollTo(target, {
-      offset: -100,
-      duration: 1.2
+    // Reset to the top before starting the animation
+    lenis.scrollTo(0, {
+      immediate: true
+    })
+
+    // Allow the browser to render at the top first
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        lenis.scrollTo(target, {
+          offset: -100,
+          duration: 1.2
+        })
+      })
     })
   }
 

@@ -1,55 +1,95 @@
-// Smooth scroll for same-page anchor links
-document.querySelectorAll('a[href*="#"]').forEach((link) => {
-  link.addEventListener('click', (event) => {
-    // Respect new-tab and modified clicks
-    if (
-      event.defaultPrevented ||
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey ||
-      link.target === '_blank'
-    ) {
-      return
-    }
 
-    const url = new URL(link.href, window.location.href)
+import Lenis from '@studio-freight/lenis'
 
-    const normalizePath = (path) =>
-      path.replace(/\/+$/, '') || '/'
+document.addEventListener('DOMContentLoaded', () => {
+  // Only load smooth scroll on the front end
+  if (document.body.classList.contains('wp-admin')) {
+    return
+  }
 
-    // Only intercept links pointing to this page
-    if (
-      url.origin !== window.location.origin ||
-      normalizePath(url.pathname) !== normalizePath(window.location.pathname) ||
-      !url.hash
-    ) {
-      return
-    }
+  const lenis = new Lenis()
 
-    // Leave modal links alone
-    if (url.hash === '#contact-navigation-modal' ||
-        url.hash === '#contact-modal') {
-      return
-    }
+  const modalContainer = document.querySelector('.modal-container')
+  const lenisModal = modalContainer
+    ? new Lenis({ content: modalContainer })
+    : null
 
-    const target = document.getElementById(
-      decodeURIComponent(url.hash.substring(1))
-    )
+  const normalizePath = (path) =>
+    path.replace(/\/+$/, '') || '/'
 
-    if (!target) return
+  // Smooth scroll for same-page anchor links
+  document.querySelectorAll('a[href*="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      // Respect new-tab and modified clicks
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        link.target === '_blank'
+      ) {
+        return
+      }
 
-    event.preventDefault()
+      const url = new URL(link.href, window.location.href)
 
-    history.pushState(null, '', url.hash)
+      // Only intercept anchors pointing to the current page
+      if (
+        url.origin !== window.location.origin ||
+        normalizePath(url.pathname) !==
+          normalizePath(window.location.pathname) ||
+        !url.hash
+      ) {
+        return
+      }
 
-    lenis.scrollTo(target, {
-      offset: -100,
-      duration: 1.2
+      // Leave contact modal links alone
+      if (
+        url.hash === '#contact-navigation-modal' ||
+        url.hash === '#contact-modal'
+      ) {
+        return
+      }
+
+      const target = document.getElementById(
+        decodeURIComponent(url.hash.substring(1))
+      )
+
+      // Allow normal behavior if the target doesn't exist
+      if (!target) {
+        return
+      }
+
+      // Prevent page navigation or reload
+      event.preventDefault()
+
+      // Update URL without navigating
+      history.pushState(null, '', url.hash)
+
+      // Smoothly scroll to the target
+      lenis.scrollTo(target, {
+        offset: -100,
+        duration: 1.2
+      })
     })
   })
+
+  // Lenis animation loop
+  function raf(time) {
+    lenis.raf(time)
+
+    if (lenisModal) {
+      lenisModal.raf(time)
+    }
+
+    requestAnimationFrame(raf)
+  }
+
+  requestAnimationFrame(raf)
 })
+
 
 
 

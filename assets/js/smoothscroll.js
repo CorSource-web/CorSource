@@ -1,3 +1,4 @@
+
 import Lenis from '@studio-freight/lenis'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +20,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const isModalHash = (hash) =>
     hash === '#contact-navigation-modal' ||
     hash === '#contact-modal'
+
+  // Special handling for the three Solutions page anchors.
+  // Their IDs are on empty blocks before the actual sections.
+  const getScrollTarget = (target) => {
+    const solutionsAnchors = [
+      'focus-tech-investments',
+      'enable-technology-initiatives',
+      'accelerate-data-ai'
+    ]
+
+    if (solutionsAnchors.includes(target.id)) {
+      const section = target.nextElementSibling
+
+      if (section?.classList.contains('focus-content-2026')) {
+        return (
+          section.querySelector('.focus-content-2026-title') ||
+          target
+        )
+      }
+    }
+
+    return target
+  }
+
+  // Scroll to the destination.
+  const scrollToAnchor = (target) => {
+    const scrollTarget = getScrollTarget(target)
+    const isSolutionsHeading = scrollTarget !== target
+
+    lenis.scrollTo(scrollTarget, {
+      offset: isSolutionsHeading ? -30 : -100,
+      duration: 1.2
+    })
+  }
 
   // Handle anchors when arriving from another page
   const scrollToInitialHash = () => {
@@ -44,10 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Allow the browser to render at the top first
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        lenis.scrollTo(target, {
-          offset: -100,
-          duration: 1.2
-        })
+        scrollToAnchor(target)
       })
     })
   }
@@ -113,11 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         url.pathname + url.search + url.hash
       )
 
-      // Smoothly scroll to the target
-      lenis.scrollTo(target, {
-        offset: 100,
-        duration: 1.2
-      })
+      // Smoothly scroll to the correct destination
+      scrollToAnchor(target)
     })
   })
 
@@ -134,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   requestAnimationFrame(raf)
 })
+
 
 
 

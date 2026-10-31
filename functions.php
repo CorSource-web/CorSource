@@ -372,6 +372,8 @@ add_action('template_redirect', function () {
         '/team/'                                => '/about/',
         '/services/project-leadership/'         => '/project-leadership/',
         '/services/software-development/'       => '/software-development/',
+        '/services/professional-services/'      => '/services/',
+        '/services/staff-augmentation/'          => '/services/',
         '/solutions/application-modernization/' => '/application-modernization/',
         '/solutions/cloud-migration/'           => '/cloud-migration/',
         '/solutions/data-management/'           => '/data-management/',

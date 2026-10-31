@@ -65,8 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // Prevent page navigation or reload
       event.preventDefault()
 
-      // Update URL without navigating
-      history.pushState(null, '', url.hash)
+      // Preserve the current page URL when updating the anchor
+      history.pushState(
+        null,
+        '',
+        url.pathname + url.search + url.hash
+      )
 
       // Smoothly scroll to the target
       lenis.scrollTo(target, {

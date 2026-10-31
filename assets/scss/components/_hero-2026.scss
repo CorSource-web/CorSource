@@ -104,4 +104,16 @@
             padding: 0.6rem 1.25rem;
         }
     }
+
+    @media (max-width: $bp-small) {
+    min-height: 40rem;
 }
+
+    body.page-id-28275 & {
+        @media (max-width: $bp-small) {
+            background-position: 85% var(--hero-position-y, 42%);
+        }
+    }
+
+}
+

@@ -28,6 +28,18 @@ $additional_class = isset($block['className'])
     ? $block['className']
     : '';
 
+// Anchor IDs for the Services page only.
+// Matches individual card titles without affecting other pages.
+$service_anchors = [];
+
+if (is_page('services')) {
+    $service_anchors = [
+        'Business Services'         => 'business-services',
+        'Software Development'      => 'software-development',
+        'Infrastructure Management' => 'infrastructure-management',
+    ];
+}
+
 ?>
 
 <section
@@ -48,6 +60,10 @@ $additional_class = isset($block['className'])
                     $subtitle = $card['subtitle'] ?? '';
                     $content  = $card['content'] ?? '';
                     $button   = $card['button'] ?? null;
+
+                    // Assign an anchor only when the title matches
+                    // one of the Services page categories.
+                    $anchor_id = $service_anchors[trim($title)] ?? '';
 
                     $image_url = is_array($image)
                         ? ($image['url'] ?? '')
@@ -75,7 +91,12 @@ $additional_class = isset($block['className'])
 
                 ?>
 
-                    <article class="horizontal-cards-2026-card">
+                    <article
+                        <?php if ($anchor_id) : ?>
+                            id="<?php echo esc_attr($anchor_id); ?>"
+                        <?php endif; ?>
+                        class="horizontal-cards-2026-card"
+                    >
 
                         <?php if ($image_url) : ?>
 

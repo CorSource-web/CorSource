@@ -202,10 +202,17 @@
 
 
 // Energy Sector page only — center man's face on mobile.
-body.page-id-28273 {
-    #image-two-column-2026-block_ab5c9b088187e2752e9db289f3627fbf {
-        .image-two-column-2026__image img {
-            object-position: 53% center;
-        }
+@media (max-width: 768px) {
+    body.page-id-28273
+    #image-two-column-2026-block_ab5c9b088187e2752e9db289f3627fbf
+    .image-two-column-2026__image {
+        aspect-ratio: 1 / 1;
+    }
+
+    body.page-id-28273
+    #image-two-column-2026-block_ab5c9b088187e2752e9db289f3627fbf
+    .image-two-column-2026__image img {
+        object-fit: cover;
+        object-position: 53% 50%;
     }
 }

@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     hash === '#contact-navigation-modal' ||
     hash === '#contact-modal'
 
-  const getScrollTarget = (target) => {
-    const solutionsAnchors = [
-      'focus-tech-investments',
-      'enable-technology-initiatives',
-      'accelerate-data-ai'
-    ]
+  const solutionsAnchors = [
+    'focus-tech-investments',
+    'enable-technology-initiatives',
+    'accelerate-data-ai'
+  ]
 
+  const getScrollTarget = (target) => {
     if (solutionsAnchors.includes(target.id)) {
       const section = target.nextElementSibling
 
@@ -41,58 +41,98 @@ document.addEventListener('DOMContentLoaded', () => {
     return target
   }
 
-  const scrollToAnchor = (target, immediate = false) => {
+  const scrollToAnchor = (target) => {
     const scrollTarget = getScrollTarget(target)
     const isSolutionsHeading = scrollTarget !== target
 
     lenis.scrollTo(scrollTarget, {
       offset: isSolutionsHeading ? -30 : -100,
-      duration: 1.2,
-      immediate
+      duration: 1.2
     })
   }
 
-  // Handle initial hash navigation after the destination page loads.
-  const initialHash = window.location.hash
+  // Handle a cross-page anchor passed through sessionStorage.
+  // The destination page loads without a hash, preventing Chrome
+  // from automatically jumping to the anchor.
+  const pendingKey = 'corsourcePendingAnchor'
+  const pendingRaw = sessionStorage.getItem(pendingKey)
 
-  if (initialHash && !isModalHash(initialHash)) {
-    const target = document.getElementById(
-      decodeURIComponent(initialHash.substring(1))
-    )
+  if (pendingRaw) {
+    sessionStorage.removeItem(pendingKey)
 
-    if (target) {
-      // Reset any browser-provided initial anchor position.
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual'
-      }
+    let pending = null
 
-      lenis.scrollTo(0, { immediate: true })
+    try {
+      pending = JSON.parse(pendingRaw)
+    } catch (error) {
+      pending = null
+    }
 
-      // Wait for the page and its layout to finish loading.
-      const startInitialScroll = () => {
-        requestAnimationFrame(() => {
+    if (
+      pending &&
+      pending.path === normalizePath(window.location.pathname) &&
+      pending.search === window.location.search &&
+      pending.hash &&
+      !isModalHash(pending.hash)
+    ) {
+      const target = document.getElementById(
+        decodeURIComponent(pending.hash.substring(1))
+      )
+
+      if (target) {
+        // Add the hash without triggering native anchor navigation.
+        history.replaceState(
+          history.state,
+          '',
+          window.location.pathname +
+            window.location.search +
+            pending.hash
+        )
+
+        const startScroll = () => {
           requestAnimationFrame(() => {
-            lenis.scrollTo(0, { immediate: true })
-
-            // Allow the top position to render before animating.
             requestAnimationFrame(() => {
               scrollToAnchor(target)
             })
           })
-        })
-      }
+        }
 
-      if (document.readyState === 'complete') {
-        startInitialScroll()
-      } else {
-        window.addEventListener('load', startInitialScroll, {
-          once: true
+        if (document.readyState === 'complete') {
+          startScroll()
+        } else {
+          window.addEventListener('load', startScroll, {
+            once: true
+          })
+        }
+      }
+    }
+  } else {
+    // Preserve normal direct links to pages with hashes.
+    // Position immediately rather than animating on initial load.
+    const hash = window.location.hash
+
+    if (hash && !isModalHash(hash)) {
+      const target = document.getElementById(
+        decodeURIComponent(hash.substring(1))
+      )
+
+      if (target) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const scrollTarget = getScrollTarget(target)
+            const isSolutionsHeading = scrollTarget !== target
+
+            lenis.scrollTo(scrollTarget, {
+              offset: isSolutionsHeading ? -30 : -100,
+              immediate: true
+            })
+          })
         })
       }
     }
   }
 
-  // Smooth scrolling for same-page links.
+  // Handle same-page and cross-page anchor navigation.
   document.querySelectorAll('a[href*="#"]').forEach((link) => {
     link.addEventListener('click', (event) => {
       if (
@@ -102,7 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
         event.ctrlKey ||
         event.shiftKey ||
         event.altKey ||
-        link.target === '_blank'
+        link.target === '_blank' ||
+        link.hasAttribute('download')
       ) {
         return
       }
@@ -111,34 +152,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (
         url.origin !== window.location.origin ||
-        normalizePath(url.pathname) !==
-          normalizePath(window.location.pathname) ||
-        !url.hash
+        !url.hash ||
+        isModalHash(url.hash)
       ) {
         return
       }
 
-      if (isModalHash(url.hash)) {
+      const samePage =
+        normalizePath(url.pathname) ===
+          normalizePath(window.location.pathname) &&
+        url.search === window.location.search
+
+      if (samePage) {
+        const target = document.getElementById(
+          decodeURIComponent(url.hash.substring(1))
+        )
+
+        if (!target) {
+          return
+        }
+
+        event.preventDefault()
+
+        history.pushState(
+          null,
+          '',
+          url.pathname + url.search + url.hash
+        )
+
+        scrollToAnchor(target)
         return
       }
 
-      const target = document.getElementById(
-        decodeURIComponent(url.hash.substring(1))
-      )
-
-      if (!target) {
-        return
-      }
-
+      // Cross-page anchor:
+      // Store the destination hash and navigate without it.
       event.preventDefault()
 
-      history.pushState(
-        null,
-        '',
-        url.pathname + url.search + url.hash
+      sessionStorage.setItem(
+        pendingKey,
+        JSON.stringify({
+          path: normalizePath(url.pathname),
+          search: url.search,
+          hash: url.hash
+        })
       )
 
-      scrollToAnchor(target)
+      window.location.assign(
+        url.pathname + url.search
+      )
     })
   })
 

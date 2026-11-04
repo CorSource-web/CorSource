@@ -202,17 +202,25 @@
 
 
 
-// Energy Sector — square image on mobile only
+// Energy Sector — square mobile image without SVG mask
 @media (max-width: 768px) {
     body.page-id-28273 {
         #image-two-column-2026-block_ab5c9b088187e2752e9db289f3627fbf {
 
             .image-two-column-2026__image {
                 aspect-ratio: 1 / 1 !important;
-                height: auto;
+                height: auto !important;
+                overflow: hidden;
+
+                // Disable original SVG mask
+                -webkit-mask-image: none !important;
+                mask-image: none !important;
+
+                border-radius: 6px;
             }
 
             .image-two-column-2026__image img {
+                display: block;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;

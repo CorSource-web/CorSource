@@ -419,3 +419,11 @@ body.page-id-28277 pre.wp-block-code {
         }
     }
 }
+html {
+  min-height: 100%;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}

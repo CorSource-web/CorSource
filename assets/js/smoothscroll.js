@@ -1,7 +1,7 @@
+
 import Lenis from '@studio-freight/lenis'
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Only load smooth scroll on the front end
   if (document.body.classList.contains('wp-admin')) {
     return
   }
@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     hash === '#contact-navigation-modal' ||
     hash === '#contact-modal'
 
-  // Special handling for the three Solutions page anchors.
-  // Their IDs are on empty blocks before the actual sections.
   const getScrollTarget = (target) => {
     const solutionsAnchors = [
       'focus-tech-investments',
@@ -43,51 +41,60 @@ document.addEventListener('DOMContentLoaded', () => {
     return target
   }
 
-  // Smooth scrolling for same-page anchor navigation
-  const scrollToAnchor = (target) => {
+  const scrollToAnchor = (target, immediate = false) => {
     const scrollTarget = getScrollTarget(target)
     const isSolutionsHeading = scrollTarget !== target
 
     lenis.scrollTo(scrollTarget, {
       offset: isSolutionsHeading ? -30 : -100,
-      duration: 1.2
+      duration: 1.2,
+      immediate
     })
   }
 
-  // Immediately position the page when arriving from another page
-  const scrollToInitialHash = () => {
-    const hash = window.location.hash
+  // Handle initial hash navigation after the destination page loads.
+  const initialHash = window.location.hash
 
-    if (!hash || isModalHash(hash)) {
-      return
-    }
-
+  if (initialHash && !isModalHash(initialHash)) {
     const target = document.getElementById(
-      decodeURIComponent(hash.substring(1))
+      decodeURIComponent(initialHash.substring(1))
     )
 
-    if (!target) {
-      return
+    if (target) {
+      // Reset any browser-provided initial anchor position.
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual'
+      }
+
+      lenis.scrollTo(0, { immediate: true })
+
+      // Wait for the page and its layout to finish loading.
+      const startInitialScroll = () => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            lenis.scrollTo(0, { immediate: true })
+
+            // Allow the top position to render before animating.
+            requestAnimationFrame(() => {
+              scrollToAnchor(target)
+            })
+          })
+        })
+      }
+
+      if (document.readyState === 'complete') {
+        startInitialScroll()
+      } else {
+        window.addEventListener('load', startInitialScroll, {
+          once: true
+        })
+      }
     }
-
-    const scrollTarget = getScrollTarget(target)
-    const isSolutionsHeading = scrollTarget !== target
-
-    lenis.scrollTo(scrollTarget, {
-      offset: isSolutionsHeading ? -30 : -100,
-      immediate: true
-    })
   }
 
-  // Run after the initial layout rather than waiting for window.load
-  requestAnimationFrame(() => {
-    requestAnimationFrame(scrollToInitialHash)
-  })
-
-  // Smooth scroll for same-page anchor links
+  // Smooth scrolling for same-page links.
   document.querySelectorAll('a[href*="#"]').forEach((link) => {
     link.addEventListener('click', (event) => {
-      // Respect new-tab and modified clicks
       if (
         event.defaultPrevented ||
         event.button !== 0 ||
@@ -102,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const url = new URL(link.href, window.location.href)
 
-      // Only intercept anchors pointing to the current page
       if (
         url.origin !== window.location.origin ||
         normalizePath(url.pathname) !==
@@ -112,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return
       }
 
-      // Leave contact modal links alone
       if (isModalHash(url.hash)) {
         return
       }
@@ -121,27 +126,23 @@ document.addEventListener('DOMContentLoaded', () => {
         decodeURIComponent(url.hash.substring(1))
       )
 
-      // Allow normal behavior if the target doesn't exist
       if (!target) {
         return
       }
 
-      // Prevent page navigation or reload
       event.preventDefault()
 
-      // Preserve the destination pathname and hash
       history.pushState(
         null,
         '',
         url.pathname + url.search + url.hash
       )
 
-      // Smoothly scroll to the correct destination
       scrollToAnchor(target)
     })
   })
 
-  // Lenis animation loop
+  // Lenis animation loop.
   function raf(time) {
     lenis.raf(time)
 

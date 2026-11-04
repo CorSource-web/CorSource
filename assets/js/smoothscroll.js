@@ -1,4 +1,3 @@
-
 import Lenis from '@studio-freight/lenis'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return target
   }
 
-  // Scroll to the destination.
+  // Smooth scrolling for same-page anchor navigation
   const scrollToAnchor = (target) => {
     const scrollTarget = getScrollTarget(target)
     const isSolutionsHeading = scrollTarget !== target
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  // Handle anchors when arriving from another page
+  // Immediately position the page when arriving from another page
   const scrollToInitialHash = () => {
     const hash = window.location.hash
 
@@ -71,27 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return
     }
 
-    // Reset to the top before starting the animation
-    lenis.scrollTo(0, {
+    const scrollTarget = getScrollTarget(target)
+    const isSolutionsHeading = scrollTarget !== target
+
+    lenis.scrollTo(scrollTarget, {
+      offset: isSolutionsHeading ? -30 : -100,
       immediate: true
     })
-
-    // Allow the browser to render at the top first
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        scrollToAnchor(target)
-      })
-    })
   }
 
-  // Wait until the page and its resources have loaded
-  if (document.readyState === 'complete') {
-    scrollToInitialHash()
-  } else {
-    window.addEventListener('load', scrollToInitialHash, {
-      once: true
-    })
-  }
+  // Run after the initial layout rather than waiting for window.load
+  requestAnimationFrame(() => {
+    requestAnimationFrame(scrollToInitialHash)
+  })
 
   // Smooth scroll for same-page anchor links
   document.querySelectorAll('a[href*="#"]').forEach((link) => {
@@ -163,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   requestAnimationFrame(raf)
 })
-
 
 
 

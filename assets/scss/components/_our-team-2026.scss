@@ -193,3 +193,18 @@
     font-weight: 400;
     line-height: 1.5;
 }
+
+// Consultants page — adjust woman's image on mobile only
+@media (max-width: 768px) {
+    body.page-id-28275 {
+        #our-team-2026-block_9e87b3973fa079d3c5cb7505a18acfe0 {
+
+            .our-team-2026-row:first-child {
+                .our-team-2026-row__image img {
+                    object-position: center 15%;
+                }
+            }
+
+        }
+    }
+}

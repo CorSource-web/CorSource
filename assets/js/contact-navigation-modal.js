@@ -17,6 +17,9 @@ class ContactNavigationModal {
             return;
         }
 
+        // Prevent same-page modal links from triggering native anchor scrolling.
+        this.preventModalAnchorScroll(modal);
+
         // Close when clicking X.
         const xButton = modal.querySelector('.modal-close');
 
@@ -46,33 +49,79 @@ class ContactNavigationModal {
             }
         });
 
-        // Preserve existing browser back/forward functionality.
+        // Preserve browser back/forward functionality.
         window.addEventListener('popstate', () => {
             this.handleLocationChange(modal);
         });
 
-        // NEW: Support same-page anchor links on the 2026 pages.
+        // Support hash changes on the 2026 pages.
         window.addEventListener('hashchange', () => {
             this.handleLocationChange(modal);
         });
 
-        // NEW: Support opening a URL that already contains the hash.
+        // Support opening a URL that already contains the modal hash.
         this.handleLocationChange(modal);
 
         // Preserve existing Gravity Forms adjustments.
-        const requiredTextElements = document.querySelectorAll('.gfield_required_text');
+        const requiredTextElements = document.querySelectorAll(
+            '.gfield_required_text'
+        );
 
         requiredTextElements.forEach((element) => {
-            element.textContent = element.textContent.replace('(Required)', '*');
+            element.textContent = element.textContent.replace(
+                '(Required)',
+                '*'
+            );
         });
 
-        const validationMessageDiv = document.querySelector('.gfield .validation_message');
+        const validationMessageDiv = document.querySelector(
+            '.gfield .validation_message'
+        );
 
         if (validationMessageDiv) {
             const pseudoElement = document.createElement('span');
             pseudoElement.classList.add('pseudo-element');
             validationMessageDiv.appendChild(pseudoElement);
         }
+    }
+
+    preventModalAnchorScroll(modal) {
+        document.addEventListener('click', (event) => {
+            const link = event.target.closest(
+                'a[href*="#contact-navigation-modal"]'
+            );
+
+            if (!link) {
+                return;
+            }
+
+            const url = new URL(link.href, window.location.href);
+
+            // Allow links to other pages to navigate normally.
+            if (
+                url.origin !== window.location.origin ||
+                url.pathname.replace(/\/$/, '') !==
+                    window.location.pathname.replace(/\/$/, '') ||
+                url.hash !== '#contact-navigation-modal'
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            // Update the URL without triggering browser anchor scrolling.
+            if (window.location.hash !== '#contact-navigation-modal') {
+                history.pushState(
+                    {},
+                    '',
+                    window.location.pathname +
+                    window.location.search +
+                    '#contact-navigation-modal'
+                );
+            }
+
+            this.openModal(modal);
+        });
     }
 
     handleLocationChange(modal) {
@@ -105,15 +154,17 @@ class ContactNavigationModal {
             return;
         }
 
+        // Save the scroll position before locking the page.
+        this.disableScroll();
+
         modal.classList.add('open');
         this.isOpen = true;
-        this.disableScroll();
     }
 
     removeHashFromURL() {
         if (window.location.hash === '#contact-navigation-modal') {
             history.replaceState(
-                '',
+                history.state,
                 document.title,
                 window.location.pathname + window.location.search
             );
@@ -123,7 +174,7 @@ class ContactNavigationModal {
     disableScroll() {
         this.savedScrollY = window.scrollY;
 
-        document.body.style.top = `-${window.scrollY}px`;
+        document.body.style.top = `-${this.savedScrollY}px`;
         document.body.style.right = '0';
         document.body.style.left = '0';
         document.body.style.position = 'fixed';
@@ -147,10 +198,15 @@ class ContactNavigationModal {
         document.body.style.right = '';
         document.body.style.left = '';
 
-        // Restore the previous scroll position.
-        window.scrollTo(0, this.savedScrollY);
+        // Restore the original scroll position.
+        window.scrollTo({
+            top: this.savedScrollY,
+            left: 0,
+            behavior: 'instant'
+        });
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.contact-navigation-modal')) {

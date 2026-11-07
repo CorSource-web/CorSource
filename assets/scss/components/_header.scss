@@ -659,7 +659,12 @@
         scroll-padding-top: 110px;
     }
 }
-
+// Desktop anchor offset for sticky navigation
+@media (min-width: 801px) {
+    html {
+        scroll-padding-top: 120px;
+    }
+}
 
 
 

@@ -117,3 +117,13 @@
 
 }
 
+
+
+// Services page only
+body.page-id-28275 .hero-2026 .hero-2026-overlay .container {
+    width: 50%;
+
+    @media (max-width: $bp-small) {
+        width: 90%;
+    }
+}

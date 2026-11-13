@@ -13,3 +13,19 @@ html {
   padding-top: 100px;
   padding-bottom: 100px;
 }
+
+
+// Services page only
+body.page-id-28283 {
+  .animated-text {
+    h4.make-blue {
+      max-width: none;
+      width: 100%;
+      white-space: nowrap;
+
+      @media (max-width: 800px) {
+        white-space: normal;
+      }
+    }
+  }
+}

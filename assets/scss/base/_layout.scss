@@ -21,10 +21,19 @@ body.page-id-28283 {
     h4.make-blue {
       max-width: none;
       width: 100%;
-      white-space: nowrap;
 
-      @media (max-width: 800px) {
-        white-space: normal;
+      @media (min-width: 801px) {
+        white-space: nowrap;
+
+        .reveal-line {
+          max-width: none;
+          overflow: visible;
+        }
+
+        .words {
+          max-width: none;
+          white-space: nowrap;
+        }
       }
     }
   }
